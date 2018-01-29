@@ -31,6 +31,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "product_pages",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "rightnav",
   "type" : "RIGHTNAV",
   "params" : [ ]

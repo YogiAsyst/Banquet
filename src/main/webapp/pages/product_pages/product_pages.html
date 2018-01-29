@@ -1,0 +1,117 @@
+<wm-page data-ng-controller="product_pagesPageController" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-breadcrumb dataset="products,cameras,digital cameras" class="text-uppercase" name="breadcrumb1"></wm-breadcrumb>
+            <wm-layoutgrid name="layoutgrid1">
+                <wm-gridrow name="gridrow1">
+                    <wm-gridcolumn columnwidth="12" class="col-xs-12 col-sm-4 col-md-3" name="gridcolumn1" padding="unset unset 1em unset">
+                        <wm-label class="h1" caption="Digital Cameras" width="100%" name="label2" margin="0em unset .5em unset"></wm-label>
+                        <wm-label class="h4" caption="Categories" width="100%" name="label1" margin="0em unset 1em unset"></wm-label>
+                        <wm-list class="list-group" name="list1">
+                            <wm-list-item class="list-group-item" name="list_item1" padding="0px">
+                                <wm-list-item name="list_item2">
+                                    <wm-anchor margin=".8em unset 1em unset" name="anchor2" caption="Compact System" class="h3"></wm-anchor>
+                                </wm-list-item>
+                            </wm-list-item>
+                            <wm-list-item class="list-group-item" name="list_item3" padding="0px">
+                                <wm-list-item name="list_item4">
+                                    <wm-anchor margin=".8em unset 1em unset" name="anchor3" caption="Point and Shoot" class="h3"></wm-anchor>
+                                </wm-list-item>
+                            </wm-list-item>
+                            <wm-list-item class="list-group-item" name="list_item5" padding="0px">
+                                <wm-list-item name="list_item6">
+                                    <wm-anchor margin=".8em unset 1em unset" name="anchor4" caption="DSLR" class="h3"></wm-anchor>
+                                </wm-list-item>
+                            </wm-list-item>
+                        </wm-list>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="12" class="col-xs-12 col-sm-8 col-md-9" name="gridcolumn2">
+                        <wm-layoutgrid name="layoutgrid2">
+                            <wm-gridrow name="gridrow2">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn3" padding="unset 1em">
+                                    <wm-carousel animationinterval="10" name="carousel1">
+                                        <wm-carousel-content name="carousel_content1">
+                                            <wm-picture picturesource="http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Images/Cameras/Camera5.jpg" class="img-responsive" name="picture1"></wm-picture>
+                                        </wm-carousel-content>
+                                        <wm-carousel-content name="carousel_content2">
+                                            <wm-picture picturesource="http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Images/Cameras/Camera7.jpg" class="img-responsive" name="picture2"></wm-picture>
+                                        </wm-carousel-content>
+                                    </wm-carousel>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow3" padding="1em unset unset unset">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                                    <wm-list listclass="list-group" itemclass="col-xs-12 col-sm-6 col-md-3 col-lg-3" dataset="1,2,3,4,5,6,7,8,9,10" itemsperrow="4" template="true" name="livelist1">
+                                        <wm-listtemplate layout="thumbnail" display="inline" name="listtemplate1">
+                                            <wm-container class="thumbnail" backgroundcolor="#fff" horizontalalign="center" bordercolor="#D1D7DA" name="container1" margin="1em" padding="0em">
+                                                <wm-container cursor="pointer" name="container2" padding="unset .5em">
+                                                    <wm-picture class="picture" shape="thumbnail" picturesource="http://wmstudio-apps.s3.amazonaws.com/eshop/Products/Images/Cameras/Camera1.jpg" textalign="center" width="100%" borderstyle="none" cursor="pointer"
+                                                        backgroundcolor="transparent" name="picture3" margin="1em unset" padding="0em"></wm-picture>
+                                                </wm-container>
+                                                <wm-container class="caption" data-template-ctr="true" bordercolor="#D1D7DA" borderstyle="solid" horizontalalign="left" name="container3" borderwidth="1px 0px 0px 0px" padding="unset 1.5em">
+                                                    <wm-anchor caption="Product Name" class="h4" whitespace="normal" name="anchor1"></wm-anchor>
+                                                    <wm-layoutgrid name="layoutgrid3">
+                                                        <wm-gridrow name="gridrow4">
+                                                            <wm-gridcolumn columnwidth="12" class="col-xs-6 h5" name="gridcolumn5">
+                                                                <wm-label caption="$" fontweight="bold" name="label3" margin="unset unset 0px unset"></wm-label>
+                                                                <wm-label caption="1000" fontweight="bold" whitespace="nowrap" name="label4" margin="unset unset 0px unset"></wm-label>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                    </wm-layoutgrid>
+                                                </wm-container>
+                                            </wm-container>
+                                        </wm-listtemplate>
+                                    </wm-list>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" name="productsDialog" title="products Info" iconclass="wi wi-edit" modal="true">
+            <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.Acs_banquetProductsData.dataSet" captionalign="left" captionposition="top" name="ProductsLiveForm1" on-success="Widgets.productsDialog.close()">
+                <wm-layoutgrid columns="2" name="layoutgrid4">
+                    <wm-gridrow name="gridrow5">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn6">
+                            <wm-form-field name="pname" displayname="Name" required="false" show="true" generator="assigned" primary-key="false" key="pname" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                            <wm-form-field name="ppicture" displayname="Picture" required="false" show="true" generator="assigned" primary-key="false" key="ppicture" type="blob" is-related="false" pc-display="true" mobile-display="true" widget="upload"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow6">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn8">
+                            <wm-form-field name="pdescription" displayname="Description" required="false" show="true" generator="assigned" primary-key="false" key="pdescription" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn9">
+                            <wm-picture name="picture4" picturesource="bind:Widgets.ProductsLiveForm1.formWidgets.picture4.picturesource"></wm-picture>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow7">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn10">
+                            <wm-form-field name="pcatagory" displayname="Catagory" required="false" show="true" generator="assigned" primary-key="false" key="pcatagory" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn11"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow8">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn12">
+                            <wm-form-field name="prating" displayname="Rating" required="false" show="true" generator="assigned" primary-key="false" key="prating" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn13"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+            </wm-liveform>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

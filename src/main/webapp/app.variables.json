@@ -45,6 +45,17 @@
     "operation" : "gotoPage",
     "pageName" : "Main"
   },
+  "goToPage_product_pages" : {
+    "_id" : "wm-goToPage_product_pages-wm.NavigationVariable-1517210518238",
+    "name" : "goToPage_product_pages",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "product_pages",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_user_management_page" : {
     "_id" : "wm-goToPage_user_management_page-wm.NavigationVariable-1517193715967",
     "name" : "goToPage_user_management_page",
