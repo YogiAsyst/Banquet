@@ -1,0 +1,87 @@
+<wm-page data-ng-controller="login_pagePageController" name="page1">
+    <wm-content name="content1">
+        <wm-page-content columnwidth="12" name="page_content1">
+            <wm-container width="100%" height="100%" backgroundcolor="#000000" backgroundimage="resources/images/imagelists/login-bg.jpg" backgroundrepeat="no-repeat" backgroundposition="0 0" backgroundsize="auto 100%" backgroundattachment="fixed" name="loginPageContainer">
+                <wm-layoutgrid name="loginGrid" height="100%">
+                    <wm-gridrow name="gridrow6_1" height="15%">
+                        <wm-gridcolumn columnwidth="12" name="gridcolumn10_1" horizontalalign="center" class="col-xs-12"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="loginGridRow">
+                        <wm-gridcolumn columnwidth="1" name="gridcolumn8" class="col-xs-1 col-md-1"></wm-gridcolumn>
+                        <wm-gridcolumn name="loginContentColumn" columnwidth="8" class="col-xs-10 col-md-8" horizontalalign="left">
+                            <wm-container name="loginbox" style="max-width:700px;" backgroundcolor="rgba(255,255,255,0.2)">
+                                <wm-layoutgrid name="layoutgrid3">
+                                    <wm-gridrow name="gridrow8">
+                                        <wm-gridcolumn columnwidth="5" name="gridcolumn11" horizontalalign="center" class="bg-primary">
+                                            <wm-layoutgrid name="layoutgrid5" backgroundcolor="rgba(0,0,0,0.6)">
+                                                <wm-gridrow name="gridrow10" class="hidden-xs">
+                                                    <wm-gridcolumn columnwidth="12" name="gridcolumn16" height="12em"></wm-gridcolumn>
+                                                </wm-gridrow>
+                                                <wm-gridrow name="gridrow11">
+                                                    <wm-gridcolumn columnwidth="12" name="gridcolumn18">
+                                                        <wm-picture name="picture1" picturesource="resources/images/imagelists/acs.png" height="6em" pictureaspect="V"></wm-picture>
+                                                    </wm-gridcolumn>
+                                                </wm-gridrow>
+                                                <wm-gridrow name="gridrow12" class="hidden-xs">
+                                                    <wm-gridcolumn columnwidth="12" name="gridcolumn21" height="15.5em"></wm-gridcolumn>
+                                                </wm-gridrow>
+                                            </wm-layoutgrid>
+                                        </wm-gridcolumn>
+                                        <wm-gridcolumn columnwidth="7" name="gridcolumn13">
+                                            <wm-container color="#ffffff" name="container3" horizontalalign="center">
+                                                <wm-label name="loginhead" caption="Login" class="h2 text-uppercase" margin="0px unset" padding="1.5em unset 0.5em 1.75em" color="#ccc" textalign="center"></wm-label>
+                                                <wm-login name="loginForm" data-ng-controller="loginFormController" on-submit="Actions.loginAction.invoke()" title="" autocomplete="nofill">
+                                                    <wm-layoutgrid name="layoutgrid2">
+                                                        <wm-gridrow name="gridrow2">
+                                                            <wm-gridcolumn columnwidth="12" name="gridcolumn4" padding="unset unset 2em unset">
+                                                                <wm-text color="#ffffff" placeholder="Username" name="usernametext" class="app-login-username" width="100%" autocomplete="false" autocorrect="off" autocapitalize="off" updateon="default" required="true"></wm-text>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                        <wm-gridrow name="gridrow3">
+                                                            <wm-gridcolumn columnwidth="12" name="gridcolumn7">
+                                                                <wm-text color="#ffffff" type="password" name="passwordtext" placeholder="Password" class="app-login-password" width="100%" autocomplete="true" autocorrect="off" autocapitalize="off" updateon="default"
+                                                                    required="true"></wm-text>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                        <wm-gridrow name="gridrow6">
+                                                            <wm-gridcolumn columnwidth="12" name="gridcolumn14" class="col-xs-7" horizontalalign="left">
+                                                                <wm-checkbox class="text-color-inherit" caption="Remember Me" name="remembermecheck"></wm-checkbox>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                        <wm-gridrow name="gridrow4">
+                                                            <wm-gridcolumn columnwidth="12" name="gridcolumn10">
+                                                                <wm-button type="submit" caption="Login" width="100%" class="app-login-button btn-primary" name="loginButton" fontsize="1.2" fontunit="em"></wm-button>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                        <wm-gridrow name="gridrow8_1">
+                                                            <wm-gridcolumn columnwidth="12" name="gridcolumn12" padding="2em unset 4em unset" horizontalalign="left">
+                                                                <wm-anchor name="anchor1" caption="Forgot Password?" class="text-uppercase" style="text-decoration: underline" color="#fff"></wm-anchor>
+                                                            </wm-gridcolumn>
+                                                        </wm-gridrow>
+                                                    </wm-layoutgrid>
+                                                </wm-login>
+                                            </wm-container>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-container>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="3" name="gridcolumn9" class="col-xs-1  col-md-3"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-container name="footer" style="position: absolute;bottom: 0;right: 0;left: 0; width: 100%;">
+                    <wm-container class="bg-primary" height="100%" name="container4">
+                        <wm-layoutgrid name="footergrid" height="100%" backgroundcolor="rgba(0,0,0,0.6)">
+                            <wm-gridrow name="gridrow6_1">
+                                <wm-gridcolumn columnwidth="1" name="gridcolumn8" class="col-xs-1 col-md-1"></wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn10_1">
+                                    <wm-label caption="Copyright 2018 PT. Aero System Indonesia" textalign="right" name="copyright" padding="1.5em unset"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-container>
+                </wm-container>
+            </wm-container>
+        </wm-page-content>
+    </wm-content>
+</wm-page>

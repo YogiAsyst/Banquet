@@ -11,6 +11,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "dashboard_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "footer",
   "type" : "FOOTER",
   "params" : [ ]
@@ -23,11 +27,19 @@
   "type" : "LEFTNAV",
   "params" : [ ]
 }, {
+  "name" : "login_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "rightnav",
   "type" : "RIGHTNAV",
   "params" : [ ]
 }, {
   "name" : "topnav",
   "type" : "TOPNAV",
+  "params" : [ ]
+}, {
+  "name" : "user_management_page",
+  "type" : "PAGE",
   "params" : [ ]
 } ]

@@ -1,0 +1,19 @@
+{
+  "modelName" : "acs_banquet",
+  "entityName" : "User",
+  "tableName" : "user",
+  "unamePropertyName" : "uname",
+  "unameColumnName" : "u_name",
+  "uidPropertyName" : "id",
+  "uidColumnName" : "ID",
+  "pwPropertyName" : "upassword",
+  "pwColumnName" : "u_password",
+  "rolePropertyName" : "urole",
+  "roleColumnName" : "u_role",
+  "useRolesQuery" : false,
+  "rolesByUsernameQuery" : "",
+  "tenantIdField" : null,
+  "defTenantId" : 0,
+  "tenantIdPropertyName" : null,
+  "queryType" : "HQL"
+}
