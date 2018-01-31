@@ -30,7 +30,7 @@
         "notNull" : true,
         "length" : 0,
         "precision" : 10,
-        "generator" : "sequence",
+        "generator" : "identity",
         "isRelated" : false,
         "defaultValue" : "",
         "scale" : 0

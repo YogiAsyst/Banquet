@@ -125,7 +125,7 @@
     "saveInPhonegap" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
-    "redirectTo" : "Login",
+    "redirectTo" : "login_page",
     "useDefaultSuccessHandler" : true
   },
   "supportedLocale" : {
@@ -138,6 +138,21 @@
     },
     "type" : "string",
     "isList" : false,
+    "saveInPhonegap" : false
+  },
+  "user_menu" : {
+    "_id" : "wm-user_menu-wm.Variable-1517382889220",
+    "name" : "user_menu",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "User Management",
+      "link" : "#/user_management_page",
+      "icon" : ""
+    } ],
+    "type" : "string",
+    "isList" : true,
     "saveInPhonegap" : false
   }
 }

@@ -1,0 +1,25 @@
+<wm-partial data-ng-controller="product_detail_partPageController" name="partial1">
+    <wm-list listclass="list-group" template="true" itemsperrow="xs-1 sm-2 md-3 lg-4" class="list-card" name="ProductsList1" dataset="bind:Variables.Acs_banquetProductsData.dataSet" navigation="None" title="">
+        <wm-listtemplate layout="media" name="listtemplate1">
+            <wm-card name="card1">
+                <wm-card-content fontsize="0.8" fontunit="em" name="card_content1">
+                    <wm-layoutgrid columns="2" name="layoutgrid1">
+                        <wm-gridrow name="gridrow1">
+                            <wm-gridcolumn colwidth="6" columnwidth="6" class="col-xs-6" name="gridcolumn1">
+                                <wm-picture name="Picture" width="100%" picturesource="bind:Variables.Acs_banquetProductsData.dataSet.ppicture"></wm-picture>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn colwidth="6" columnwidth="6" padding="unset 1.25em" class="col-xs-6" name="gridcolumn2">
+                                <wm-label name="ID" caption="bind:Variables.Acs_banquetProductsData.dataSet.id" class="text-muted p" margin="unset unset 0px unset" whitespace="nowrap"></wm-label>
+                                <wm-label name="Name" caption="bind:Variables.Acs_banquetProductsData.dataSet.pname" class="h4" margin="0px unset" whitespace="nowrap"></wm-label>
+                                <wm-label name="JobTitle" caption="bind:Variables.Acs_banquetProductsData.dataSet.pdescription" class="h5" margin="0px unset unset unset" whitespace="nowrap"></wm-label>
+                                <wm-label name="Department" caption="bind:Variables.Acs_banquetProductsData.dataSet.category.catName" class="p text-muted" margin="unset unset 0px unset" whitespace="nowrap"></wm-label>
+                                <wm-anchor name="PhoneNumber" caption="" class="h5" hyperlink="tel:" margin="0px unset" whitespace="nowrap"></wm-anchor>
+                                <wm-anchor name="EmailID" class="p text-muted" hyperlink="mailto://" caption="" whitespace="nowrap"></wm-anchor>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-card-content>
+            </wm-card>
+        </wm-listtemplate>
+    </wm-list>
+</wm-partial>

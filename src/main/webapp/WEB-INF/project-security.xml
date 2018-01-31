@@ -208,7 +208,7 @@
                 </entry>
                 <entry key="staff">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="dashboard_page"/>
+                        <property name="landingPage" value="product_page"/>
                     </bean>
                 </entry>
             </map>
