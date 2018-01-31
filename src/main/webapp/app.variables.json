@@ -45,14 +45,14 @@
     "operation" : "gotoPage",
     "pageName" : "Main"
   },
-  "goToPage_product_pages" : {
-    "_id" : "wm-goToPage_product_pages-wm.NavigationVariable-1517210518238",
-    "name" : "goToPage_product_pages",
+  "goToPage_product_page" : {
+    "_id" : "wm-goToPage_product_page-wm.NavigationVariable-1517365776463",
+    "name" : "goToPage_product_page",
     "owner" : "App",
     "category" : "wm.NavigationVariable",
     "dataBinding" : [ ],
     "operation" : "gotoPage",
-    "pageName" : "product_pages",
+    "pageName" : "product_page",
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },

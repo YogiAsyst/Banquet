@@ -1,0 +1,228 @@
+<wm-page data-ng-controller="product_pagePageController" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1" backgroundcolor="#388e1a"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1" backgroundcolor="#ffffff">
+            <wm-tabs name="tabs1">
+                <wm-tabpane name="tabpane1" title="Appetizer">
+                    <wm-layoutgrid name="layoutgrid2">
+                        <wm-gridrow horizontalalign="right" name="gridrow2">
+                            <wm-gridcolumn columnwidth="1" padding=".7em unset unset 1em" name="gridcolumn4">
+                                <wm-label caption="Sort by" class="p control-label" name="label18"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" padding="unset 1em" name="gridcolumn5">
+                                <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select2"></wm-select>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn6">
+                                <wm-search placeholder="Search in Appetizer" class="col-xs-12 col-md-5 col-lg-5" name="search2"></wm-search>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn40">
+                                <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.productsDialog.open()"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_1_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list2"
+                        orderby="id:desc">
+                        <wm-listtemplate layout="media" name="listtemplate2">
+                            <wm-card imageheight="auto" name="card2">
+                                <wm-card-content name="card_content2">
+                                    <wm-picture picturesource="bind:Variables.get_cat_1_product.dataSet[$i].ppicture" width="235" name="picture2" height="175"></wm-picture>
+                                    <wm-anchor caption="bind:Variables.get_cat_1_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor4"></wm-anchor>
+                                    <wm-label caption="bind:Variables.get_cat_1_product.dataSet[$i].pdescription" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p" name="label6"></wm-label>
+                                    <wm-rating datavalue="bind:Variables.get_cat_1_product.dataSet[$i].prating" class="p" margin="0px unset unset unset" name="rating2"></wm-rating>
+                                    <wm-label caption="bind:Variables.get_cat_1_product.dataSet[$i].catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label8"></wm-label>
+                                </wm-card-content>
+                                <wm-card-footer horizontalalign="right" name="card_footer2">
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor5"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor6"></wm-anchor>
+                                </wm-card-footer>
+                            </wm-card>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane2" title="Main Course">
+                    <wm-layoutgrid name="layoutgrid3">
+                        <wm-gridrow horizontalalign="right" name="gridrow3_1">
+                            <wm-gridcolumn columnwidth="1" padding=".7em unset unset 1em" name="gridcolumn7_1">
+                                <wm-label caption="Sort by" class="p control-label" name="label19"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" padding="unset 1em" name="gridcolumn8_1">
+                                <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select3"></wm-select>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn9">
+                                <wm-search placeholder="Search in Main Course" class="col-xs-12 col-md-5 col-lg-5" name="search3"></wm-search>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn41">
+                                <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" on-click="Widgets.productsDialog.open()" name="button2"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_2_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list3">
+                        <wm-listtemplate layout="media" name="listtemplate3">
+                            <wm-card imageheight="auto" name="card3">
+                                <wm-card-content name="card_content3">
+                                    <wm-picture picturesource="bind:Variables.get_cat_2_product.dataSet[$i].ppicture" width="235" name="picture3" height="175"></wm-picture>
+                                    <wm-anchor caption="bind:Variables.get_cat_2_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor7"></wm-anchor>
+                                    <wm-label caption="bind:Variables.get_cat_2_product.dataSet[$i].pdescription" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p" name="label9"></wm-label>
+                                    <wm-rating datavalue="bind:Variables.get_cat_2_product.dataSet[$i].prating" class="p" margin="0px unset unset unset" name="rating3"></wm-rating>
+                                    <wm-label caption="bind:Variables.get_cat_2_product.dataSet[$i].catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label11"></wm-label>
+                                </wm-card-content>
+                                <wm-card-footer horizontalalign="right" name="card_footer3">
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor8"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor9"></wm-anchor>
+                                </wm-card-footer>
+                            </wm-card>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane3" title="Dessert">
+                    <wm-layoutgrid name="layoutgrid4">
+                        <wm-gridrow horizontalalign="right" name="gridrow4">
+                            <wm-gridcolumn columnwidth="1" padding=".7em unset unset 1em" name="gridcolumn10">
+                                <wm-label caption="Sort by" class="p control-label" name="label20"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" padding="unset 1em" name="gridcolumn11">
+                                <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select4"></wm-select>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn12">
+                                <wm-search placeholder="Search in Dessert" class="col-xs-12 col-md-5 col-lg-5" name="search4"></wm-search>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn42">
+                                <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" on-click="Widgets.productsDialog.open()" name="button3"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_3_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list5">
+                        <wm-listtemplate layout="media" name="listtemplate5">
+                            <wm-card imageheight="auto" name="card5">
+                                <wm-card-content name="card_content5">
+                                    <wm-picture picturesource="bind:Variables.get_cat_3_product.dataSet[$i].ppicture" width="235" name="picture5" height="175"></wm-picture>
+                                    <wm-anchor caption="bind:Variables.get_cat_3_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor13"></wm-anchor>
+                                    <wm-label caption="bind:Variables.get_cat_3_product.dataSet[$i].pdescription" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p" name="label15"></wm-label>
+                                    <wm-rating datavalue="bind:Variables.get_cat_3_product.dataSet[$i].prating" class="p" margin="0px unset unset unset" name="rating5"></wm-rating>
+                                    <wm-label caption="bind:Variables.get_cat_3_product.dataSet[$i].catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label17"></wm-label>
+                                </wm-card-content>
+                                <wm-card-footer horizontalalign="right" name="card_footer5">
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor14"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor15"></wm-anchor>
+                                </wm-card-footer>
+                            </wm-card>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane4" title="BEVERAGES">
+                    <wm-layoutgrid name="layoutgrid3_2">
+                        <wm-gridrow name="gridrow3" horizontalalign="right">
+                            <wm-gridcolumn columnwidth="1" name="gridcolumn7" padding=".7em unset unset 1em">
+                                <wm-label name="sortByLabel" caption="Sort by" class="p control-label"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" name="gridcolumn3" padding="unset 1em">
+                                <wm-select name="popularitySelectBox" datavalue="Popularity" dataset="Popularity,Price,Rating"></wm-select>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="5" name="gridcolumn8" padding="unset 1em">
+                                <wm-search name="productSearchBox" placeholder="Search in Beverages" class="col-xs-12 col-md-5 col-lg-5"></wm-search>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn43">
+                                <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" on-click="Widgets.productsDialog.open()" name="button4"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_4_product.dataSet" navigation="Basic" name="productList" padding="1em unset unset unset" showrecordcount="true">
+                        <wm-listtemplate layout="media" name="productListTemplate">
+                            <wm-card name="productCard" imageheight="auto">
+                                <wm-card-content name="productCardContent">
+                                    <wm-picture name="productPicture" picturesource="bind:Variables.get_cat_4_product.dataSet[$i].ppicture" width="235" height="175"></wm-picture>
+                                    <wm-anchor name="productNameAnchor" caption="bind:Variables.get_cat_4_product.dataSet[$i].pname" class="h4" margin="0px unset"></wm-anchor>
+                                    <wm-label caption="bind:Variables.get_cat_4_product.dataSet[$i].pdescription" name="bySellerLabel" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p"></wm-label>
+                                    <wm-rating name="productRating" datavalue="bind:Variables.get_cat_4_product.dataSet[$i].prating" class="p" margin="0px unset unset unset"></wm-rating>
+                                    <wm-label caption="bind:Variables.get_cat_4_product.dataSet[$i].catName" name="productPriceLabel" fontweight="bold" whitespace="nowrap" margin="0px"></wm-label>
+                                </wm-card-content>
+                                <wm-card-footer name="productCardFooter" horizontalalign="right">
+                                    <wm-anchor margin="unset 0.5em" name="viewListAnchor" iconclass="wi wi-view-list fa-2x" caption=""></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" name="addCartAnchor" iconclass="wi wi-shopping-cart fa-2x" caption=""></wm-anchor>
+                                </wm-card-footer>
+                            </wm-card>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-tabpane>
+                <wm-tabpane name="tabpane5" title="All">
+                    <wm-layoutgrid name="layoutgrid5">
+                        <wm-gridrow horizontalalign="right" name="gridrow5">
+                            <wm-gridcolumn columnwidth="1" padding=".7em unset unset 1em" name="gridcolumn13">
+                                <wm-label caption="Sort by" class="p control-label" name="label21"></wm-label>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="4" padding="unset 1em" name="gridcolumn14">
+                                <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select5"></wm-select>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn15">
+                                <wm-search placeholder="Search" class="col-xs-12 col-md-5 col-lg-5" name="search5"></wm-search>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="2" name="gridcolumn44">
+                                <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" on-click="Widgets.productsDialog.open()" name="button5"></wm-button>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                    <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.Acs_banquetProductsData.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true"
+                        name="list4" orderby="pname:desc">
+                        <wm-listtemplate layout="media" name="listtemplate4">
+                            <wm-card imageheight="auto" name="card4">
+                                <wm-card-content name="card_content4">
+                                    <wm-picture picturesource="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].ppicture" width="233" name="picture4" height="175"></wm-picture>
+                                    <wm-anchor caption="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].pname" class="h4" margin="0px unset" name="anchor10"></wm-anchor>
+                                    <wm-label caption="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].pdescription" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p" name="label12"></wm-label>
+                                    <wm-rating datavalue="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].prating" class="p" margin="0px unset unset unset" name="rating4"></wm-rating>
+                                    <wm-label caption="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].category.catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label14"></wm-label>
+                                </wm-card-content>
+                                <wm-card-footer horizontalalign="right" name="card_footer4">
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor11"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor12"></wm-anchor>
+                                </wm-card-footer>
+                            </wm-card>
+                        </wm-listtemplate>
+                    </wm-list>
+                </wm-tabpane>
+            </wm-tabs>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view2">
+        <wm-dialog dialogtype="design-dialog" name="productsDialog" title="Add Product" iconclass="wi wi-edit" modal="true">
+            <wm-liveform errormessage="" title="" defaultmode="Edit" dataset="bind:Variables.Acs_banquetProductsData3.dataSet" captionalign="left" captionposition="top" name="ProductsLiveForm1" on-success="Widgets.productsDialog.close()">
+                <wm-layoutgrid columns="2" name="layoutgrid7">
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn29">
+                            <wm-form-field name="pname" displayname="Name" required="false" show="true" generator="assigned" primary-key="false" key="pname" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn30">
+                            <wm-form-field name="ppicture" displayname="Picture" required="false" show="true" generator="assigned" primary-key="false" key="ppicture" type="blob" is-related="false" pc-display="true" mobile-display="true" widget="upload"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow11">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn31">
+                            <wm-form-field name="pdescription" displayname="Description" required="false" show="true" generator="assigned" primary-key="false" key="pdescription" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                widget="textarea"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn32"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow12">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn33">
+                            <wm-form-field name="category" displayname="Category" required="false" show="true" generator="assigned" primary-key="false" key="category" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select" dataset="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].category"
+                                datafield="id" displayfield="catName"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn34"></wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow13">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn35">
+                            <wm-form-field name="prating" displayname="Rating" required="false" show="true" generator="assigned" primary-key="false" key="prating" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn36"></wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+            </wm-liveform>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

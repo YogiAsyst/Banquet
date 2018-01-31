@@ -1,4 +1,4 @@
-Application.$controller("product_pagesPageController", ["$scope", function ($scope) {
+Application.$controller("product_pagePageController", ["$scope", function ($scope) {
     "use strict";
 
     /* perform any action on widgets within this block */
@@ -14,7 +14,23 @@ Application.$controller("product_pagesPageController", ["$scope", function ($sco
 
 
 
+
+
 Application.$controller("productsDialogController", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("ProductsLiveForm2Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("ProductsLiveForm3Controller", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

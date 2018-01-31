@@ -10,9 +10,13 @@ import java.util.Objects;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
@@ -31,8 +35,9 @@ public class Products implements Serializable {
     private String pdescription;
     @JsonProperty(access = Access.READ_ONLY)
     private byte[] ppicture;
-    private String pcatagory;
-    private String prating;
+    private Integer prating;
+    private Integer pcatagory;
+    private Category category;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "\"products_ID_seq\"" , schema = "public", allocationSize = 1)
@@ -73,24 +78,37 @@ public class Products implements Serializable {
         this.ppicture = ppicture;
     }
 
-    @Column(name = "`p_catagory`", nullable = true, length = 255)
-    public String getPcatagory() {
-        return this.pcatagory;
-    }
-
-    public void setPcatagory(String pcatagory) {
-        this.pcatagory = pcatagory;
-    }
-
-    @Column(name = "`p_rating`", nullable = true, length = 255)
-    public String getPrating() {
+    @Column(name = "`p_rating`", nullable = true, scale = 0, precision = 10)
+    public Integer getPrating() {
         return this.prating;
     }
 
-    public void setPrating(String prating) {
+    public void setPrating(Integer prating) {
         this.prating = prating;
     }
 
+    @Column(name = "`p_catagory`", nullable = true, scale = 0, precision = 10)
+    public Integer getPcatagory() {
+        return this.pcatagory;
+    }
+
+    public void setPcatagory(Integer pcatagory) {
+        this.pcatagory = pcatagory;
+    }
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "`p_catagory`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_category_TO_products_v9b20`"))
+    public Category getCategory() {
+        return this.category;
+    }
+
+    public void setCategory(Category category) {
+        if(category != null) {
+            this.pcatagory = category.getId();
+        }
+
+        this.category = category;
+    }
 
 
     @Override
