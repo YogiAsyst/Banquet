@@ -65,12 +65,14 @@ public class QueryExecutionController {
         LOGGER.debug("got the result for named query: get_cat_3_product, result:{}", _result);
         UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
         _uriBuilder.path("/composite-id/content/{_fieldName_}");
+        _uriBuilder.queryParam("pcode", "{pcode}");
         _uriBuilder.queryParam("pname", "{pname}");
         _uriBuilder.queryParam("pdescription", "{pdescription}");
         _uriBuilder.queryParam("prating", "{prating}");
         _uriBuilder.queryParam("catName", "{catName}");
         for(GetCat3ProductResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(5);
+            Map<String, Object> _properties = new HashMap(6);
+            _properties.put("pcode", _content.getPcode());
             _properties.put("pname", _content.getPname());
             _properties.put("pdescription", _content.getPdescription());
             _properties.put("prating", _content.getPrating());
@@ -88,10 +90,10 @@ public class QueryExecutionController {
     @ApiOperation(value = "Retrives the BLOB content for property ppicture in query get_cat_3_product")
     @RequestMapping(value = "/queries/get_cat_3_product/composite-id/content/ppicture", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getPpictureContentForGet_cat_3_product(@RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+    public Downloadable getPpictureContentForGet_cat_3_product(@RequestParam("pcode") Integer pcode, @RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: get_cat_3_product");
 
-        InputStream _result = queryService.getPpictureContentForGet_cat_3_product(pname, pdescription, prating, catName);
+        InputStream _result = queryService.getPpictureContentForGet_cat_3_product(pcode, pname, pdescription, prating, catName);
         return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
     }
 
@@ -114,12 +116,14 @@ public class QueryExecutionController {
         LOGGER.debug("got the result for named query: get_cat_1_product, result:{}", _result);
         UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
         _uriBuilder.path("/composite-id/content/{_fieldName_}");
+        _uriBuilder.queryParam("pcode", "{pcode}");
         _uriBuilder.queryParam("pname", "{pname}");
         _uriBuilder.queryParam("pdescription", "{pdescription}");
         _uriBuilder.queryParam("prating", "{prating}");
         _uriBuilder.queryParam("catName", "{catName}");
         for(GetCat1ProductResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(5);
+            Map<String, Object> _properties = new HashMap(6);
+            _properties.put("pcode", _content.getPcode());
             _properties.put("pname", _content.getPname());
             _properties.put("pdescription", _content.getPdescription());
             _properties.put("prating", _content.getPrating());
@@ -137,10 +141,10 @@ public class QueryExecutionController {
     @ApiOperation(value = "Retrives the BLOB content for property ppicture in query get_cat_1_product")
     @RequestMapping(value = "/queries/get_cat_1_product/composite-id/content/ppicture", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getPpictureContentForGet_cat_1_product(@RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+    public Downloadable getPpictureContentForGet_cat_1_product(@RequestParam("pcode") Integer pcode, @RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: get_cat_1_product");
 
-        InputStream _result = queryService.getPpictureContentForGet_cat_1_product(pname, pdescription, prating, catName);
+        InputStream _result = queryService.getPpictureContentForGet_cat_1_product(pcode, pname, pdescription, prating, catName);
         return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
     }
 
@@ -163,12 +167,14 @@ public class QueryExecutionController {
         LOGGER.debug("got the result for named query: get_cat_4_product, result:{}", _result);
         UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
         _uriBuilder.path("/composite-id/content/{_fieldName_}");
+        _uriBuilder.queryParam("pcode", "{pcode}");
         _uriBuilder.queryParam("pname", "{pname}");
         _uriBuilder.queryParam("pdescription", "{pdescription}");
         _uriBuilder.queryParam("prating", "{prating}");
         _uriBuilder.queryParam("catName", "{catName}");
         for(GetCat4ProductResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(5);
+            Map<String, Object> _properties = new HashMap(6);
+            _properties.put("pcode", _content.getPcode());
             _properties.put("pname", _content.getPname());
             _properties.put("pdescription", _content.getPdescription());
             _properties.put("prating", _content.getPrating());
@@ -186,10 +192,10 @@ public class QueryExecutionController {
     @ApiOperation(value = "Retrives the BLOB content for property ppicture in query get_cat_4_product")
     @RequestMapping(value = "/queries/get_cat_4_product/composite-id/content/ppicture", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getPpictureContentForGet_cat_4_product(@RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+    public Downloadable getPpictureContentForGet_cat_4_product(@RequestParam("pcode") Integer pcode, @RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: get_cat_4_product");
 
-        InputStream _result = queryService.getPpictureContentForGet_cat_4_product(pname, pdescription, prating, catName);
+        InputStream _result = queryService.getPpictureContentForGet_cat_4_product(pcode, pname, pdescription, prating, catName);
         return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
     }
 
@@ -212,12 +218,14 @@ public class QueryExecutionController {
         LOGGER.debug("got the result for named query: get_cat_2_product, result:{}", _result);
         UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
         _uriBuilder.path("/composite-id/content/{_fieldName_}");
+        _uriBuilder.queryParam("pcode", "{pcode}");
         _uriBuilder.queryParam("pname", "{pname}");
         _uriBuilder.queryParam("pdescription", "{pdescription}");
         _uriBuilder.queryParam("prating", "{prating}");
         _uriBuilder.queryParam("catName", "{catName}");
         for(GetCat2ProductResponse _content : _result.getContent()) {
-            Map<String, Object> _properties = new HashMap(5);
+            Map<String, Object> _properties = new HashMap(6);
+            _properties.put("pcode", _content.getPcode());
             _properties.put("pname", _content.getPname());
             _properties.put("pdescription", _content.getPdescription());
             _properties.put("prating", _content.getPrating());
@@ -235,10 +243,10 @@ public class QueryExecutionController {
     @ApiOperation(value = "Retrives the BLOB content for property ppicture in query get_cat_2_product")
     @RequestMapping(value = "/queries/get_cat_2_product/composite-id/content/ppicture", method = RequestMethod.GET, produces = "application/octet-stream")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Downloadable getPpictureContentForGet_cat_2_product(@RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+    public Downloadable getPpictureContentForGet_cat_2_product(@RequestParam("pcode") Integer pcode, @RequestParam("pname") String pname, @RequestParam("pdescription") String pdescription, @RequestParam("prating") Integer prating, @RequestParam("catName") String catName, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
         LOGGER.debug("Executing named query: get_cat_2_product");
 
-        InputStream _result = queryService.getPpictureContentForGet_cat_2_product(pname, pdescription, prating, catName);
+        InputStream _result = queryService.getPpictureContentForGet_cat_2_product(pcode, pname, pdescription, prating, catName);
         return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
     }
 

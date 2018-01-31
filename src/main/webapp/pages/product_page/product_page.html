@@ -32,9 +32,10 @@
                                     <wm-label caption="bind:Variables.get_cat_1_product.dataSet[$i].pdescription" whitespace="nowrap" opacity="0.8" margin=".25em 0em 0em 0em" class="p" name="label6"></wm-label>
                                     <wm-rating datavalue="bind:Variables.get_cat_1_product.dataSet[$i].prating" class="p" margin="0px unset unset unset" name="rating2"></wm-rating>
                                     <wm-label caption="bind:Variables.get_cat_1_product.dataSet[$i].catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label8"></wm-label>
+                                    <wm-label padding="unset 0.5em" name="label26_1" caption="bind:Variables.get_cat_1_product.dataSet[$i].pcode" show="false"></wm-label>
                                 </wm-card-content>
                                 <wm-card-footer horizontalalign="right" name="card_footer2">
-                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor5"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor5" on-click="Widgets.dialog_appetizer.open()"></wm-anchor>
                                     <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor6"></wm-anchor>
                                 </wm-card-footer>
                             </wm-card>
@@ -69,7 +70,7 @@
                                     <wm-label caption="bind:Variables.get_cat_2_product.dataSet[$i].catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label11"></wm-label>
                                 </wm-card-content>
                                 <wm-card-footer horizontalalign="right" name="card_footer3">
-                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor8"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor8" on-click="Widgets.dialog_main_course.open()"></wm-anchor>
                                     <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor9"></wm-anchor>
                                 </wm-card-footer>
                             </wm-card>
@@ -175,7 +176,7 @@
                                     <wm-label caption="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].category.catName" fontweight="bold" whitespace="nowrap" margin="0px" name="label14"></wm-label>
                                 </wm-card-content>
                                 <wm-card-footer horizontalalign="right" name="card_footer4">
-                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor11"></wm-anchor>
+                                    <wm-anchor margin="unset 0.5em" iconclass="wi wi-view-list fa-2x" caption="" name="anchor11" on-click="Widgets.dialog_all.open()"></wm-anchor>
                                     <wm-anchor margin="unset 0.5em" iconclass="wi wi-shopping-cart fa-2x" caption="" name="anchor12"></wm-anchor>
                                 </wm-card-footer>
                             </wm-card>
@@ -192,41 +193,40 @@
                 <wm-layoutgrid columns="2" name="layoutgrid7">
                     <wm-gridrow name="gridrow10">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn29">
-                            <wm-form-field name="pname" displayname="Name" required="false" show="true" generator="assigned" primary-key="false" key="pname" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                            <wm-form-field name="pcode" displayname="Pcode" show="true" primary-key="false" generator="assigned" key="pcode" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
                         <wm-gridcolumn columnwidth="6" name="gridcolumn30">
-                            <wm-form-field name="ppicture" displayname="Picture" required="false" show="true" generator="assigned" primary-key="false" key="ppicture" type="blob" is-related="false" pc-display="true" mobile-display="true" widget="upload"></wm-form-field>
+                            <wm-form-field name="pname" displayname="Name" show="true" primary-key="false" generator="assigned" key="pname" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow11">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn31">
-                            <wm-form-field name="pdescription" displayname="Description" required="false" show="true" generator="assigned" primary-key="false" key="pdescription" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
-                                widget="textarea"></wm-form-field>
+                            <wm-form-field name="pdescription" displayname="Description" show="true" primary-key="false" generator="assigned" key="pdescription" type="string" readonly="false" required="false" widget="textarea" maxchars="255" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn32"></wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow12">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn33">
-                            <wm-form-field name="category" displayname="Category" required="false" show="true" generator="assigned" primary-key="false" key="category" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select" dataset="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].category"
-                                datafield="id" displayfield="catName"></wm-form-field>
+                            <wm-form-field name="category" displayname="Category" show="true" primary-key="false" generator="assigned" key="category" type="list" is-related="true" readonly="false" required="false" widget="select" dataset="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].category"
+                                datafield="id" displayfield="catName" placeholder="Select value"></wm-form-field>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn34"></wm-gridcolumn>
                     </wm-gridrow>
                     <wm-gridrow name="gridrow13">
                         <wm-gridcolumn columnwidth="6" name="gridcolumn35">
-                            <wm-form-field name="prating" displayname="Rating" required="false" show="true" generator="assigned" primary-key="false" key="prating" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                            <wm-form-field name="prating" displayname="Rating" show="true" primary-key="false" generator="assigned" key="prating" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
                         </wm-gridcolumn>
-                        <wm-gridcolumn columnwidth="6" name="gridcolumn36"></wm-gridcolumn>
+                        <wm-gridcolumn name="gridcolumn1" columnwidth="6">
+                            <wm-form-field name="ppicture" displayname="Picture" show="true" primary-key="false" generator="assigned" key="ppicture" type="blob" readonly="false" required="false" widget="upload" maxchars="0"></wm-form-field>
+                        </wm-gridcolumn>
                     </wm-gridrow>
                 </wm-layoutgrid>
-                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
-                <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
-                <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="sequence" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                <wm-form-action key="reset" display-name="Reset" show="true" class="form-reset btn-secondary" iconclass="wi wi-refresh" title="Reset" action="reset()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
             </wm-liveform>
         </wm-dialog>
     </wm-view>
     <wm-view class="dialog-view" name="view2_1">
-        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog_dessert">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog_dessert" width="50%" height="50%">
             <wm-layoutgrid name="layoutgrid7_1">
                 <wm-gridrow name="gridrow10_1">
                     <wm-gridcolumn columnwidth="6" name="gridcolumn29_1">
@@ -274,13 +274,187 @@
                         </wm-layoutgrid>
                     </wm-gridcolumn>
                     <wm-gridcolumn columnwidth="6" name="gridcolumn30_1">
-                        <wm-picture name="picture6" picturesource="bind:Widgets.list5.selecteditem.ppicture"></wm-picture>
+                        <wm-picture name="picture6" picturesource="bind:Widgets.list5.selecteditem.ppicture" pictureaspect="H" width="100%"></wm-picture>
                     </wm-gridcolumn>
                 </wm-gridrow>
             </wm-layoutgrid>
             <wm-dialogactions name="dialogactions1">
                 <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button6"></wm-button>
             </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view3">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog_appetizer" width="50%" height="50%">
+            <wm-dialogactions name="dialogactions2">
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button7"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid10">
+                <wm-gridrow name="gridrow18_1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn43_1">
+                        <wm-layoutgrid name="layoutgrid11">
+                            <wm-gridrow name="gridrow19">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn44_1">
+                                    <wm-label padding="unset 0.5em" caption="Name" name="label31_1"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn45_1">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.pname" name="label32"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow20_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn46_1">
+                                    <wm-label padding="unset 0.5em" caption="Description" name="label33"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn47">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.pdescription" name="label34"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow21">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn48">
+                                    <wm-label padding="unset 0.5em" caption="Catagory" name="label35"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn49_1">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.catName" name="label36"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow22_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn50_1">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label37"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn51">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label38"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow23">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn52">
+                                    <wm-label padding="unset 0.5em" caption="Rating" name="label39"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn53_1">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.prating" name="label40"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn54_1">
+                        <wm-picture picturesource="bind:Widgets.list2.selecteditem.ppicture" pictureaspect="H" width="100%" name="picture7"></wm-picture>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view4">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog_main_course" width="50%" height="50%">
+            <wm-dialogactions name="dialogactions3">
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button8"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid13">
+                <wm-gridrow name="gridrow26_1">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn59">
+                        <wm-layoutgrid name="layoutgrid14">
+                            <wm-gridrow name="gridrow27">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn60">
+                                    <wm-label padding="unset 0.5em" caption="Name" name="label45"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn61_1">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.pname" name="label46"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow28">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn62_1">
+                                    <wm-label padding="unset 0.5em" caption="Description" name="label47"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn63">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.pdescription" name="label48"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow29">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn64">
+                                    <wm-label padding="unset 0.5em" caption="Catagory" name="label49"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn65">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.catName" name="label50"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow30">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn66">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label51"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn67">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label52"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow31">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn68">
+                                    <wm-label padding="unset 0.5em" caption="Rating" name="label53"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn69">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.prating" name="label54"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn70">
+                        <wm-picture picturesource="bind:Widgets.list3.selecteditem.ppicture" pictureaspect="H" width="100%" name="picture8"></wm-picture>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+        </wm-dialog>
+    </wm-view>
+    <wm-view class="dialog-view" name="view5">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog_all" width="50%" height="50%">
+            <wm-dialogactions name="dialogactions4">
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button9"></wm-button>
+            </wm-dialogactions>
+            <wm-layoutgrid name="layoutgrid16">
+                <wm-gridrow name="gridrow34">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn75">
+                        <wm-layoutgrid name="layoutgrid17">
+                            <wm-gridrow name="gridrow35">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn76">
+                                    <wm-label padding="unset 0.5em" caption="Name" name="label59"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn77">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.pname" name="label60"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow36">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn78">
+                                    <wm-label padding="unset 0.5em" caption="Description" name="label61"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn79">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.pdescription" name="label62"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow37">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn80">
+                                    <wm-label padding="unset 0.5em" caption="Catagory" name="label63"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn81">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.category.catName" name="label64"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow38">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn82">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label65"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn83">
+                                    <wm-label padding="unset 0.5em" caption="Price" name="label66"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow39">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn84">
+                                    <wm-label padding="unset 0.5em" caption="Rating" name="label67"></wm-label>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn85">
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.prating" name="label68"></wm-label>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn86">
+                        <wm-picture picturesource="bind:Widgets.list4.selecteditem.ppicture" pictureaspect="H" width="100%" name="picture9"></wm-picture>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
         </wm-dialog>
     </wm-view>
 </wm-page>

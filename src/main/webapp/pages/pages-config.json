@@ -33,7 +33,10 @@
 }, {
   "name" : "product_detail_part",
   "type" : "PARTIAL",
-  "params" : [ ]
+  "params" : [ {
+    "name" : "prod_id",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "product_page",
   "type" : "PAGE",

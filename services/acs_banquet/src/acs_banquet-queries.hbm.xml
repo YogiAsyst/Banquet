@@ -4,20 +4,21 @@
 <hibernate-mapping>
     <sql-query name="get_cat_3_product">
         <![CDATA[
-        select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3
+        select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_3_product__count">
         <![CDATA[
-        select count(*) from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3) wmTempTable
+        select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3) wmTempTable
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_3_product__identifier">
         <![CDATA[
-        select * from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3) wmTempTable where "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
+        select * from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3) wmTempTable where "p_code"=:pcode and "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
         ]]>
+    <query-param name="pcode" type="java.lang.Integer"/>
     <query-param name="pname" type="java.lang.String"/>
     <query-param name="pdescription" type="java.lang.String"/>
     <query-param name="prating" type="java.lang.Integer"/>
@@ -26,20 +27,21 @@
 
     <sql-query name="get_cat_1_product">
         <![CDATA[
-        select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1
+        select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_1_product__count">
         <![CDATA[
-        select count(*) from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1) wmTempTable
+        select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1) wmTempTable
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_1_product__identifier">
         <![CDATA[
-        select * from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1) wmTempTable where "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
+        select * from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1) wmTempTable where "p_code"=:pcode and "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
         ]]>
+    <query-param name="pcode" type="java.lang.Integer"/>
     <query-param name="pname" type="java.lang.String"/>
     <query-param name="pdescription" type="java.lang.String"/>
     <query-param name="prating" type="java.lang.Integer"/>
@@ -48,14 +50,15 @@
 
     <sql-query name="get_cat_4_product">
         <![CDATA[
-        select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=4
+        select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=4
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_4_product__identifier">
         <![CDATA[
-        select * from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=4) wmTempTable where "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
+        select * from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=4) wmTempTable where "p_code"=:pcode and "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
         ]]>
+    <query-param name="pcode" type="java.lang.Integer"/>
     <query-param name="pname" type="java.lang.String"/>
     <query-param name="pdescription" type="java.lang.String"/>
     <query-param name="prating" type="java.lang.Integer"/>
@@ -64,20 +67,21 @@
 
     <sql-query name="get_cat_2_product">
         <![CDATA[
-        select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2
+        select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_2_product__count">
         <![CDATA[
-        select count(*) from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2) wmTempTable
+        select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2) wmTempTable
         ]]>
     </sql-query>
 
     <sql-query name="get_cat_2_product__identifier">
         <![CDATA[
-        select * from (select p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2) wmTempTable where "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
+        select * from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2) wmTempTable where "p_code"=:pcode and "p_name"=:pname and "p_description"=:pdescription and "p_rating"=:prating and "cat_name"=:catName
         ]]>
+    <query-param name="pcode" type="java.lang.Integer"/>
     <query-param name="pname" type="java.lang.String"/>
     <query-param name="pdescription" type="java.lang.String"/>
     <query-param name="prating" type="java.lang.Integer"/>

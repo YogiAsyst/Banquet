@@ -4,7 +4,11 @@
     "name" : "Acs_banquetProductsData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "pcode",
+      "value" : "bind:pageParams.prod_id",
+      "type" : "number"
+    } ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "Products",
@@ -18,7 +22,7 @@
     "transformationRequired" : false,
     "liveSource" : "acs_banquet",
     "ignoreCase" : true,
-    "matchMode" : "start",
+    "matchMode" : "exact",
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
@@ -49,7 +53,7 @@
           "notNull" : true,
           "length" : 0,
           "precision" : 10,
-          "generator" : "identity",
+          "generator" : "sequence",
           "isRelated" : false,
           "defaultValue" : "",
           "scale" : 0
@@ -89,7 +93,7 @@
         "notNull" : true,
         "length" : 0,
         "precision" : 10,
-        "generator" : "identity",
+        "generator" : "sequence",
         "isRelated" : false,
         "defaultValue" : "",
         "scale" : 0
@@ -144,6 +148,19 @@
         "isRelated" : false,
         "defaultValue" : "",
         "scale" : 0
+      }, {
+        "fieldName" : "pcode",
+        "type" : "integer",
+        "fullyQualifiedType" : "integer",
+        "columnName" : "p_code",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 10,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
       } ],
       "entityName" : "Products",
       "fullyQualifiedName" : "com.banquet.acs_banquet.Products",
@@ -162,6 +179,7 @@
       "watchOn" : "Acs_banquetCategoryData",
       "package" : "com.banquet.acs_banquet.Products"
     } ],
+    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.Products"
   }
 }

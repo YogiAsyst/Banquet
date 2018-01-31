@@ -12,13 +12,13 @@
   "port" : "5432",
   "schemaName" : "public",
   "tableFilter" : [ {
-    "table" : "category",
-    "schema" : "public"
-  }, {
     "table" : "products",
     "schema" : "public"
   }, {
     "table" : "user",
+    "schema" : "public"
+  }, {
+    "table" : "category",
     "schema" : "public"
   } ],
   "schemaFilter" : [ ],

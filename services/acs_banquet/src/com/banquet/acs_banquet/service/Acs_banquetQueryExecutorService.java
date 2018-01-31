@@ -21,25 +21,25 @@ public interface Acs_banquetQueryExecutorService {
 
     Page<GetCat3ProductResponse> executeGet_cat_3_product(Pageable pageable);
 
-    InputStream getPpictureContentForGet_cat_3_product(String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
+    InputStream getPpictureContentForGet_cat_3_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
 
     Downloadable exportGet_cat_3_product(ExportType exportType, Pageable pageable);
 
     Page<GetCat1ProductResponse> executeGet_cat_1_product(Pageable pageable);
 
-    InputStream getPpictureContentForGet_cat_1_product(String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
+    InputStream getPpictureContentForGet_cat_1_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
 
     Downloadable exportGet_cat_1_product(ExportType exportType, Pageable pageable);
 
     Page<GetCat4ProductResponse> executeGet_cat_4_product(Pageable pageable);
 
-    InputStream getPpictureContentForGet_cat_4_product(String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
+    InputStream getPpictureContentForGet_cat_4_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
 
     Downloadable exportGet_cat_4_product(ExportType exportType, Pageable pageable);
 
     Page<GetCat2ProductResponse> executeGet_cat_2_product(Pageable pageable);
 
-    InputStream getPpictureContentForGet_cat_2_product(String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
+    InputStream getPpictureContentForGet_cat_2_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException;
 
     Downloadable exportGet_cat_2_product(ExportType exportType, Pageable pageable);
 

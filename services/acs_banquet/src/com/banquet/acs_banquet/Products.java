@@ -37,6 +37,7 @@ public class Products implements Serializable {
     private byte[] ppicture;
     private Integer prating;
     private Integer pcatagory;
+    private Integer pcode;
     private Category category;
 
     @Id
@@ -94,6 +95,15 @@ public class Products implements Serializable {
 
     public void setPcatagory(Integer pcatagory) {
         this.pcatagory = pcatagory;
+    }
+
+    @Column(name = "`p_code`", nullable = true, scale = 0, precision = 10)
+    public Integer getPcode() {
+        return this.pcode;
+    }
+
+    public void setPcode(Integer pcode) {
+        this.pcode = pcode;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
