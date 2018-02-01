@@ -47,7 +47,8 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow3">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn5">
-                                    <wm-form-field name="price" displayname="Price" show="true" primary-key="false" generator="assigned" key="price" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                    <wm-form-field name="user" displayname="User" show="true" primary-key="false" generator="assigned" key="user" type="list" is-related="true" readonly="false" required="false" widget="select" displayexpression="ufirstName"
+                                        placeholder="Select value"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn6">
                                     <wm-form-field name="productsByProduct3" displayname="Products By Product3" show="true" primary-key="false" generator="assigned" key="productsByProduct3" type="list" is-related="true" readonly="false" required="false" widget="select"
@@ -56,8 +57,7 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow4">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn7">
-                                    <wm-form-field name="user" displayname="Creator" show="true" primary-key="false" generator="assigned" key="user" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value"
-                                        displayexpression="ufirstName"></wm-form-field>
+                                    <wm-form-field name="price" displayname="Price" show="true" primary-key="false" generator="assigned" key="price" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn8">
                                     <wm-form-field name="productsByProduct4" displayname="Products By Product4" show="true" primary-key="false" generator="assigned" key="productsByProduct4" type="list" is-related="true" readonly="false" required="false" widget="select"
@@ -68,7 +68,7 @@
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn9">
                                     <wm-form-field name="rating" displayname="Rating" show="true" primary-key="false" generator="assigned" key="rating" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
                                 </wm-gridcolumn>
-                                <wm-gridcolumn columnwidth="6" name="gridcolumn10">
+                                <wm-gridcolumn name="gridcolumn1" columnwidth="6">
                                     <wm-form-field name="productsByProduct5" displayname="Products By Product5" show="true" primary-key="false" generator="assigned" key="productsByProduct5" type="list" is-related="true" readonly="false" required="false" widget="select"
                                         placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>

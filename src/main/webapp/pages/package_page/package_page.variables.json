@@ -4,7 +4,11 @@
     "name" : "Acs_banquetPackageEntityData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "staffId",
+      "value" : "bind:Variables.loggedInUser.dataSet.id | stringToNumber",
+      "type" : "number"
+    } ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "PackageEntity",
@@ -869,6 +873,7 @@
       "watchOn" : "Acs_banquetProductsData",
       "package" : "com.banquet.acs_banquet.PackageEntity"
     } ],
+    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.PackageEntity"
   }
 }
