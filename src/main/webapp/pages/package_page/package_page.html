@@ -24,59 +24,59 @@
                         <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil" show="true" class="btn-transparent" action="editRow()"></wm-table-row-action>
                         <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash" show="true" class="btn-transparent" action="deleteRow()"></wm-table-row-action>
                     </wm-table>
-                    <wm-liveform errormessage="" title="Package Info" formlayout="dialog" iconclass="wi wi-edit" name="PackageEntityLiveForm1" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" captionalign="left" captionposition="top">
+                    <wm-liveform errormessage="" title="Create Package" formlayout="dialog" iconclass="wi wi-edit" name="PackageEntityLiveForm1" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" captionalign="left" captionposition="top">
                         <wm-layoutgrid columns="2" name="layoutgrid1">
                             <wm-gridrow name="gridrow1">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn1">
-                                    <wm-form-field name="packCode" displayname="Package Code" required="false" show="true" generator="assigned" primary-key="false" key="packCode" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true"
-                                        widget="number"></wm-form-field>
+                                    <wm-form-field name="packCode" displayname="Package Code" show="true" primary-key="false" generator="assigned" key="packCode" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number"
+                                        placeholder="Enter value"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn2">
-                                    <wm-form-field name="productsByProduct1" displayname="Products By Product1" required="false" show="true" generator="assigned" primary-key="false" key="productsByProduct1" type="list" is-related="true" pc-display="true"
-                                        mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="productsByProduct1" displayname="Products By Product1" show="true" primary-key="false" generator="assigned" key="productsByProduct1" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow2">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn3">
-                                    <wm-form-field name="createdDate" displayname="Created Date" required="false" show="true" generator="assigned" primary-key="false" key="createdDate" type="date" is-related="false" pc-display="true" mobile-display="true"
-                                        widget="date"></wm-form-field>
+                                    <wm-form-field name="createdDate" displayname="Created Date" show="true" primary-key="false" generator="assigned" key="createdDate" type="date" readonly="false" required="false" widget="date" placeholder="Select date" outputformat="yyyy-MM-dd"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn4">
-                                    <wm-form-field name="productsByProduct2" displayname="Products By Product2" required="false" show="true" generator="assigned" primary-key="false" key="productsByProduct2" type="list" is-related="true" pc-display="true"
-                                        mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="productsByProduct2" displayname="Products By Product2" show="true" primary-key="false" generator="assigned" key="productsByProduct2" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow3">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn5">
-                                    <wm-form-field name="price" displayname="Price" required="false" show="true" generator="assigned" primary-key="false" key="price" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                    <wm-form-field name="price" displayname="Price" show="true" primary-key="false" generator="assigned" key="price" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn6">
-                                    <wm-form-field name="productsByProduct3" displayname="Products By Product3" required="false" show="true" generator="assigned" primary-key="false" key="productsByProduct3" type="list" is-related="true" pc-display="true"
-                                        mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="productsByProduct3" displayname="Products By Product3" show="true" primary-key="false" generator="assigned" key="productsByProduct3" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow4">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn7">
-                                    <wm-form-field name="user" displayname="Creator" required="false" show="true" generator="assigned" primary-key="false" key="user" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="user" displayname="Creator" show="true" primary-key="false" generator="assigned" key="user" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value"
+                                        displayexpression="ufirstName"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn8">
-                                    <wm-form-field name="productsByProduct4" displayname="Products By Product4" required="false" show="true" generator="assigned" primary-key="false" key="productsByProduct4" type="list" is-related="true" pc-display="true"
-                                        mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="productsByProduct4" displayname="Products By Product4" show="true" primary-key="false" generator="assigned" key="productsByProduct4" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow5">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn9">
-                                    <wm-form-field name="rating" displayname="Rating" required="false" show="true" generator="assigned" primary-key="false" key="rating" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                                    <wm-form-field name="rating" displayname="Rating" show="true" primary-key="false" generator="assigned" key="rating" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn10">
-                                    <wm-form-field name="productsByProduct5" displayname="Products By Product5" required="false" show="true" generator="assigned" primary-key="false" key="productsByProduct5" type="list" is-related="true" pc-display="true"
-                                        mobile-display="true" widget="select"></wm-form-field>
+                                    <wm-form-field name="productsByProduct5" displayname="Products By Product5" show="true" primary-key="false" generator="assigned" key="productsByProduct5" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pname"></wm-form-field>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                         </wm-layoutgrid>
-                        <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
-                        <wm-form-action key="cancel" class="form-cancel btn-secondary" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
-                        <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="sequence" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
                     </wm-liveform>
                 </wm-livetable>
             </wm-panel>
