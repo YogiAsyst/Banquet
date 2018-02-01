@@ -19,64 +19,63 @@ import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.banquet.acs_banquet.PackageEntity;
-import com.banquet.acs_banquet.User;
 
 /**
- * Service object for domain model class {@link User}.
+ * Service object for domain model class {@link PackageEntity}.
  */
-public interface UserService {
+public interface PackageEntityService {
 
     /**
-     * Creates a new User. It does cascade insert for all the children in a single transaction.
+     * Creates a new PackageEntity. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on User if any.
+     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
      *
-     * @param user Details of the User to be created; value cannot be null.
-     * @return The newly created User.
+     * @param packageEntity Details of the PackageEntity to be created; value cannot be null.
+     * @return The newly created PackageEntity.
      */
-	User create(@Valid User user);
+	PackageEntity create(@Valid PackageEntity packageEntity);
 
 
 	/**
-	 * Returns User by given id if exists.
+	 * Returns PackageEntity by given id if exists.
 	 *
-	 * @param userId The id of the User to get; value cannot be null.
-	 * @return User associated with the given userId.
-     * @throws EntityNotFoundException If no User is found.
+	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
+	 * @return PackageEntity associated with the given packageentityId.
+     * @throws EntityNotFoundException If no PackageEntity is found.
 	 */
-	User getById(Integer userId) throws EntityNotFoundException;
+	PackageEntity getById(Integer packageentityId) throws EntityNotFoundException;
 
     /**
-	 * Find and return the User by given id if exists, returns null otherwise.
+	 * Find and return the PackageEntity by given id if exists, returns null otherwise.
 	 *
-	 * @param userId The id of the User to get; value cannot be null.
-	 * @return User associated with the given userId.
+	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
+	 * @return PackageEntity associated with the given packageentityId.
 	 */
-	User findById(Integer userId);
+	PackageEntity findById(Integer packageentityId);
 
 
 	/**
-	 * Updates the details of an existing User. It replaces all fields of the existing User with the given user.
+	 * Updates the details of an existing PackageEntity. It replaces all fields of the existing PackageEntity with the given packageEntity.
 	 *
-     * This method overrides the input field values using Server side or database managed properties defined on User if any.
+     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
      *
-	 * @param user The details of the User to be updated; value cannot be null.
-	 * @return The updated User.
-	 * @throws EntityNotFoundException if no User is found with given input.
+	 * @param packageEntity The details of the PackageEntity to be updated; value cannot be null.
+	 * @return The updated PackageEntity.
+	 * @throws EntityNotFoundException if no PackageEntity is found with given input.
 	 */
-	User update(@Valid User user) throws EntityNotFoundException;
+	PackageEntity update(@Valid PackageEntity packageEntity) throws EntityNotFoundException;
 
     /**
-	 * Deletes an existing User with the given id.
+	 * Deletes an existing PackageEntity with the given id.
 	 *
-	 * @param userId The id of the User to be deleted; value cannot be null.
-	 * @return The deleted User.
-	 * @throws EntityNotFoundException if no User found with the given id.
+	 * @param packageentityId The id of the PackageEntity to be deleted; value cannot be null.
+	 * @return The deleted PackageEntity.
+	 * @throws EntityNotFoundException if no PackageEntity found with the given id.
 	 */
-	User delete(Integer userId) throws EntityNotFoundException;
+	PackageEntity delete(Integer packageentityId) throws EntityNotFoundException;
 
 	/**
-	 * Find all Users matching the given QueryFilter(s).
+	 * Find all PackageEntities matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
 	 *
@@ -84,30 +83,30 @@ public interface UserService {
 	 *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Users.
+     * @return Paginated list of matching PackageEntities.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
 	 */
     @Deprecated
-	Page<User> findAll(QueryFilter[] queryFilters, Pageable pageable);
+	Page<PackageEntity> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-	 * Find all Users matching the given input query. This method returns Paginated results.
+	 * Find all PackageEntities matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching Users.
+     * @return Paginated list of matching PackageEntities.
      *
      * @see Pageable
      * @see Page
 	 */
-    Page<User> findAll(String query, Pageable pageable);
+    Page<PackageEntity> findAll(String query, Pageable pageable);
 
     /**
-	 * Exports all Users matching the given input query to the given exportType format.
+	 * Exports all PackageEntities matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -122,11 +121,11 @@ public interface UserService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
 	/**
-	 * Retrieve the count of the Users in the repository with matching query.
+	 * Retrieve the count of the PackageEntities in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-	 * @return The count of the User.
+	 * @return The count of the PackageEntity.
 	 */
 	long count(String query);
 
@@ -143,17 +142,6 @@ public interface UserService {
 	 */
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
-    /*
-     * Returns the associated packageEntities for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated PackageEntity instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<PackageEntity> findAssociatedPackageEntities(Integer id, Pageable pageable);
 
 }
 

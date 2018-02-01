@@ -31,6 +31,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "package_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "product_detail_part",
   "type" : "PARTIAL",
   "params" : [ {

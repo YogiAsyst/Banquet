@@ -42,6 +42,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
+import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.Products;
 import com.banquet.acs_banquet.service.ProductsService;
 
@@ -190,6 +191,50 @@ public class ProductsController {
         return productsService.getAggregatedValues(aggregationInfo, pageable);
     }
 
+    @RequestMapping(value="/{id:.+}/packageEntitiesForProduct1", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntitiesForProduct1 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct1(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct1");
+        return productsService.findAssociatedPackageEntitiesForProduct1(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/packageEntitiesForProduct2", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntitiesForProduct2 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct2(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct2");
+        return productsService.findAssociatedPackageEntitiesForProduct2(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/packageEntitiesForProduct3", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntitiesForProduct3 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct3(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct3");
+        return productsService.findAssociatedPackageEntitiesForProduct3(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/packageEntitiesForProduct4", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntitiesForProduct4 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct4(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct4");
+        return productsService.findAssociatedPackageEntitiesForProduct4(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/packageEntitiesForProduct5", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntitiesForProduct5 instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct5(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct5");
+        return productsService.findAssociatedPackageEntitiesForProduct5(id, pageable);
+    }
 
     /**
 	 * This setter method should only be used by unit tests

@@ -42,6 +42,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
+import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.User;
 import com.banquet.acs_banquet.service.UserService;
 
@@ -190,6 +191,14 @@ public class UserController {
         return userService.getAggregatedValues(aggregationInfo, pageable);
     }
 
+    @RequestMapping(value="/{id:.+}/packageEntities", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the packageEntities instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<PackageEntity> findAssociatedPackageEntities(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated packageEntities");
+        return userService.findAssociatedPackageEntities(id, pageable);
+    }
 
     /**
 	 * This setter method should only be used by unit tests

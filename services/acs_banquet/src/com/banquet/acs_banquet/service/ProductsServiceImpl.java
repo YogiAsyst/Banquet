@@ -11,6 +11,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -24,6 +25,7 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.Products;
 
 
@@ -38,6 +40,10 @@ public class ProductsServiceImpl implements ProductsService {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(ProductsServiceImpl.class);
 
+    @Lazy
+    @Autowired
+	@Qualifier("acs_banquet.PackageEntityService")
+	private PackageEntityService packageEntityService;
 
     @Autowired
     @Qualifier("acs_banquet.ProductsDao")
@@ -79,6 +85,31 @@ public class ProductsServiceImpl implements ProductsService {
 	public Products update(Products products) throws EntityNotFoundException {
         LOGGER.debug("Updating Products with information: {}", products);
 
+        if(products.getPackageEntitiesForProduct1() != null) {
+            for(PackageEntity _packageEntity : products.getPackageEntitiesForProduct1()) {
+                _packageEntity.setProductsByProduct1(products);
+            }
+        }
+        if(products.getPackageEntitiesForProduct2() != null) {
+            for(PackageEntity _packageEntity : products.getPackageEntitiesForProduct2()) {
+                _packageEntity.setProductsByProduct2(products);
+            }
+        }
+        if(products.getPackageEntitiesForProduct3() != null) {
+            for(PackageEntity _packageEntity : products.getPackageEntitiesForProduct3()) {
+                _packageEntity.setProductsByProduct3(products);
+            }
+        }
+        if(products.getPackageEntitiesForProduct4() != null) {
+            for(PackageEntity _packageEntity : products.getPackageEntitiesForProduct4()) {
+                _packageEntity.setProductsByProduct4(products);
+            }
+        }
+        if(products.getPackageEntitiesForProduct5() != null) {
+            for(PackageEntity _packageEntity : products.getPackageEntitiesForProduct5()) {
+                _packageEntity.setProductsByProduct5(products);
+            }
+        }
 
         this.wmGenericDao.update(products);
 
@@ -133,7 +164,69 @@ public class ProductsServiceImpl implements ProductsService {
         return this.wmGenericDao.getAggregatedValues(aggregationInfo, pageable);
     }
 
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct1(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct1");
 
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("productsByProduct1.id = '" + id + "'");
+
+        return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct2(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct2");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("productsByProduct2.id = '" + id + "'");
+
+        return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct3(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct3");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("productsByProduct3.id = '" + id + "'");
+
+        return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct4(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct4");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("productsByProduct4.id = '" + id + "'");
+
+        return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PackageEntity> findAssociatedPackageEntitiesForProduct5(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated packageEntitiesForProduct5");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("productsByProduct5.id = '" + id + "'");
+
+        return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    /**
+	 * This setter method should only be used by unit tests
+	 *
+	 * @param service PackageEntityService instance
+	 */
+	protected void setPackageEntityService(PackageEntityService service) {
+        this.packageEntityService = service;
+    }
 
 }
 

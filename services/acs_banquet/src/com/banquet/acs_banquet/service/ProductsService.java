@@ -18,6 +18,7 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.Products;
 
 /**
@@ -142,6 +143,65 @@ public interface ProductsService {
 	 */
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
+    /*
+     * Returns the associated packageEntitiesForProduct1 for given Products id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntitiesForProduct1(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated packageEntitiesForProduct2 for given Products id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntitiesForProduct2(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated packageEntitiesForProduct3 for given Products id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntitiesForProduct3(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated packageEntitiesForProduct4 for given Products id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntitiesForProduct4(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated packageEntitiesForProduct5 for given Products id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntitiesForProduct5(Integer id, Pageable pageable);
 
 }
 

@@ -7,16 +7,25 @@ package com.banquet.acs_banquet;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.util.List;
 import java.util.Objects;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.PostPersist;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Cascade;
+
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
@@ -40,6 +49,7 @@ public class User implements Serializable {
     private byte[] upicture;
     private String urole;
     private String uloginStatus;
+    private List<PackageEntity> packageEntities;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "\"user_ID_seq\"" , schema = "public", allocationSize = 1)
@@ -152,7 +162,25 @@ public class User implements Serializable {
         this.uloginStatus = uloginStatus;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "user")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    public List<PackageEntity> getPackageEntities() {
+        return this.packageEntities;
+    }
 
+    public void setPackageEntities(List<PackageEntity> packageEntities) {
+        this.packageEntities = packageEntities;
+    }
+
+    @PostPersist
+    public void onPostPersist() {
+        if(packageEntities != null) {
+            for(PackageEntity packageEntity : packageEntities) {
+                packageEntity.setUser(this);
+            }
+        }
+    }
 
     @Override
     public boolean equals(Object o) {

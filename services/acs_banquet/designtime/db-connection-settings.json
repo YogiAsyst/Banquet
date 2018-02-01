@@ -20,6 +20,9 @@
   }, {
     "table" : "category",
     "schema" : "public"
+  }, {
+    "table" : "package",
+    "schema" : "public"
   } ],
   "schemaFilter" : [ ],
   "impersonateUser" : false,
