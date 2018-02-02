@@ -18,6 +18,7 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.Order;
 import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.User;
 
@@ -154,6 +155,18 @@ public interface UserService {
      * @see Page
      */
     Page<PackageEntity> findAssociatedPackageEntities(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated _orders for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated Order instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<Order> findAssociated_orders(Integer id, Pageable pageable);
 
 }
 

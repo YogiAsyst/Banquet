@@ -18,65 +18,65 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.banquet.acs_banquet.OrderItem;
-import com.banquet.acs_banquet.PackageEntity;
+import com.banquet.acs_banquet.Customer;
+import com.banquet.acs_banquet.Order;
 
 /**
- * Service object for domain model class {@link PackageEntity}.
+ * Service object for domain model class {@link Customer}.
  */
-public interface PackageEntityService {
+public interface CustomerService {
 
     /**
-     * Creates a new PackageEntity. It does cascade insert for all the children in a single transaction.
+     * Creates a new Customer. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Customer if any.
      *
-     * @param packageEntity Details of the PackageEntity to be created; value cannot be null.
-     * @return The newly created PackageEntity.
+     * @param customer Details of the Customer to be created; value cannot be null.
+     * @return The newly created Customer.
      */
-	PackageEntity create(@Valid PackageEntity packageEntity);
+	Customer create(@Valid Customer customer);
 
 
 	/**
-	 * Returns PackageEntity by given id if exists.
+	 * Returns Customer by given id if exists.
 	 *
-	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
-	 * @return PackageEntity associated with the given packageentityId.
-     * @throws EntityNotFoundException If no PackageEntity is found.
+	 * @param customerId The id of the Customer to get; value cannot be null.
+	 * @return Customer associated with the given customerId.
+     * @throws EntityNotFoundException If no Customer is found.
 	 */
-	PackageEntity getById(Integer packageentityId) throws EntityNotFoundException;
+	Customer getById(Integer customerId) throws EntityNotFoundException;
 
     /**
-	 * Find and return the PackageEntity by given id if exists, returns null otherwise.
+	 * Find and return the Customer by given id if exists, returns null otherwise.
 	 *
-	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
-	 * @return PackageEntity associated with the given packageentityId.
+	 * @param customerId The id of the Customer to get; value cannot be null.
+	 * @return Customer associated with the given customerId.
 	 */
-	PackageEntity findById(Integer packageentityId);
+	Customer findById(Integer customerId);
 
 
 	/**
-	 * Updates the details of an existing PackageEntity. It replaces all fields of the existing PackageEntity with the given packageEntity.
+	 * Updates the details of an existing Customer. It replaces all fields of the existing Customer with the given customer.
 	 *
-     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Customer if any.
      *
-	 * @param packageEntity The details of the PackageEntity to be updated; value cannot be null.
-	 * @return The updated PackageEntity.
-	 * @throws EntityNotFoundException if no PackageEntity is found with given input.
+	 * @param customer The details of the Customer to be updated; value cannot be null.
+	 * @return The updated Customer.
+	 * @throws EntityNotFoundException if no Customer is found with given input.
 	 */
-	PackageEntity update(@Valid PackageEntity packageEntity) throws EntityNotFoundException;
+	Customer update(@Valid Customer customer) throws EntityNotFoundException;
 
     /**
-	 * Deletes an existing PackageEntity with the given id.
+	 * Deletes an existing Customer with the given id.
 	 *
-	 * @param packageentityId The id of the PackageEntity to be deleted; value cannot be null.
-	 * @return The deleted PackageEntity.
-	 * @throws EntityNotFoundException if no PackageEntity found with the given id.
+	 * @param customerId The id of the Customer to be deleted; value cannot be null.
+	 * @return The deleted Customer.
+	 * @throws EntityNotFoundException if no Customer found with the given id.
 	 */
-	PackageEntity delete(Integer packageentityId) throws EntityNotFoundException;
+	Customer delete(Integer customerId) throws EntityNotFoundException;
 
 	/**
-	 * Find all PackageEntities matching the given QueryFilter(s).
+	 * Find all Customers matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
 	 *
@@ -84,30 +84,30 @@ public interface PackageEntityService {
 	 *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching PackageEntities.
+     * @return Paginated list of matching Customers.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
 	 */
     @Deprecated
-	Page<PackageEntity> findAll(QueryFilter[] queryFilters, Pageable pageable);
+	Page<Customer> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-	 * Find all PackageEntities matching the given input query. This method returns Paginated results.
+	 * Find all Customers matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching PackageEntities.
+     * @return Paginated list of matching Customers.
      *
      * @see Pageable
      * @see Page
 	 */
-    Page<PackageEntity> findAll(String query, Pageable pageable);
+    Page<Customer> findAll(String query, Pageable pageable);
 
     /**
-	 * Exports all PackageEntities matching the given input query to the given exportType format.
+	 * Exports all Customers matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -122,11 +122,11 @@ public interface PackageEntityService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
 	/**
-	 * Retrieve the count of the PackageEntities in the repository with matching query.
+	 * Retrieve the count of the Customers in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-	 * @return The count of the PackageEntity.
+	 * @return The count of the Customer.
 	 */
 	long count(String query);
 
@@ -144,16 +144,16 @@ public interface PackageEntityService {
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated orderItems for given PackageEntity id.
+     * Returns the associated _orders for given Customer id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated OrderItem instances.
+     * @return Paginated list of associated Order instances.
      *
      * @see Pageable
      * @see Page
      */
-    Page<OrderItem> findAssociatedOrderItems(Integer id, Pageable pageable);
+    Page<Order> findAssociated_orders(Integer id, Pageable pageable);
 
 }
 

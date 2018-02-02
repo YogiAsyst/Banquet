@@ -32,6 +32,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
+import com.banquet.acs_banquet.OrderItem;
 import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.service.PackageEntityService;
 
@@ -150,6 +151,14 @@ public class PackageEntityController {
         return packageEntityService.getAggregatedValues(aggregationInfo, pageable);
     }
 
+    @RequestMapping(value="/{id:.+}/orderItems", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the orderItems instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<OrderItem> findAssociatedOrderItems(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated orderItems");
+        return packageEntityService.findAssociatedOrderItems(id, pageable);
+    }
 
     /**
 	 * This setter method should only be used by unit tests

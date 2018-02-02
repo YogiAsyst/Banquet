@@ -25,6 +25,7 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.Order;
 import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.User;
 
@@ -44,6 +45,11 @@ public class UserServiceImpl implements UserService {
     @Autowired
 	@Qualifier("acs_banquet.PackageEntityService")
 	private PackageEntityService packageEntityService;
+
+    @Lazy
+    @Autowired
+	@Qualifier("acs_banquet.OrderService")
+	private OrderService orderService;
 
     @Autowired
     @Qualifier("acs_banquet.UserDao")
@@ -88,6 +94,11 @@ public class UserServiceImpl implements UserService {
         if(user.getPackageEntities() != null) {
             for(PackageEntity _packageEntity : user.getPackageEntities()) {
                 _packageEntity.setUser(user);
+            }
+        }
+        if(user.get_orders() != null) {
+            for(Order _order : user.get_orders()) {
+                _order.setUser(user);
             }
         }
 
@@ -155,6 +166,17 @@ public class UserServiceImpl implements UserService {
         return packageEntityService.findAll(queryBuilder.toString(), pageable);
     }
 
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<Order> findAssociated_orders(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _orders");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("user.id = '" + id + "'");
+
+        return orderService.findAll(queryBuilder.toString(), pageable);
+    }
+
     /**
 	 * This setter method should only be used by unit tests
 	 *
@@ -162,6 +184,15 @@ public class UserServiceImpl implements UserService {
 	 */
 	protected void setPackageEntityService(PackageEntityService service) {
         this.packageEntityService = service;
+    }
+
+    /**
+	 * This setter method should only be used by unit tests
+	 *
+	 * @param service OrderService instance
+	 */
+	protected void setOrderService(OrderService service) {
+        this.orderService = service;
     }
 
 }

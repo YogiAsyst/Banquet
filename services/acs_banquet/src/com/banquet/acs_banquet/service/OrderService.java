@@ -18,65 +18,65 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.Order;
 import com.banquet.acs_banquet.OrderItem;
-import com.banquet.acs_banquet.PackageEntity;
 
 /**
- * Service object for domain model class {@link PackageEntity}.
+ * Service object for domain model class {@link Order}.
  */
-public interface PackageEntityService {
+public interface OrderService {
 
     /**
-     * Creates a new PackageEntity. It does cascade insert for all the children in a single transaction.
+     * Creates a new Order. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Order if any.
      *
-     * @param packageEntity Details of the PackageEntity to be created; value cannot be null.
-     * @return The newly created PackageEntity.
+     * @param _order Details of the Order to be created; value cannot be null.
+     * @return The newly created Order.
      */
-	PackageEntity create(@Valid PackageEntity packageEntity);
+	Order create(@Valid Order _order);
 
 
 	/**
-	 * Returns PackageEntity by given id if exists.
+	 * Returns Order by given id if exists.
 	 *
-	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
-	 * @return PackageEntity associated with the given packageentityId.
-     * @throws EntityNotFoundException If no PackageEntity is found.
+	 * @param orderId The id of the Order to get; value cannot be null.
+	 * @return Order associated with the given orderId.
+     * @throws EntityNotFoundException If no Order is found.
 	 */
-	PackageEntity getById(Integer packageentityId) throws EntityNotFoundException;
+	Order getById(Integer orderId) throws EntityNotFoundException;
 
     /**
-	 * Find and return the PackageEntity by given id if exists, returns null otherwise.
+	 * Find and return the Order by given id if exists, returns null otherwise.
 	 *
-	 * @param packageentityId The id of the PackageEntity to get; value cannot be null.
-	 * @return PackageEntity associated with the given packageentityId.
+	 * @param orderId The id of the Order to get; value cannot be null.
+	 * @return Order associated with the given orderId.
 	 */
-	PackageEntity findById(Integer packageentityId);
+	Order findById(Integer orderId);
 
 
 	/**
-	 * Updates the details of an existing PackageEntity. It replaces all fields of the existing PackageEntity with the given packageEntity.
+	 * Updates the details of an existing Order. It replaces all fields of the existing Order with the given _order.
 	 *
-     * This method overrides the input field values using Server side or database managed properties defined on PackageEntity if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Order if any.
      *
-	 * @param packageEntity The details of the PackageEntity to be updated; value cannot be null.
-	 * @return The updated PackageEntity.
-	 * @throws EntityNotFoundException if no PackageEntity is found with given input.
+	 * @param _order The details of the Order to be updated; value cannot be null.
+	 * @return The updated Order.
+	 * @throws EntityNotFoundException if no Order is found with given input.
 	 */
-	PackageEntity update(@Valid PackageEntity packageEntity) throws EntityNotFoundException;
+	Order update(@Valid Order _order) throws EntityNotFoundException;
 
     /**
-	 * Deletes an existing PackageEntity with the given id.
+	 * Deletes an existing Order with the given id.
 	 *
-	 * @param packageentityId The id of the PackageEntity to be deleted; value cannot be null.
-	 * @return The deleted PackageEntity.
-	 * @throws EntityNotFoundException if no PackageEntity found with the given id.
+	 * @param orderId The id of the Order to be deleted; value cannot be null.
+	 * @return The deleted Order.
+	 * @throws EntityNotFoundException if no Order found with the given id.
 	 */
-	PackageEntity delete(Integer packageentityId) throws EntityNotFoundException;
+	Order delete(Integer orderId) throws EntityNotFoundException;
 
 	/**
-	 * Find all PackageEntities matching the given QueryFilter(s).
+	 * Find all Orders matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
 	 *
@@ -84,30 +84,30 @@ public interface PackageEntityService {
 	 *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching PackageEntities.
+     * @return Paginated list of matching Orders.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
 	 */
     @Deprecated
-	Page<PackageEntity> findAll(QueryFilter[] queryFilters, Pageable pageable);
+	Page<Order> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-	 * Find all PackageEntities matching the given input query. This method returns Paginated results.
+	 * Find all Orders matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching PackageEntities.
+     * @return Paginated list of matching Orders.
      *
      * @see Pageable
      * @see Page
 	 */
-    Page<PackageEntity> findAll(String query, Pageable pageable);
+    Page<Order> findAll(String query, Pageable pageable);
 
     /**
-	 * Exports all PackageEntities matching the given input query to the given exportType format.
+	 * Exports all Orders matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -122,11 +122,11 @@ public interface PackageEntityService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
 	/**
-	 * Retrieve the count of the PackageEntities in the repository with matching query.
+	 * Retrieve the count of the Orders in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-	 * @return The count of the PackageEntity.
+	 * @return The count of the Order.
 	 */
 	long count(String query);
 
@@ -144,7 +144,7 @@ public interface PackageEntityService {
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated orderItems for given PackageEntity id.
+     * Returns the associated orderItems for given Order id.
      *
      * @param id value of id; value cannot be null
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.

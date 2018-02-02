@@ -20,8 +20,8 @@ import com.wavemaker.runtime.data.annotations.ColumnAlias;
 public class GetCat3ProductResponse implements Serializable {
 
 
-    @ColumnAlias("p_code")
-    private Integer pcode;
+    @ColumnAlias("ID")
+    private Integer id;
 
     @ColumnAlias("p_name")
     private String pname;
@@ -41,12 +41,12 @@ public class GetCat3ProductResponse implements Serializable {
     @ColumnAlias("cat_name")
     private String catName;
 
-    public Integer getPcode() {
-        return this.pcode;
+    public Integer getId() {
+        return this.id;
     }
 
-    public void setPcode(Integer pcode) {
-        this.pcode = pcode;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getPname() {
@@ -94,7 +94,7 @@ public class GetCat3ProductResponse implements Serializable {
         if (this == o) return true;
         if (!(o instanceof GetCat3ProductResponse)) return false;
         final GetCat3ProductResponse getCat3productResponse = (GetCat3ProductResponse) o;
-        return Objects.equals(getPcode(), getCat3productResponse.getPcode()) &&
+        return Objects.equals(getId(), getCat3productResponse.getId()) &&
                 Objects.equals(getPname(), getCat3productResponse.getPname()) &&
                 Objects.equals(getPdescription(), getCat3productResponse.getPdescription()) &&
                 Objects.equals(getPrating(), getCat3productResponse.getPrating()) &&
@@ -104,7 +104,7 @@ public class GetCat3ProductResponse implements Serializable {
 
     @Override
     public int hashCode() {
-        return Objects.hash(getPcode(),
+        return Objects.hash(getId(),
                 getPname(),
                 getPdescription(),
                 getPrating(),

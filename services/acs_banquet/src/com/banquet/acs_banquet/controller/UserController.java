@@ -42,6 +42,7 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 import com.wordnik.swagger.annotations.ApiParam;
 
+import com.banquet.acs_banquet.Order;
 import com.banquet.acs_banquet.PackageEntity;
 import com.banquet.acs_banquet.User;
 import com.banquet.acs_banquet.service.UserService;
@@ -198,6 +199,15 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated packageEntities");
         return userService.findAssociatedPackageEntities(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/_orders", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the _orders instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Order> findAssociated_orders(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated _orders");
+        return userService.findAssociated_orders(id, pageable);
     }
 
     /**

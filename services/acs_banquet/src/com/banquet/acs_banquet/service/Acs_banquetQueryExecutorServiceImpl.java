@@ -48,10 +48,10 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public InputStream getPpictureContentForGet_cat_3_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
+    public InputStream getPpictureContentForGet_cat_3_product(Integer id, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
         Map params = new HashMap(0);
 
-        params.put("pcode", pcode);
+        params.put("id", id);
         params.put("pname", pname);
         params.put("pdescription", pdescription);
         params.put("prating", prating);
@@ -85,10 +85,10 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public InputStream getPpictureContentForGet_cat_1_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
+    public InputStream getPpictureContentForGet_cat_1_product(Integer id, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
         Map params = new HashMap(0);
 
-        params.put("pcode", pcode);
+        params.put("id", id);
         params.put("pname", pname);
         params.put("pdescription", pdescription);
         params.put("prating", prating);
@@ -122,10 +122,10 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public InputStream getPpictureContentForGet_cat_4_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
+    public InputStream getPpictureContentForGet_cat_4_product(Integer id, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
         Map params = new HashMap(0);
 
-        params.put("pcode", pcode);
+        params.put("id", id);
         params.put("pname", pname);
         params.put("pdescription", pdescription);
         params.put("prating", prating);
@@ -159,10 +159,10 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public InputStream getPpictureContentForGet_cat_2_product(Integer pcode, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
+    public InputStream getPpictureContentForGet_cat_2_product(Integer id, String pname, String pdescription, Integer prating, String catName) throws EntityNotFoundException {
         Map params = new HashMap(0);
 
-        params.put("pcode", pcode);
+        params.put("id", id);
         params.put("pname", pname);
         params.put("pdescription", pdescription);
         params.put("prating", prating);

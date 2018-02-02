@@ -25,20 +25,20 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
+import com.banquet.acs_banquet.Order;
 import com.banquet.acs_banquet.OrderItem;
-import com.banquet.acs_banquet.PackageEntity;
 
 
 /**
- * ServiceImpl object for domain model class PackageEntity.
+ * ServiceImpl object for domain model class Order.
  *
- * @see PackageEntity
+ * @see Order
  */
-@Service("acs_banquet.PackageEntityService")
+@Service("acs_banquet.OrderService")
 @Validated
-public class PackageEntityServiceImpl implements PackageEntityService {
+public class OrderServiceImpl implements OrderService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PackageEntityServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(OrderServiceImpl.class);
 
     @Lazy
     @Autowired
@@ -46,66 +46,66 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 	private OrderItemService orderItemService;
 
     @Autowired
-    @Qualifier("acs_banquet.PackageEntityDao")
-    private WMGenericDao<PackageEntity, Integer> wmGenericDao;
+    @Qualifier("acs_banquet.OrderDao")
+    private WMGenericDao<Order, Integer> wmGenericDao;
 
-    public void setWMGenericDao(WMGenericDao<PackageEntity, Integer> wmGenericDao) {
+    public void setWMGenericDao(WMGenericDao<Order, Integer> wmGenericDao) {
         this.wmGenericDao = wmGenericDao;
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
     @Override
-	public PackageEntity create(PackageEntity packageEntity) {
-        LOGGER.debug("Creating a new PackageEntity with information: {}", packageEntity);
-        return this.wmGenericDao.create(packageEntity);
+	public Order create(Order _order) {
+        LOGGER.debug("Creating a new Order with information: {}", _order);
+        return this.wmGenericDao.create(_order);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity getById(Integer packageentityId) throws EntityNotFoundException {
-        LOGGER.debug("Finding PackageEntity by id: {}", packageentityId);
-        PackageEntity packageEntity = this.wmGenericDao.findById(packageentityId);
-        if (packageEntity == null){
-            LOGGER.debug("No PackageEntity found with id: {}", packageentityId);
-            throw new EntityNotFoundException(String.valueOf(packageentityId));
+	public Order getById(Integer orderId) throws EntityNotFoundException {
+        LOGGER.debug("Finding Order by id: {}", orderId);
+        Order _order = this.wmGenericDao.findById(orderId);
+        if (_order == null){
+            LOGGER.debug("No Order found with id: {}", orderId);
+            throw new EntityNotFoundException(String.valueOf(orderId));
         }
-        return packageEntity;
+        return _order;
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity findById(Integer packageentityId) {
-        LOGGER.debug("Finding PackageEntity by id: {}", packageentityId);
-        return this.wmGenericDao.findById(packageentityId);
+	public Order findById(Integer orderId) {
+        LOGGER.debug("Finding Order by id: {}", orderId);
+        return this.wmGenericDao.findById(orderId);
     }
 
 
 	@Transactional(rollbackFor = EntityNotFoundException.class, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity update(PackageEntity packageEntity) throws EntityNotFoundException {
-        LOGGER.debug("Updating PackageEntity with information: {}", packageEntity);
+	public Order update(Order _order) throws EntityNotFoundException {
+        LOGGER.debug("Updating Order with information: {}", _order);
 
-        if(packageEntity.getOrderItems() != null) {
-            for(OrderItem _orderItem : packageEntity.getOrderItems()) {
-                _orderItem.setPackageEntity(packageEntity);
+        if(_order.getOrderItems() != null) {
+            for(OrderItem _orderItem : _order.getOrderItems()) {
+                _orderItem.set_order(_order);
             }
         }
 
-        this.wmGenericDao.update(packageEntity);
+        this.wmGenericDao.update(_order);
 
-        Integer packageentityId = packageEntity.getId();
+        Integer orderId = _order.getId();
 
-        return this.wmGenericDao.findById(packageentityId);
+        return this.wmGenericDao.findById(orderId);
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity delete(Integer packageentityId) throws EntityNotFoundException {
-        LOGGER.debug("Deleting PackageEntity with id: {}", packageentityId);
-        PackageEntity deleted = this.wmGenericDao.findById(packageentityId);
+	public Order delete(Integer orderId) throws EntityNotFoundException {
+        LOGGER.debug("Deleting Order with id: {}", orderId);
+        Order deleted = this.wmGenericDao.findById(orderId);
         if (deleted == null) {
-            LOGGER.debug("No PackageEntity found with id: {}", packageentityId);
-            throw new EntityNotFoundException(String.valueOf(packageentityId));
+            LOGGER.debug("No Order found with id: {}", orderId);
+            throw new EntityNotFoundException(String.valueOf(orderId));
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -113,22 +113,22 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public Page<PackageEntity> findAll(QueryFilter[] queryFilters, Pageable pageable) {
-        LOGGER.debug("Finding all PackageEntities");
+	public Page<Order> findAll(QueryFilter[] queryFilters, Pageable pageable) {
+        LOGGER.debug("Finding all Orders");
         return this.wmGenericDao.search(queryFilters, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<PackageEntity> findAll(String query, Pageable pageable) {
-        LOGGER.debug("Finding all PackageEntities");
+    public Page<Order> findAll(String query, Pageable pageable) {
+        LOGGER.debug("Finding all Orders");
         return this.wmGenericDao.searchByQuery(query, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
     public Downloadable export(ExportType exportType, String query, Pageable pageable) {
-        LOGGER.debug("exporting data in the service acs_banquet for table PackageEntity to {} format", exportType);
+        LOGGER.debug("exporting data in the service acs_banquet for table Order to {} format", exportType);
         return this.wmGenericDao.export(exportType, query, pageable);
     }
 
@@ -150,7 +150,7 @@ public class PackageEntityServiceImpl implements PackageEntityService {
         LOGGER.debug("Fetching all associated orderItems");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("packageEntity.id = '" + id + "'");
+        queryBuilder.append("_order.id = '" + id + "'");
 
         return orderItemService.findAll(queryBuilder.toString(), pageable);
     }

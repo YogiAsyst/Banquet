@@ -15,6 +15,17 @@
     } ],
     "operation" : "toast"
   },
+  "goToPage_add_order_page" : {
+    "_id" : "wm-goToPage_add_order_page-wm.NavigationVariable-1517556095582",
+    "name" : "goToPage_add_order_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "add_order_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_dashboard_page" : {
     "_id" : "wm-goToPage_dashboard_page-wm.NavigationVariable-1517195912784",
     "name" : "goToPage_dashboard_page",
@@ -44,6 +55,17 @@
     "category" : "wm.NavigationVariable",
     "operation" : "gotoPage",
     "pageName" : "Main"
+  },
+  "goToPage_order_list_page" : {
+    "_id" : "wm-goToPage_order_list_page-wm.NavigationVariable-1517541556455",
+    "name" : "goToPage_order_list_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "order_list_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
   },
   "goToPage_package_page" : {
     "_id" : "wm-goToPage_package_page-wm.NavigationVariable-1517457751650",

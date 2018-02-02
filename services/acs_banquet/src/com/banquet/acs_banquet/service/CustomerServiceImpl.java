@@ -25,87 +25,87 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.banquet.acs_banquet.OrderItem;
-import com.banquet.acs_banquet.PackageEntity;
+import com.banquet.acs_banquet.Customer;
+import com.banquet.acs_banquet.Order;
 
 
 /**
- * ServiceImpl object for domain model class PackageEntity.
+ * ServiceImpl object for domain model class Customer.
  *
- * @see PackageEntity
+ * @see Customer
  */
-@Service("acs_banquet.PackageEntityService")
+@Service("acs_banquet.CustomerService")
 @Validated
-public class PackageEntityServiceImpl implements PackageEntityService {
+public class CustomerServiceImpl implements CustomerService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PackageEntityServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CustomerServiceImpl.class);
 
     @Lazy
     @Autowired
-	@Qualifier("acs_banquet.OrderItemService")
-	private OrderItemService orderItemService;
+	@Qualifier("acs_banquet.OrderService")
+	private OrderService orderService;
 
     @Autowired
-    @Qualifier("acs_banquet.PackageEntityDao")
-    private WMGenericDao<PackageEntity, Integer> wmGenericDao;
+    @Qualifier("acs_banquet.CustomerDao")
+    private WMGenericDao<Customer, Integer> wmGenericDao;
 
-    public void setWMGenericDao(WMGenericDao<PackageEntity, Integer> wmGenericDao) {
+    public void setWMGenericDao(WMGenericDao<Customer, Integer> wmGenericDao) {
         this.wmGenericDao = wmGenericDao;
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
     @Override
-	public PackageEntity create(PackageEntity packageEntity) {
-        LOGGER.debug("Creating a new PackageEntity with information: {}", packageEntity);
-        return this.wmGenericDao.create(packageEntity);
+	public Customer create(Customer customer) {
+        LOGGER.debug("Creating a new Customer with information: {}", customer);
+        return this.wmGenericDao.create(customer);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity getById(Integer packageentityId) throws EntityNotFoundException {
-        LOGGER.debug("Finding PackageEntity by id: {}", packageentityId);
-        PackageEntity packageEntity = this.wmGenericDao.findById(packageentityId);
-        if (packageEntity == null){
-            LOGGER.debug("No PackageEntity found with id: {}", packageentityId);
-            throw new EntityNotFoundException(String.valueOf(packageentityId));
+	public Customer getById(Integer customerId) throws EntityNotFoundException {
+        LOGGER.debug("Finding Customer by id: {}", customerId);
+        Customer customer = this.wmGenericDao.findById(customerId);
+        if (customer == null){
+            LOGGER.debug("No Customer found with id: {}", customerId);
+            throw new EntityNotFoundException(String.valueOf(customerId));
         }
-        return packageEntity;
+        return customer;
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity findById(Integer packageentityId) {
-        LOGGER.debug("Finding PackageEntity by id: {}", packageentityId);
-        return this.wmGenericDao.findById(packageentityId);
+	public Customer findById(Integer customerId) {
+        LOGGER.debug("Finding Customer by id: {}", customerId);
+        return this.wmGenericDao.findById(customerId);
     }
 
 
 	@Transactional(rollbackFor = EntityNotFoundException.class, value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity update(PackageEntity packageEntity) throws EntityNotFoundException {
-        LOGGER.debug("Updating PackageEntity with information: {}", packageEntity);
+	public Customer update(Customer customer) throws EntityNotFoundException {
+        LOGGER.debug("Updating Customer with information: {}", customer);
 
-        if(packageEntity.getOrderItems() != null) {
-            for(OrderItem _orderItem : packageEntity.getOrderItems()) {
-                _orderItem.setPackageEntity(packageEntity);
+        if(customer.get_orders() != null) {
+            for(Order _order : customer.get_orders()) {
+                _order.setCustomer(customer);
             }
         }
 
-        this.wmGenericDao.update(packageEntity);
+        this.wmGenericDao.update(customer);
 
-        Integer packageentityId = packageEntity.getId();
+        Integer customerId = customer.getId();
 
-        return this.wmGenericDao.findById(packageentityId);
+        return this.wmGenericDao.findById(customerId);
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
 	@Override
-	public PackageEntity delete(Integer packageentityId) throws EntityNotFoundException {
-        LOGGER.debug("Deleting PackageEntity with id: {}", packageentityId);
-        PackageEntity deleted = this.wmGenericDao.findById(packageentityId);
+	public Customer delete(Integer customerId) throws EntityNotFoundException {
+        LOGGER.debug("Deleting Customer with id: {}", customerId);
+        Customer deleted = this.wmGenericDao.findById(customerId);
         if (deleted == null) {
-            LOGGER.debug("No PackageEntity found with id: {}", packageentityId);
-            throw new EntityNotFoundException(String.valueOf(packageentityId));
+            LOGGER.debug("No Customer found with id: {}", customerId);
+            throw new EntityNotFoundException(String.valueOf(customerId));
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -113,22 +113,22 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public Page<PackageEntity> findAll(QueryFilter[] queryFilters, Pageable pageable) {
-        LOGGER.debug("Finding all PackageEntities");
+	public Page<Customer> findAll(QueryFilter[] queryFilters, Pageable pageable) {
+        LOGGER.debug("Finding all Customers");
         return this.wmGenericDao.search(queryFilters, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<PackageEntity> findAll(String query, Pageable pageable) {
-        LOGGER.debug("Finding all PackageEntities");
+    public Page<Customer> findAll(String query, Pageable pageable) {
+        LOGGER.debug("Finding all Customers");
         return this.wmGenericDao.searchByQuery(query, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
     public Downloadable export(ExportType exportType, String query, Pageable pageable) {
-        LOGGER.debug("exporting data in the service acs_banquet for table PackageEntity to {} format", exportType);
+        LOGGER.debug("exporting data in the service acs_banquet for table Customer to {} format", exportType);
         return this.wmGenericDao.export(exportType, query, pageable);
     }
 
@@ -146,22 +146,22 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<OrderItem> findAssociatedOrderItems(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated orderItems");
+    public Page<Order> findAssociated_orders(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _orders");
 
         StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("packageEntity.id = '" + id + "'");
+        queryBuilder.append("customer.id = '" + id + "'");
 
-        return orderItemService.findAll(queryBuilder.toString(), pageable);
+        return orderService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**
 	 * This setter method should only be used by unit tests
 	 *
-	 * @param service OrderItemService instance
+	 * @param service OrderService instance
 	 */
-	protected void setOrderItemService(OrderItemService service) {
-        this.orderItemService = service;
+	protected void setOrderService(OrderService service) {
+        this.orderService = service;
     }
 
 }

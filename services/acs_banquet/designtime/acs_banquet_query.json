@@ -3,8 +3,8 @@
     "name" : "get_cat_1_product",
     "description" : "get_cat_1_product",
     "version" : "V2",
-    "queryString" : "select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1",
-    "countQueryString" : "select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=1) wmTempTable",
+    "queryString" : "select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=1",
+    "countQueryString" : "select count(*) from (select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=1) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -14,14 +14,14 @@
       "typeRef" : null,
       "method" : "GET"
     },
-    "identifiers" : [ "p_code", "p_name", "p_description", "p_rating", "cat_name" ],
+    "identifiers" : [ "ID", "p_name", "p_description", "p_rating", "cat_name" ],
     "response" : {
       "typeRef" : "com.banquet.acs_banquet.models.query.GetCat1ProductResponse",
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "p_code",
-        "fieldName" : "pcode",
+        "name" : "ID",
+        "fieldName" : "id",
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",
@@ -80,8 +80,8 @@
     "name" : "get_cat_2_product",
     "description" : "get_cat_2_product",
     "version" : "V2",
-    "queryString" : "select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2",
-    "countQueryString" : "select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=2) wmTempTable",
+    "queryString" : "select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=2",
+    "countQueryString" : "select count(*) from (select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=2) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -91,14 +91,14 @@
       "typeRef" : null,
       "method" : "GET"
     },
-    "identifiers" : [ "p_code", "p_name", "p_description", "p_rating", "cat_name" ],
+    "identifiers" : [ "ID", "p_name", "p_description", "p_rating", "cat_name" ],
     "response" : {
       "typeRef" : "com.banquet.acs_banquet.models.query.GetCat2ProductResponse",
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "p_code",
-        "fieldName" : "pcode",
+        "name" : "ID",
+        "fieldName" : "id",
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",
@@ -157,8 +157,8 @@
     "name" : "get_cat_3_product",
     "description" : "get_cat_3_product",
     "version" : "V2",
-    "queryString" : "select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3",
-    "countQueryString" : "select count(*) from (select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=3) wmTempTable",
+    "queryString" : "select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=3",
+    "countQueryString" : "select count(*) from (select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=3) wmTempTable",
     "nativeSql" : true,
     "fetchCount" : true,
     "type" : "SELECT",
@@ -168,14 +168,14 @@
       "typeRef" : null,
       "method" : "GET"
     },
-    "identifiers" : [ "p_code", "p_name", "p_description", "p_rating", "cat_name" ],
+    "identifiers" : [ "ID", "p_name", "p_description", "p_rating", "cat_name" ],
     "response" : {
       "typeRef" : "com.banquet.acs_banquet.models.query.GetCat3ProductResponse",
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "p_code",
-        "fieldName" : "pcode",
+        "name" : "ID",
+        "fieldName" : "id",
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",
@@ -234,7 +234,7 @@
     "name" : "get_cat_4_product",
     "description" : "get_cat_4_product",
     "version" : "V2",
-    "queryString" : "select p.p_code, p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.code and p.p_catagory=4",
+    "queryString" : "select p.\"ID\", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c.\"ID\" and p.p_catagory=4",
     "countQueryString" : null,
     "nativeSql" : true,
     "fetchCount" : false,
@@ -245,14 +245,14 @@
       "typeRef" : null,
       "method" : "GET"
     },
-    "identifiers" : [ "p_code", "p_name", "p_description", "p_rating", "cat_name" ],
+    "identifiers" : [ "ID", "p_name", "p_description", "p_rating", "cat_name" ],
     "response" : {
       "typeRef" : "com.banquet.acs_banquet.models.query.GetCat4ProductResponse",
       "returns" : "CUSTOM",
       "responseType" : "PAGINATED",
       "properties" : [ {
-        "name" : "p_code",
-        "fieldName" : "pcode",
+        "name" : "ID",
+        "fieldName" : "id",
         "optional" : false,
         "fieldType" : {
           "type" : "PRIMITIVE",

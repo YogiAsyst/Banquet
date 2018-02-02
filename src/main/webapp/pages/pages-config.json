@@ -11,6 +11,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "add_order_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "dashboard_page",
   "type" : "PAGE",
   "params" : [ ]
@@ -28,6 +32,10 @@
   "params" : [ ]
 }, {
   "name" : "login_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "order_list_page",
   "type" : "PAGE",
   "params" : [ ]
 }, {

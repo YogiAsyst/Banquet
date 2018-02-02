@@ -12,7 +12,13 @@
   "port" : "5432",
   "schemaName" : "public",
   "tableFilter" : [ {
-    "table" : "products",
+    "table" : "customer",
+    "schema" : "public"
+  }, {
+    "table" : "order_item",
+    "schema" : "public"
+  }, {
+    "table" : "package",
     "schema" : "public"
   }, {
     "table" : "user",
@@ -21,7 +27,10 @@
     "table" : "category",
     "schema" : "public"
   }, {
-    "table" : "package",
+    "table" : "products",
+    "schema" : "public"
+  }, {
+    "table" : "order",
     "schema" : "public"
   } ],
   "schemaFilter" : [ ],
