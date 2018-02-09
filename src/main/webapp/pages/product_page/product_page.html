@@ -1,4 +1,4 @@
-<wm-page data-ng-controller="product_pagePageController" name="page1">
+<wm-page data-ng-controller="product_pagePageController" name="page1" pagetitle="Product Page">
     <wm-header content="header" name="header1"></wm-header>
     <wm-top-nav content="topnav" name="top_nav1" backgroundcolor="#388e1a"></wm-top-nav>
     <wm-content name="content1">
@@ -15,7 +15,8 @@
                                 <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select2"></wm-select>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn6">
-                                <wm-search placeholder="Search in Appetizer" class="col-xs-12 col-md-5 col-lg-5" name="search2"></wm-search>
+                                <wm-search placeholder="Search in Appetizer" class="col-xs-12 col-md-5 col-lg-5" name="search2" dataset="bind:Variables.get_cat_1_product.dataSet" searchkey="id,pname,prating" displaylabel="catName" displayimagesrc="ppicture"
+                                    datafield="All Fields"></wm-search>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="2" name="gridcolumn40">
                                 <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" name="button1" on-click="Widgets.productsDialog.open()"></wm-button>
@@ -25,7 +26,7 @@
                     <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_1_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list2"
                         orderby="id:desc">
                         <wm-listtemplate layout="media" name="listtemplate2">
-                            <wm-card imageheight="auto" name="card2">
+                            <wm-card imageheight="auto" name="card2" on-click="Widgets.dialog_appetizer.open()">
                                 <wm-card-content name="card_content2">
                                     <wm-picture picturesource="bind:Variables.get_cat_1_product.dataSet[$i].ppicture" width="100%" name="picture2" height="175"></wm-picture>
                                     <wm-anchor caption="bind:Variables.get_cat_1_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor4"></wm-anchor>
@@ -60,7 +61,7 @@
                     </wm-layoutgrid>
                     <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_2_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list3">
                         <wm-listtemplate layout="media" name="listtemplate3">
-                            <wm-card imageheight="auto" name="card3">
+                            <wm-card imageheight="auto" name="card3" on-click="Widgets.dialog_main_course.open()">
                                 <wm-card-content name="card_content3">
                                     <wm-picture picturesource="bind:Variables.get_cat_2_product.dataSet[$i].ppicture" width="100%" name="picture3" height="175"></wm-picture>
                                     <wm-anchor caption="bind:Variables.get_cat_2_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor7"></wm-anchor>
@@ -94,7 +95,7 @@
                     </wm-layoutgrid>
                     <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_3_product.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true" name="list5">
                         <wm-listtemplate layout="media" name="listtemplate5">
-                            <wm-card imageheight="auto" name="card5">
+                            <wm-card imageheight="auto" name="card5" on-click="Widgets.dialog_dessert.open()">
                                 <wm-card-content name="card_content5">
                                     <wm-picture picturesource="bind:Variables.get_cat_3_product.dataSet[$i].ppicture" width="100%" name="picture5" height="175"></wm-picture>
                                     <wm-anchor caption="bind:Variables.get_cat_3_product.dataSet[$i].pname" class="h4" margin="0px unset" name="anchor13"></wm-anchor>
@@ -128,7 +129,7 @@
                     </wm-layoutgrid>
                     <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.get_cat_4_product.dataSet" navigation="Basic" name="productList" padding="1em unset unset unset" showrecordcount="true">
                         <wm-listtemplate layout="media" name="productListTemplate">
-                            <wm-card name="productCard" imageheight="auto">
+                            <wm-card name="productCard" imageheight="auto" on-click="Widgets.productsDialog.open()">
                                 <wm-card-content name="productCardContent">
                                     <wm-picture name="productPicture" picturesource="bind:Variables.get_cat_4_product.dataSet[$i].ppicture" width="100%" height="175"></wm-picture>
                                     <wm-anchor name="productNameAnchor" caption="bind:Variables.get_cat_4_product.dataSet[$i].pname" class="h4" margin="0px unset"></wm-anchor>
@@ -150,10 +151,10 @@
                                 <wm-label caption="Sort by" class="p control-label" name="label21"></wm-label>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="4" padding="unset 1em" name="gridcolumn14">
-                                <wm-select datavalue="Popularity" dataset="Popularity,Price,Rating" name="select5"></wm-select>
+                                <wm-select datavalue="Popularity" name="select5" datafield="All Fields"></wm-select>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="5" padding="unset 1em" name="gridcolumn15">
-                                <wm-search placeholder="Search" class="col-xs-12 col-md-5 col-lg-5" name="search5"></wm-search>
+                                <wm-search placeholder="Search" class="col-xs-12 col-md-5 col-lg-5" name="search5" dataset="bind:Widgets.list4.currentItem" displaylabel="pcatagory" displayimagesrc="ppicture" datafield="All Fields" orderby="pcatagory:desc"></wm-search>
                             </wm-gridcolumn>
                             <wm-gridcolumn columnwidth="2" name="gridcolumn44">
                                 <wm-button class="btn-default" caption="Add Product" type="button" margin="unset 0.5em" on-click="Widgets.productsDialog.open()" name="button5"></wm-button>
@@ -163,7 +164,7 @@
                     <wm-list listclass="list-group" itemsperrow="xs-1 sm-3 md-4 lg-4" template="true" class="list-card" dataset="bind:Variables.Acs_banquetProductsData.dataSet" navigation="Basic" padding="1em unset unset unset" showrecordcount="true"
                         name="list4" orderby="pname:desc">
                         <wm-listtemplate layout="media" name="listtemplate4">
-                            <wm-card imageheight="auto" name="card4">
+                            <wm-card imageheight="auto" name="card4" on-click="Widgets.dialog_all.open()">
                                 <wm-card-content name="card_content4">
                                     <wm-picture picturesource="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].ppicture" width="100%" name="picture4" height="175"></wm-picture>
                                     <wm-anchor caption="bind:Variables.Acs_banquetProductsData.dataSet.data[$i].pname" class="h4" margin="0px unset" name="anchor10"></wm-anchor>
@@ -252,10 +253,10 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow24">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn57">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label25"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="Product Code" name="label25"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn58">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label30"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list5.selecteditem.id" name="label30"></wm-label>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow26">
@@ -263,7 +264,7 @@
                                     <wm-label padding="unset 0.5em" caption="Rating" name="label26"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn62">
-                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list5.selecteditem.prating" name="label31"></wm-label>
+                                    <wm-rating datavalue="bind:Widgets.list5.selecteditem.prating" name="rating9"></wm-rating>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                         </wm-layoutgrid>
@@ -313,10 +314,10 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow22_1">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn50_1">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label37"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="Product Code" name="label37"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn51">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label38"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.id" name="label38"></wm-label>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow23">
@@ -324,7 +325,7 @@
                                     <wm-label padding="unset 0.5em" caption="Rating" name="label39"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn53_1">
-                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list2.selecteditem.prating" name="label40"></wm-label>
+                                    <wm-rating datavalue="bind:Widgets.list2.selecteditem.prating" name="rating8"></wm-rating>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                         </wm-layoutgrid>
@@ -371,10 +372,10 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow30">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn66">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label51"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="Product Code" name="label51"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn67">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label52"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.id" name="label52"></wm-label>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow31">
@@ -382,7 +383,7 @@
                                     <wm-label padding="unset 0.5em" caption="Rating" name="label53"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn69">
-                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list3.selecteditem.prating" name="label54"></wm-label>
+                                    <wm-rating datavalue="bind:Widgets.list3.selecteditem.prating" name="rating7"></wm-rating>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                         </wm-layoutgrid>
@@ -429,10 +430,10 @@
                             </wm-gridrow>
                             <wm-gridrow name="gridrow38">
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn82">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label65"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="Product Code" name="label65"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn83">
-                                    <wm-label padding="unset 0.5em" caption="Price" name="label66"></wm-label>
+                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.pcode" name="label66"></wm-label>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                             <wm-gridrow name="gridrow39">
@@ -440,7 +441,7 @@
                                     <wm-label padding="unset 0.5em" caption="Rating" name="label67"></wm-label>
                                 </wm-gridcolumn>
                                 <wm-gridcolumn columnwidth="6" name="gridcolumn85">
-                                    <wm-label padding="unset 0.5em" caption="bind:Widgets.list4.selecteditem.prating" name="label68"></wm-label>
+                                    <wm-rating name="rating6" datavalue="bind:Widgets.list4.selecteditem.prating"></wm-rating>
                                 </wm-gridcolumn>
                             </wm-gridrow>
                         </wm-layoutgrid>

@@ -4,11 +4,7 @@
     "name" : "Acs_banquetPackageEntityData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ {
-      "target" : "staffId",
-      "value" : "bind:Variables.loggedInUser.dataSet.id | stringToNumber",
-      "type" : "number"
-    } ],
+    "dataBinding" : [ ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "PackageEntity",
@@ -784,7 +780,8 @@
         "precision" : 0,
         "generator" : "assigned",
         "isRelated" : false,
-        "defaultValue" : "",
+        "systemInserted" : true,
+        "systemUpdated" : true,
         "scale" : 0
       }, {
         "fieldName" : "rating",
@@ -814,13 +811,13 @@
         "scale" : 0
       }, {
         "fieldName" : "packCode",
-        "type" : "integer",
-        "fullyQualifiedType" : "integer",
+        "type" : "string",
+        "fullyQualifiedType" : "string",
         "columnName" : "pack_code",
         "isPrimaryKey" : false,
         "notNull" : false,
-        "length" : 0,
-        "precision" : 10,
+        "length" : 255,
+        "precision" : 0,
         "generator" : "assigned",
         "isRelated" : false,
         "defaultValue" : "",

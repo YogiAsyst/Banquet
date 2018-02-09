@@ -32,6 +32,9 @@
   }, {
     "table" : "order",
     "schema" : "public"
+  }, {
+    "table" : "pre-order",
+    "schema" : "public"
   } ],
   "schemaFilter" : [ ],
   "impersonateUser" : false,

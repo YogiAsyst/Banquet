@@ -11,6 +11,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "add_item_order_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "add_order_page",
   "type" : "PAGE",
   "params" : [ ]
@@ -34,6 +38,13 @@
   "name" : "login_page",
   "type" : "PAGE",
   "params" : [ ]
+}, {
+  "name" : "order_item_detail",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "product_id",
+    "type" : "integer"
+  } ]
 }, {
   "name" : "order_list_page",
   "type" : "PAGE",

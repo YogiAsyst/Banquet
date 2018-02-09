@@ -58,6 +58,7 @@ public class PackageEntity implements Serializable {
     private Products productsByProduct3;
     private Products productsByProduct4;
     private Products productsByProduct5;
+    private List<PreOrder> preOrders;
     private List<OrderItem> orderItems;
 
     @Id
@@ -249,6 +250,17 @@ public class PackageEntity implements Serializable {
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "packageEntity")
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    public List<PreOrder> getPreOrders() {
+        return this.preOrders;
+    }
+
+    public void setPreOrders(List<PreOrder> preOrders) {
+        this.preOrders = preOrders;
+    }
+
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "packageEntity")
+    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
     public List<OrderItem> getOrderItems() {
         return this.orderItems;
     }
@@ -259,6 +271,11 @@ public class PackageEntity implements Serializable {
 
     @PostPersist
     public void onPostPersist() {
+        if(preOrders != null) {
+            for(PreOrder preOrder : preOrders) {
+                preOrder.setPackageEntity(this);
+            }
+        }
         if(orderItems != null) {
             for(OrderItem orderItem : orderItems) {
                 orderItem.setPackageEntity(this);

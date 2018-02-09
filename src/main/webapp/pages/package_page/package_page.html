@@ -9,20 +9,21 @@
                     <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label>
                 </wm-panel-footer>
                 <wm-livetable formlayout="dialog" name="PackageEntityLiveTable1">
-                    <wm-table gridfirstrowselect="true" editmode="dialog" name="PackageEntityTable1" title="Package List" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" navigation="Basic">
-                        <wm-table-column binding="packCode" caption="Code" generator="assigned" pcdisplay="true" mobiledisplay="true" type="integer"></wm-table-column>
-                        <wm-table-column binding="createdDate" caption="Created Date" generator="assigned" pcdisplay="true" mobiledisplay="true" type="date"></wm-table-column>
-                        <wm-table-column binding="rating" caption="Rating" generator="assigned" pcdisplay="true" mobiledisplay="true" type="integer"></wm-table-column>
-                        <wm-table-column binding="price" caption="Price" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
-                        <wm-table-column binding="user.ufirstName" caption="Sales" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="User" readonly="true"></wm-table-column>
-                        <wm-table-column binding="productsByProduct1.pname" caption="Product 1" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="Products" readonly="true"></wm-table-column>
-                        <wm-table-column binding="productsByProduct2.pname" caption="Product 2" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="Products" readonly="true"></wm-table-column>
-                        <wm-table-column binding="productsByProduct3.pname" caption="Product 3" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="Products" readonly="true"></wm-table-column>
-                        <wm-table-column binding="productsByProduct4.pname" caption="Product 4" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="Products" readonly="true"></wm-table-column>
-                        <wm-table-column binding="productsByProduct5.pname" caption="Product 5" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string" related-entity-name="Products" readonly="true"></wm-table-column>
-                        <wm-table-action key="addNewRow" display-name="New" iconclass="wi wi-plus" show="true" class="btn-primary" action="addNewRow()" position="footer" shortcutkey=""></wm-table-action>
-                        <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil" show="true" class="btn-transparent" action="editRow()"></wm-table-row-action>
-                        <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash" show="true" class="btn-transparent" action="deleteRow()"></wm-table-row-action>
+                    <wm-table gridfirstrowselect="true" editmode="dialog" name="PackageEntityTable1" title="" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" navigation="Basic" filtermode="search" showrecordcount="true" exportformat="EXCEL,CSV">
+                        <wm-table-column binding="packCode" caption="Code" edit-widget-type="number" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="createdDate" caption="Created Date" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="rating" caption="Rating" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="price" caption="Price" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="user.ufirstName" caption="Sales" edit-widget-type="text" related-entity-name="User" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct1.pname" caption="Product 1" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct2.pname" caption="Product 2" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct3.pname" caption="Product 3" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct4.pname" caption="Product 4" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct5.pname" caption="Product 5" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
                     </wm-table>
                     <wm-liveform errormessage="" title="Create Package" formlayout="dialog" iconclass="wi wi-edit" name="PackageEntityLiveForm1" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" captionalign="left" captionposition="top">
                         <wm-layoutgrid columns="2" name="layoutgrid1">

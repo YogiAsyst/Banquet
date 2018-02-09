@@ -2,6 +2,53 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
+    <sql-query name="get_package_pict">
+        <![CDATA[
+        select p1.p_picture as pict, p1.p_name, p1.p_rating from products p1, package pc where pc."ID"=:product_id and pc.product_1=p1."ID"
+union
+select p2.p_picture as pict, p2.p_name, p2.p_rating from products p2, package pc where pc."ID"=:product_id and pc.product_2=p2."ID"
+union
+select p3.p_picture as pict, p3.p_name, p3.p_rating from products p3, package pc where pc."ID"=:product_id and pc.product_3=p3."ID"
+union
+select p4.p_picture as pict, p4.p_name, p4.p_rating from products p4, package pc where pc."ID"=:product_id and pc.product_4=p4."ID"
+union
+select p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc where pc."ID"=:product_id and pc.product_5=p5."ID"
+        ]]>
+    <query-param name="product_id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="get_package_pict__count">
+        <![CDATA[
+        select count(*) from (select p1.p_picture as pict, p1.p_name, p1.p_rating from products p1, package pc where pc."ID"=:product_id and pc.product_1=p1."ID"
+union
+select p2.p_picture as pict, p2.p_name, p2.p_rating from products p2, package pc where pc."ID"=:product_id and pc.product_2=p2."ID"
+union
+select p3.p_picture as pict, p3.p_name, p3.p_rating from products p3, package pc where pc."ID"=:product_id and pc.product_3=p3."ID"
+union
+select p4.p_picture as pict, p4.p_name, p4.p_rating from products p4, package pc where pc."ID"=:product_id and pc.product_4=p4."ID"
+union
+select p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc where pc."ID"=:product_id and pc.product_5=p5."ID") wmTempTable
+        ]]>
+    <query-param name="product_id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="get_package_pict__identifier">
+        <![CDATA[
+        select * from (select p1.p_picture as pict, p1.p_name, p1.p_rating from products p1, package pc where pc."ID"=:product_id and pc.product_1=p1."ID"
+union
+select p2.p_picture as pict, p2.p_name, p2.p_rating from products p2, package pc where pc."ID"=:product_id and pc.product_2=p2."ID"
+union
+select p3.p_picture as pict, p3.p_name, p3.p_rating from products p3, package pc where pc."ID"=:product_id and pc.product_3=p3."ID"
+union
+select p4.p_picture as pict, p4.p_name, p4.p_rating from products p4, package pc where pc."ID"=:product_id and pc.product_4=p4."ID"
+union
+select p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc where pc."ID"=:product_id and pc.product_5=p5."ID") wmTempTable where "p_name"=:pname and "p_rating"=:prating
+        ]]>
+    <query-param name="product_id" type="java.lang.Integer"/>
+    <query-param name="pname" type="java.lang.String"/>
+    <query-param name="prating" type="java.lang.Integer"/>
+    </sql-query>
+
     <sql-query name="get_cat_3_product">
         <![CDATA[
         select p."ID", p.p_name, p.p_description, p.p_rating, p.p_picture, c.cat_name from products p, category c where p.p_catagory=c."ID" and p.p_catagory=3

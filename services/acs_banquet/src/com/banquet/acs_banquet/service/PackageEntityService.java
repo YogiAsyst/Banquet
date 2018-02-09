@@ -20,6 +20,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.banquet.acs_banquet.OrderItem;
 import com.banquet.acs_banquet.PackageEntity;
+import com.banquet.acs_banquet.PreOrder;
 
 /**
  * Service object for domain model class {@link PackageEntity}.
@@ -142,6 +143,18 @@ public interface PackageEntityService {
      * @see Page
 	 */
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
+
+    /*
+     * Returns the associated preOrders for given PackageEntity id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PreOrder instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PreOrder> findAssociatedPreOrders(Integer id, Pageable pageable);
 
     /*
      * Returns the associated orderItems for given PackageEntity id.

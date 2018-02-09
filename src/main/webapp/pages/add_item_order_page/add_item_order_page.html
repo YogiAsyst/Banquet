@@ -1,0 +1,26 @@
+<wm-page data-ng-controller="add_item_order_pagePageController" pagetitle="Order" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-wizard stepstyle="justified" name="wizard1">
+                <wm-wizardstep name="wizardstep1" title="#1 - Choose Product">
+                    <wm-table editmode="inline" name="PreOrderTable1" title="" dataset="bind:Variables.Acs_banquetPreOrderData1.dataSet" navigation="Basic">
+                        <wm-table-column binding="packageEntity.id" caption="Package" generator="sequence" pcdisplay="true" mobiledisplay="true" type="integer" primary-key="true" related-entity-name="PackageEntity"></wm-table-column>
+                        <wm-table-column binding="quantity" caption="Quantity" generator="assigned" pcdisplay="true" mobiledisplay="true" type="integer"></wm-table-column>
+                        <wm-table-column binding="itemNotes" caption="Item Notes" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" iconclass="wi wi-plus" show="true" class="btn-primary" action="addNewRow()" position="footer" shortcutkey=""></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" title="Edit" iconclass="wi wi-pencil" show="true" class="btn-transparent" action="editRow()"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" title="Delete" iconclass="wi wi-trash" show="true" class="btn-transparent" action="deleteRow()"></wm-table-row-action>
+                    </wm-table>
+                    <wm-container name="container1" content="order_item_detail">
+                        <wm-param name="product_id" value="bind:Widgets.PreOrderTable1.selecteditem.packageEntity.id" type="integer"></wm-param>
+                    </wm-container>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep2" title="#2 - Make Order"></wm-wizardstep>
+            </wm-wizard>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>

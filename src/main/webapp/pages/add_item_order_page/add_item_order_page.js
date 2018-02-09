@@ -1,4 +1,4 @@
-Application.$controller("add_order_pagePageController", ["$scope", function ($scope) {
+Application.$controller("add_item_order_pagePageController", ["$scope", function ($scope) {
     "use strict";
 
     /* perform any action on widgets/variables within this block */
@@ -16,14 +16,12 @@ Application.$controller("add_order_pagePageController", ["$scope", function ($sc
 
 }]);
 
-Application.$controller("PackageEntityTable1Controller", ["$scope",
-	function($scope) {
-		"use strict";
-		$scope.ctrlScope = $scope;
-	}
-]);
 
-Application.$controller("OrderLiveForm1Controller", ["$scope",
+
+
+
+
+Application.$controller("PreOrderTable1Controller", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

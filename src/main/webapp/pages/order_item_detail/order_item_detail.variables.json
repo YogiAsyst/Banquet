@@ -1,0 +1,30 @@
+{
+  "Acs_banquetExecuteGet_package_pict" : {
+    "_id" : "wm-Acs_banquetExecuteGet_package_pict-wm.ServiceVariable-1518076121789",
+    "name" : "Acs_banquetExecuteGet_package_pict",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "isList" : true,
+      "target" : "product_id",
+      "value" : "bind:pageParams.product_id",
+      "type" : "integer"
+    } ],
+    "type" : "com.banquet.acs_banquet.models.query.GetPackagePictResponse",
+    "service" : "acs_banquet",
+    "operation" : "executeGet_package_pict",
+    "operationId" : "QueryExecutionController_executeGet_package_pict",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "isDefault" : true,
+    "controller" : "QueryExecution"
+  }
+}

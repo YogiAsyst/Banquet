@@ -9,6 +9,7 @@ package com.banquet.acs_banquet.controller;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -54,6 +55,51 @@ public class QueryExecutionController {
 
     @Autowired
     private Acs_banquetQueryExecutorService queryService;
+
+    @JsonView(BlobAsUrlView.class)
+    @RequestMapping(value = "/queries/get_package_pict", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "get product picture from package")
+    public Page<GetPackagePictResponse> executeGet_package_pict(@RequestParam(value = "product_id") List<Integer> productId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: get_package_pict");
+        Page<GetPackagePictResponse> _result = queryService.executeGet_package_pict(productId, pageable);
+        LOGGER.debug("got the result for named query: get_package_pict, result:{}", _result);
+        UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
+        _uriBuilder.path("/composite-id/content/{_fieldName_}");
+        _uriBuilder.queryParam("pname", "{pname}");
+        _uriBuilder.queryParam("prating", "{prating}");
+        for(GetPackagePictResponse _content : _result.getContent()) {
+            Map<String, Object> _properties = new HashMap(3);
+            _properties.put("pname", _content.getPname());
+            _properties.put("prating", _content.getPrating());
+            _properties.put("_fieldName_", "pict");
+            if(_content.getPict() != null) {
+                _content.setPict(_uriBuilder.buildAndExpand(_properties).toUriString().getBytes());
+            } else {
+                _content.setPict(null);
+            }
+        }
+        return _result;
+    }
+
+    @ApiOperation(value = "Retrives the BLOB content for property pict in query get_package_pict")
+    @RequestMapping(value = "/queries/get_package_pict/composite-id/content/pict", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable getPictContentForGet_package_pict(@RequestParam("pname") String pname, @RequestParam("prating") Integer prating, @RequestParam(value = "product_id") List<Integer> productId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: get_package_pict");
+
+        InputStream _result = queryService.getPictContentForGet_package_pict(pname, prating, productId);
+        return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query get_package_pict")
+    @RequestMapping(value = "/queries/get_package_pict/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportGet_package_pict(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "product_id") List<Integer> productId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: get_package_pict");
+
+        return queryService.exportGet_package_pict(exportType, productId, pageable);
+    }
 
     @JsonView(BlobAsUrlView.class)
     @RequestMapping(value = "/queries/get_cat_3_product", method = RequestMethod.GET)

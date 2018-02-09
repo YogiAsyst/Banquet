@@ -306,5 +306,63 @@
         }
       } ]
     }
+  },
+  "get_package_pict" : {
+    "name" : "get_package_pict",
+    "description" : "get product picture from package",
+    "version" : "V2",
+    "queryString" : "select p1.p_picture as pict, p1.p_name, p1.p_rating from products p1, package pc where pc.\"ID\"=:product_id and pc.product_1=p1.\"ID\"\r\nunion\r\nselect p2.p_picture as pict, p2.p_name, p2.p_rating from products p2, package pc where pc.\"ID\"=:product_id and pc.product_2=p2.\"ID\"\r\nunion\r\nselect p3.p_picture as pict, p3.p_name, p3.p_rating from products p3, package pc where pc.\"ID\"=:product_id and pc.product_3=p3.\"ID\"\r\nunion\r\nselect p4.p_picture as pict, p4.p_name, p4.p_rating from products p4, package pc where pc.\"ID\"=:product_id and pc.product_4=p4.\"ID\"\r\nunion\r\nselect p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc where pc.\"ID\"=:product_id and pc.product_5=p5.\"ID\"",
+    "countQueryString" : "select count(*) from (select p1.p_picture as pict, p1.p_name, p1.p_rating from products p1, package pc where pc.\"ID\"=:product_id and pc.product_1=p1.\"ID\"\r\nunion\r\nselect p2.p_picture as pict, p2.p_name, p2.p_rating from products p2, package pc where pc.\"ID\"=:product_id and pc.product_2=p2.\"ID\"\r\nunion\r\nselect p3.p_picture as pict, p3.p_name, p3.p_rating from products p3, package pc where pc.\"ID\"=:product_id and pc.product_3=p3.\"ID\"\r\nunion\r\nselect p4.p_picture as pict, p4.p_name, p4.p_rating from products p4, package pc where pc.\"ID\"=:product_id and pc.product_4=p4.\"ID\"\r\nunion\r\nselect p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc where pc.\"ID\"=:product_id and pc.product_5=p5.\"ID\") wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "product_id",
+      "type" : "integer",
+      "list" : true,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : [ "1" ],
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ "p_name", "p_rating" ],
+    "response" : {
+      "typeRef" : "com.banquet.acs_banquet.models.query.GetPackagePictResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "pict",
+        "fieldName" : "pict",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "byte[]",
+          "list" : false
+        }
+      }, {
+        "name" : "p_name",
+        "fieldName" : "pname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      }, {
+        "name" : "p_rating",
+        "fieldName" : "prating",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.Integer",
+          "list" : false
+        }
+      } ]
+    }
   }
 }

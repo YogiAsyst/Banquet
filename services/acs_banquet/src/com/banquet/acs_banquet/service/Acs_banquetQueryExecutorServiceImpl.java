@@ -9,6 +9,7 @@ package com.banquet.acs_banquet.service;
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -36,6 +37,43 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
     @Autowired
     @Qualifier("acs_banquetWMQueryExecutor")
     private WMQueryExecutor queryExecutor;
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<GetPackagePictResponse> executeGet_package_pict(List<Integer> productId, Pageable pageable) {
+        Map params = new HashMap(1);
+
+        params.put("product_id", productId);
+
+        return queryExecutor.executeNamedQuery("get_package_pict", params, GetPackagePictResponse.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public InputStream getPictContentForGet_package_pict(String pname, Integer prating, List<Integer> productId) throws EntityNotFoundException {
+        Map params = new HashMap(1);
+
+        params.put("pname", pname);
+        params.put("prating", prating);
+        params.put("product_id", productId);
+
+        GetPackagePictResponse _result =  queryExecutor.executeNamedQuery("get_package_pict__identifier", params, GetPackagePictResponse.class);
+        if(_result.getPict() == null) {
+            LOGGER.debug("Blob content not exists for pict in query get_package_pict");
+            throw new BlobContentNotFoundException("Blob content not found for pict in query get_package_pict");
+        }
+        return new ByteArrayInputStream(_result.getPict());
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Downloadable exportGet_package_pict(ExportType exportType, List<Integer> productId, Pageable pageable) {
+        Map params = new HashMap(1);
+
+        params.put("product_id", productId);
+
+        return queryExecutor.exportNamedQueryData("get_package_pict", params, exportType, GetPackagePictResponse.class, pageable);
+    }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override

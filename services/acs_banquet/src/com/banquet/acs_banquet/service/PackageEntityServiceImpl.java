@@ -27,6 +27,7 @@ import com.wavemaker.runtime.file.model.Downloadable;
 
 import com.banquet.acs_banquet.OrderItem;
 import com.banquet.acs_banquet.PackageEntity;
+import com.banquet.acs_banquet.PreOrder;
 
 
 /**
@@ -44,6 +45,11 @@ public class PackageEntityServiceImpl implements PackageEntityService {
     @Autowired
 	@Qualifier("acs_banquet.OrderItemService")
 	private OrderItemService orderItemService;
+
+    @Lazy
+    @Autowired
+	@Qualifier("acs_banquet.PreOrderService")
+	private PreOrderService preOrderService;
 
     @Autowired
     @Qualifier("acs_banquet.PackageEntityDao")
@@ -85,6 +91,11 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 	public PackageEntity update(PackageEntity packageEntity) throws EntityNotFoundException {
         LOGGER.debug("Updating PackageEntity with information: {}", packageEntity);
 
+        if(packageEntity.getPreOrders() != null) {
+            for(PreOrder _preOrder : packageEntity.getPreOrders()) {
+                _preOrder.setPackageEntity(packageEntity);
+            }
+        }
         if(packageEntity.getOrderItems() != null) {
             for(OrderItem _orderItem : packageEntity.getOrderItems()) {
                 _orderItem.setPackageEntity(packageEntity);
@@ -146,6 +157,17 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
+    public Page<PreOrder> findAssociatedPreOrders(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated preOrders");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("packageEntity.id = '" + id + "'");
+
+        return preOrderService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
     public Page<OrderItem> findAssociatedOrderItems(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated orderItems");
 
@@ -162,6 +184,15 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 	 */
 	protected void setOrderItemService(OrderItemService service) {
         this.orderItemService = service;
+    }
+
+    /**
+	 * This setter method should only be used by unit tests
+	 *
+	 * @param service PreOrderService instance
+	 */
+	protected void setPreOrderService(PreOrderService service) {
+        this.preOrderService = service;
     }
 
 }

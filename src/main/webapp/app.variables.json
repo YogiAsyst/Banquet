@@ -15,6 +15,17 @@
     } ],
     "operation" : "toast"
   },
+  "goToPage_add_item_order_page" : {
+    "_id" : "wm-goToPage_add_item_order_page-wm.NavigationVariable-1518058958510",
+    "name" : "goToPage_add_item_order_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "add_item_order_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_add_order_page" : {
     "_id" : "wm-goToPage_add_order_page-wm.NavigationVariable-1517556095582",
     "name" : "goToPage_add_order_page",
