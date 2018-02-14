@@ -1,0 +1,120 @@
+<wm-page data-ng-controller="create_order_pagePageController" pagetitle="Create Order Page" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-wizard stepstyle="justified" name="wizard1" on-cancel="Actions.goToPage_create_order_page.invoke()">
+                <wm-wizardstep name="wizardstep1" title="#1 - Add Customer">
+                    <wm-livetable formlayout="dialog" name="CustomerLiveTable1">
+                        <wm-table gridfirstrowselect="true" editmode="dialog" name="CustomerTable1" title="" dataset="bind:Variables.Acs_banquetCustomerData.dataSet" navigation="Basic" multiselect="false" filtermode="search" radioselect="true">
+                            <wm-table-column binding="cname" caption="Name" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="caddress" caption="Address" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="cphone" caption="Phone" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="cmail" caption="Email" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                            <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
+                            <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                            <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                        </wm-table>
+                        <wm-liveform errormessage="" title="Add Customer" formlayout="dialog" iconclass="wi wi-edit" name="CustomerLiveForm1" dataset="bind:Variables.Acs_banquetCustomerData.dataSet" captionalign="left" captionposition="top">
+                            <wm-layoutgrid columns="1" name="layoutgrid1">
+                                <wm-gridrow name="gridrow1">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn1">
+                                        <wm-form-field name="cname" displayname="Name" required="false" show="true" generator="assigned" primary-key="false" key="cname" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                            widget="text"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow2">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn2">
+                                        <wm-form-field name="caddress" displayname="Address" required="false" show="true" generator="assigned" primary-key="false" key="caddress" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                            widget="text"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow3">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn3">
+                                        <wm-form-field name="cphone" displayname="Phone" required="false" show="true" generator="assigned" primary-key="false" key="cphone" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                            widget="text"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow4">
+                                    <wm-gridcolumn columnwidth="12" name="gridcolumn4">
+                                        <wm-form-field name="cmail" displayname="Email" required="false" show="true" generator="assigned" primary-key="false" key="cmail" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                            widget="text"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <wm-form-field name="id" displayname="Id" required="true" show="false" generator="identity" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                            <wm-form-action key="cancel" class="form-cancel btn-secondary" iconclass="wi wi-cancel" action="cancel()" display-name="Cancel" show="true" type="button" update-mode="true"></wm-form-action>
+                            <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                        </wm-liveform>
+                    </wm-livetable>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep2" title="#2 - Create Order">
+                    <wm-livetable formlayout="dialog" name="OrderLiveTable1">
+                        <wm-table gridfirstrowselect="true" editmode="dialog" name="OrderTable1" title="" dataset="bind:Variables.Acs_banquetOrderData.dataSet" navigation="Basic" multiselect="false" filtermode="search" radioselect="true">
+                            <wm-table-column binding="customer.cname" caption="Customer" edit-widget-type="text" related-entity-name="Customer" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="orderNumber" caption="Order Number" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="orderNotes" caption="Order Notes" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="orderCreateDate" caption="Create Date" edit-widget-type="date" type="date" generator="assigned" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="orderDueDate" caption="Due Date" edit-widget-type="date" type="date" generator="assigned" show="true" readonly="false"></wm-table-column>
+                            <wm-table-column binding="user.uname" caption="Sales" edit-widget-type="text" related-entity-name="User" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                            <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                            <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
+                            <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                            <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                        </wm-table>
+                        <wm-liveform errormessage="" title="Create Order" formlayout="dialog" iconclass="wi wi-edit" name="OrderLiveForm1" dataset="bind:Variables.Acs_banquetOrderData.dataSet" captionalign="left" captionposition="top">
+                            <wm-layoutgrid columns="2" name="layoutgrid2">
+                                <wm-gridrow name="gridrow5">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn5">
+                                        <wm-form-field name="orderNumber" displayname="Order Number" show="true" primary-key="false" generator="assigned" key="orderNumber" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text"
+                                            placeholder="Enter value"></wm-form-field>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn6">
+                                        <wm-form-field name="customer" displayname="Customer" show="true" primary-key="false" generator="assigned" key="customer" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value"
+                                            displayexpression="cname"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow6">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                                        <wm-form-field name="orderDueDate" displayname="Order Due Date" show="true" primary-key="false" generator="assigned" key="orderDueDate" type="date" readonly="false" required="false" widget="date" placeholder="Select date"
+                                            outputformat="yyyy-MM-dd"></wm-form-field>
+                                    </wm-gridcolumn>
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn8">
+                                        <wm-form-field name="user" displayname="Sales" show="true" primary-key="false" generator="assigned" key="user" type="list" is-related="true" readonly="false" required="false" widget="select" placeholder="Select value"
+                                            displayexpression="ufirstName"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                                <wm-gridrow name="gridrow7">
+                                    <wm-gridcolumn columnwidth="6" name="gridcolumn9">
+                                        <wm-form-field name="orderNotes" displayname="Order Notes" show="true" primary-key="false" generator="assigned" key="orderNotes" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text"
+                                            placeholder="Enter value"></wm-form-field>
+                                    </wm-gridcolumn>
+                                </wm-gridrow>
+                            </wm-layoutgrid>
+                            <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="identity" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                            <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                            <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
+                        </wm-liveform>
+                    </wm-livetable>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep3" title="#3 - Order Item">
+                    <wm-table editmode="inline" name="OrderItemTable1" title="" dataset="bind:Variables.Acs_banquetOrderItemData1.dataSet" navigation="Basic">
+                        <wm-table-column binding="_order.orderNumber" caption="Order Number" edit-widget-type="text" related-entity-name="Order" type="string" generator="assigned" defaultvalue="bind:Widgets.OrderTable1.selecteditem.orderNumber" show="true"
+                            readonly="false"></wm-table-column>
+                        <wm-table-column binding="packageEntity.packCode" caption="Pack Code" edit-widget-type="text" related-entity-name="PackageEntity" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="quantity" caption="Quantity" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="itemNotes" caption="Item Notes" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep4" title="#4 - Check Out"></wm-wizardstep>
+            </wm-wizard>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+</wm-page>
