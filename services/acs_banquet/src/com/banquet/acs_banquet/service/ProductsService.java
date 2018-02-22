@@ -75,6 +75,13 @@ public interface ProductsService {
 	 */
 	Products delete(Integer productsId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Products with the given object.
+	 *
+	 * @param products The instance of the Products to be deleted; value cannot be null.
+	 */
+	void delete(Products products);
+
 	/**
 	 * Find all Products matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

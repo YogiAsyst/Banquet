@@ -11,10 +11,6 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
-  "name" : "add_order_page",
-  "type" : "PAGE",
-  "params" : [ ]
-}, {
   "name" : "create_order_page",
   "type" : "PAGE",
   "params" : [ ]

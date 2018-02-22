@@ -76,6 +76,13 @@ public interface UserService {
 	 */
 	User delete(Integer userId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing User with the given object.
+	 *
+	 * @param user The instance of the User to be deleted; value cannot be null.
+	 */
+	void delete(User user);
+
 	/**
 	 * Find all Users matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
@@ -145,18 +152,6 @@ public interface UserService {
 	Page<Map<String, Object>> getAggregatedValues(AggregationInfo aggregationInfo, Pageable pageable);
 
     /*
-     * Returns the associated packageEntities for given User id.
-     *
-     * @param id value of id; value cannot be null
-     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of associated PackageEntity instances.
-     *
-     * @see Pageable
-     * @see Page
-     */
-    Page<PackageEntity> findAssociatedPackageEntities(Integer id, Pageable pageable);
-
-    /*
      * Returns the associated _orders for given User id.
      *
      * @param id value of id; value cannot be null
@@ -167,6 +162,18 @@ public interface UserService {
      * @see Page
      */
     Page<Order> findAssociated_orders(Integer id, Pageable pageable);
+
+    /*
+     * Returns the associated packageEntities for given User id.
+     *
+     * @param id value of id; value cannot be null
+     * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
+     * @return Paginated list of associated PackageEntity instances.
+     *
+     * @see Pageable
+     * @see Page
+     */
+    Page<PackageEntity> findAssociatedPackageEntities(Integer id, Pageable pageable);
 
 }
 

@@ -75,6 +75,13 @@ public interface CategoryService {
 	 */
 	Category delete(Integer categoryId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Category with the given object.
+	 *
+	 * @param category The instance of the Category to be deleted; value cannot be null.
+	 */
+	void delete(Category category);
+
 	/**
 	 * Find all Categories matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

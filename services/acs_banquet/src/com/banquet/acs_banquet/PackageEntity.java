@@ -10,7 +10,6 @@ import java.sql.Date;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,6 +25,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -42,7 +44,7 @@ public class PackageEntity implements Serializable {
 
     private Integer id;
     private Integer staffId;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
     private Date createdDate;
     private Integer product1;
     private Integer product2;
@@ -58,11 +60,11 @@ public class PackageEntity implements Serializable {
     private Products productsByProduct3;
     private Products productsByProduct4;
     private Products productsByProduct5;
-    private List<PreOrder> preOrders;
     private List<OrderItem> orderItems;
+    private List<PreOrder> preOrders;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"package_ID_seq\"" , schema = "public", allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "\"package_ID_seq\"" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {
@@ -165,6 +167,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`staff_id`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_user_TO_package_ID_stxRVpR`"))
+    @Fetch(FetchMode.JOIN)
     public User getUser() {
         return this.user;
     }
@@ -179,6 +182,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`product_1`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_products_TO_package_I8gsnp`"))
+    @Fetch(FetchMode.JOIN)
     public Products getProductsByProduct1() {
         return this.productsByProduct1;
     }
@@ -193,6 +197,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`product_2`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_products_TO_package_IrOAWL`"))
+    @Fetch(FetchMode.JOIN)
     public Products getProductsByProduct2() {
         return this.productsByProduct2;
     }
@@ -207,6 +212,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`product_3`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_products_TO_package_IUFcYq`"))
+    @Fetch(FetchMode.JOIN)
     public Products getProductsByProduct3() {
         return this.productsByProduct3;
     }
@@ -221,6 +227,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`product_4`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_products_TO_package_IvsbFL`"))
+    @Fetch(FetchMode.JOIN)
     public Products getProductsByProduct4() {
         return this.productsByProduct4;
     }
@@ -235,6 +242,7 @@ public class PackageEntity implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`product_5`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_products_TO_package_IecQzK`"))
+    @Fetch(FetchMode.JOIN)
     public Products getProductsByProduct5() {
         return this.productsByProduct5;
     }
@@ -248,19 +256,8 @@ public class PackageEntity implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "packageEntity")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    public List<PreOrder> getPreOrders() {
-        return this.preOrders;
-    }
-
-    public void setPreOrders(List<PreOrder> preOrders) {
-        this.preOrders = preOrders;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "packageEntity")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<OrderItem> getOrderItems() {
         return this.orderItems;
     }
@@ -269,16 +266,27 @@ public class PackageEntity implements Serializable {
         this.orderItems = orderItems;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    public List<PreOrder> getPreOrders() {
+        return this.preOrders;
+    }
+
+    public void setPreOrders(List<PreOrder> preOrders) {
+        this.preOrders = preOrders;
+    }
+
     @PostPersist
     public void onPostPersist() {
-        if(preOrders != null) {
-            for(PreOrder preOrder : preOrders) {
-                preOrder.setPackageEntity(this);
-            }
-        }
         if(orderItems != null) {
             for(OrderItem orderItem : orderItems) {
                 orderItem.setPackageEntity(this);
+            }
+        }
+        if(preOrders != null) {
+            for(PreOrder preOrder : preOrders) {
+                preOrder.setPackageEntity(this);
             }
         }
     }

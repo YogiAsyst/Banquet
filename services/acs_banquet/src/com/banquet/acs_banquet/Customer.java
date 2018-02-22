@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -22,6 +21,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -41,7 +41,7 @@ public class Customer implements Serializable {
     private List<Order> _orders;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"customer_ID_seq\"" , schema = "public", allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "\"customer_ID_seq\"" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {
@@ -89,8 +89,8 @@ public class Customer implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "customer")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "customer")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<Order> get_orders() {
         return this._orders;
     }

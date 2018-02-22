@@ -9,7 +9,6 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,6 +24,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -54,7 +56,7 @@ public class Products implements Serializable {
     private List<PackageEntity> packageEntitiesForProduct5;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"products_ID_seq\"" , schema = "public", allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "\"products_ID_seq\"" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {
@@ -121,6 +123,7 @@ public class Products implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`p_catagory`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_category_TO_products_v9b20`"))
+    @Fetch(FetchMode.JOIN)
     public Category getCategory() {
         return this.category;
     }
@@ -134,8 +137,8 @@ public class Products implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "productsByProduct1")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productsByProduct1")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntitiesForProduct1() {
         return this.packageEntitiesForProduct1;
     }
@@ -145,8 +148,8 @@ public class Products implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "productsByProduct2")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productsByProduct2")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntitiesForProduct2() {
         return this.packageEntitiesForProduct2;
     }
@@ -156,8 +159,8 @@ public class Products implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "productsByProduct3")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productsByProduct3")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntitiesForProduct3() {
         return this.packageEntitiesForProduct3;
     }
@@ -167,8 +170,8 @@ public class Products implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "productsByProduct4")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productsByProduct4")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntitiesForProduct4() {
         return this.packageEntitiesForProduct4;
     }
@@ -178,8 +181,8 @@ public class Products implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "productsByProduct5")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "productsByProduct5")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntitiesForProduct5() {
         return this.packageEntitiesForProduct5;
     }

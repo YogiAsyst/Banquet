@@ -15,17 +15,6 @@
     } ],
     "operation" : "toast"
   },
-  "goToPage_add_order_page" : {
-    "_id" : "wm-goToPage_add_order_page-wm.NavigationVariable-1517556095582",
-    "name" : "goToPage_add_order_page",
-    "owner" : "App",
-    "category" : "wm.NavigationVariable",
-    "dataBinding" : [ ],
-    "operation" : "gotoPage",
-    "pageName" : "add_order_page",
-    "dataSet" : [ ],
-    "pageTransitions" : "none"
-  },
   "goToPage_create_order_page" : {
     "_id" : "wm-goToPage_create_order_page-wm.NavigationVariable-1518407000282",
     "name" : "goToPage_create_order_page",

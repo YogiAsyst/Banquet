@@ -1,6 +1,6 @@
 {
   "description" : "acs_banquet",
-  "draft" : false,
+  "draft" : true,
   "name" : "acs_banquet",
   "packageName" : "com.banquet.acs_banquet",
   "tables" : [ {
@@ -2458,6 +2458,176 @@
       "virtual" : false
     },
     "relations" : [ ],
+    "schema" : "public",
+    "temporals" : [ ],
+    "type" : "TABLE"
+  }, {
+    "catalog" : null,
+    "columns" : [ {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : false,
+        "defaultValue" : "",
+        "type" : "user-defined"
+      },
+      "constraintList" : [ ],
+      "fieldName" : "id",
+      "foreignKey" : false,
+      "generatorType" : "identity",
+      "generatorValue" : "",
+      "hidden" : false,
+      "javaType" : "integer",
+      "length" : 255,
+      "name" : "ID",
+      "nullable" : false,
+      "oldName" : null,
+      "partOfAnyRelation" : false,
+      "partOfForeignKey" : false,
+      "partOfPrimaryKey" : true,
+      "partOfUniqueKey" : true,
+      "period" : false,
+      "precision" : 10,
+      "primaryKey" : true,
+      "scale" : 0,
+      "sequenceSchema" : "public",
+      "sqlType" : "number",
+      "unique" : true
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : "",
+        "type" : "user-defined"
+      },
+      "constraintList" : [ ],
+      "fieldName" : "productId",
+      "foreignKey" : true,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "hidden" : false,
+      "javaType" : "integer",
+      "length" : 0,
+      "name" : "product_id",
+      "nullable" : true,
+      "oldName" : null,
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : true,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "period" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
+    }, {
+      "columnValue" : {
+        "insertable" : true,
+        "updatable" : true,
+        "defaultValue" : "",
+        "type" : "user-defined"
+      },
+      "constraintList" : [ ],
+      "fieldName" : "packageId",
+      "foreignKey" : true,
+      "generatorType" : "assigned",
+      "generatorValue" : null,
+      "hidden" : false,
+      "javaType" : "integer",
+      "length" : 0,
+      "name" : "package_id",
+      "nullable" : true,
+      "oldName" : null,
+      "partOfAnyRelation" : true,
+      "partOfForeignKey" : true,
+      "partOfPrimaryKey" : false,
+      "partOfUniqueKey" : false,
+      "period" : false,
+      "precision" : 10,
+      "primaryKey" : false,
+      "scale" : 0,
+      "sequenceSchema" : null,
+      "sqlType" : "number",
+      "unique" : false
+    } ],
+    "constraints" : [ ],
+    "entityName" : "PackageItem",
+    "filter" : null,
+    "fullyQualifiedName" : "com.banquet.acs_banquet.PackageItem",
+    "ignoreRefreshAfterInsert" : false,
+    "name" : "package_item",
+    "oldName" : null,
+    "primaryKey" : {
+      "columns" : [ "ID" ],
+      "composite" : false,
+      "generator" : {
+        "generatorType" : "identity",
+        "generatorValue" : "",
+        "schemaName" : "public"
+      },
+      "name" : null,
+      "virtual" : false
+    },
+    "relations" : [ {
+      "cardinality" : "ManyToOne",
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : false
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "fieldName" : null,
+      "mappings" : [ {
+        "sourceColumn" : "product_id",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_package_item_TO_produxNoDp",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "package_item",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "products",
+      "virtual" : false
+    }, {
+      "cardinality" : "ManyToOne",
+      "cascadeOptions" : {
+        "cascadeRemove" : "NONE",
+        "cascadeReplace" : false
+      },
+      "columnsUniqueKey" : false,
+      "composite" : false,
+      "fetchOptions" : {
+        "fetch" : true,
+        "columnsFilter" : [ ]
+      },
+      "fieldName" : null,
+      "mappings" : [ {
+        "sourceColumn" : "package_id",
+        "targetColumn" : "ID"
+      } ],
+      "name" : "FK_package_TO_package_it7f9H2",
+      "parentFetchOptions" : {
+        "fetch" : false,
+        "columnsFilter" : [ ]
+      },
+      "primary" : true,
+      "selfRelation" : false,
+      "sourceColumnsNotUniqueKey" : true,
+      "sourceTable" : "package_item",
+      "targetColumnsUniqueKey" : false,
+      "targetTable" : "package",
+      "virtual" : false
+    } ],
     "schema" : "public",
     "temporals" : [ ],
     "type" : "TABLE"

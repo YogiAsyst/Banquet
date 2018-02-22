@@ -162,7 +162,7 @@
     <bean class="com.wavemaker.runtime.security.rememberme.WMAppRememberMeServices" id="rememberMeServices">
         <constructor-arg value="WM_APP_KEY"/>
     </bean>
-    <bean class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter" id="rememberMeAuthFilter">
+    <bean class="com.wavemaker.runtime.security.rememberme.WMRememberMeAuthenticationFilter" id="rememberMeAuthFilter">
         <constructor-arg ref="authenticationManager"/>
         <constructor-arg ref="rememberMeServices"/>
     </bean>

@@ -24,54 +24,54 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.banquet.acs_banquet.PreOrder;
+import com.banquet.acs_banquet.Cart;
 
 
 /**
- * ServiceImpl object for domain model class PreOrder.
+ * ServiceImpl object for domain model class Cart.
  *
- * @see PreOrder
+ * @see Cart
  */
-@Service("acs_banquet.PreOrderService")
+@Service("acs_banquet.CartService")
 @Validated
-public class PreOrderServiceImpl implements PreOrderService {
+public class CartServiceImpl implements CartService {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(PreOrderServiceImpl.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(CartServiceImpl.class);
 
 
     @Autowired
-    @Qualifier("acs_banquet.PreOrderDao")
-    private WMGenericDao<PreOrder, Integer> wmGenericDao;
+    @Qualifier("acs_banquet.CartDao")
+    private WMGenericDao<Cart, Integer> wmGenericDao;
 
-    public void setWMGenericDao(WMGenericDao<PreOrder, Integer> wmGenericDao) {
+    public void setWMGenericDao(WMGenericDao<Cart, Integer> wmGenericDao) {
         this.wmGenericDao = wmGenericDao;
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
     @Override
-	public PreOrder create(PreOrder preOrder) {
-        LOGGER.debug("Creating a new PreOrder with information: {}", preOrder);
+	public Cart create(Cart cart) {
+        LOGGER.debug("Creating a new Cart with information: {}", cart);
 
-        PreOrder preOrderCreated = this.wmGenericDao.create(preOrder);
+        Cart cartCreated = this.wmGenericDao.create(cart);
         // reloading object from database to get database defined & server defined values.
-        return this.wmGenericDao.refresh(preOrderCreated);
+        return this.wmGenericDao.refresh(cartCreated);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PreOrder getById(Integer preorderId) throws EntityNotFoundException {
-        LOGGER.debug("Finding PreOrder by id: {}", preorderId);
-        return this.wmGenericDao.findById(preorderId);
+	public Cart getById(Integer cartId) throws EntityNotFoundException {
+        LOGGER.debug("Finding Cart by id: {}", cartId);
+        return this.wmGenericDao.findById(cartId);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public PreOrder findById(Integer preorderId) {
-        LOGGER.debug("Finding PreOrder by id: {}", preorderId);
+	public Cart findById(Integer cartId) {
+        LOGGER.debug("Finding Cart by id: {}", cartId);
         try {
-            return this.wmGenericDao.findById(preorderId);
+            return this.wmGenericDao.findById(cartId);
         } catch(EntityNotFoundException ex) {
-            LOGGER.debug("No PreOrder found with id: {}", preorderId, ex);
+            LOGGER.debug("No Cart found with id: {}", cartId, ex);
             return null;
         }
     }
@@ -79,23 +79,23 @@ public class PreOrderServiceImpl implements PreOrderService {
 
 	@Transactional(rollbackFor = EntityNotFoundException.class, value = "acs_banquetTransactionManager")
 	@Override
-	public PreOrder update(PreOrder preOrder) throws EntityNotFoundException {
-        LOGGER.debug("Updating PreOrder with information: {}", preOrder);
+	public Cart update(Cart cart) throws EntityNotFoundException {
+        LOGGER.debug("Updating Cart with information: {}", cart);
 
-        this.wmGenericDao.update(preOrder);
-        this.wmGenericDao.refresh(preOrder);
+        this.wmGenericDao.update(cart);
+        this.wmGenericDao.refresh(cart);
 
-        return preOrder;
+        return cart;
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
 	@Override
-	public PreOrder delete(Integer preorderId) throws EntityNotFoundException {
-        LOGGER.debug("Deleting PreOrder with id: {}", preorderId);
-        PreOrder deleted = this.wmGenericDao.findById(preorderId);
+	public Cart delete(Integer cartId) throws EntityNotFoundException {
+        LOGGER.debug("Deleting Cart with id: {}", cartId);
+        Cart deleted = this.wmGenericDao.findById(cartId);
         if (deleted == null) {
-            LOGGER.debug("No PreOrder found with id: {}", preorderId);
-            throw new EntityNotFoundException(String.valueOf(preorderId));
+            LOGGER.debug("No Cart found with id: {}", cartId);
+            throw new EntityNotFoundException(String.valueOf(cartId));
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
@@ -103,29 +103,29 @@ public class PreOrderServiceImpl implements PreOrderService {
 
     @Transactional(value = "acs_banquetTransactionManager")
 	@Override
-	public void delete(PreOrder preOrder) {
-        LOGGER.debug("Deleting PreOrder with {}", preOrder);
-        this.wmGenericDao.delete(preOrder);
+	public void delete(Cart cart) {
+        LOGGER.debug("Deleting Cart with {}", cart);
+        this.wmGenericDao.delete(cart);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
-	public Page<PreOrder> findAll(QueryFilter[] queryFilters, Pageable pageable) {
-        LOGGER.debug("Finding all PreOrders");
+	public Page<Cart> findAll(QueryFilter[] queryFilters, Pageable pageable) {
+        LOGGER.debug("Finding all Carts");
         return this.wmGenericDao.search(queryFilters, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<PreOrder> findAll(String query, Pageable pageable) {
-        LOGGER.debug("Finding all PreOrders");
+    public Page<Cart> findAll(String query, Pageable pageable) {
+        LOGGER.debug("Finding all Carts");
         return this.wmGenericDao.searchByQuery(query, pageable);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
     public Downloadable export(ExportType exportType, String query, Pageable pageable) {
-        LOGGER.debug("exporting data in the service acs_banquet for table PreOrder to {} format", exportType);
+        LOGGER.debug("exporting data in the service acs_banquet for table Cart to {} format", exportType);
         return this.wmGenericDao.export(exportType, query, pageable);
     }
 

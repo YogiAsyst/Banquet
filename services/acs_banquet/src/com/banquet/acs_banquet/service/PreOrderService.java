@@ -74,6 +74,13 @@ public interface PreOrderService {
 	 */
 	PreOrder delete(Integer preorderId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing PreOrder with the given object.
+	 *
+	 * @param preOrder The instance of the PreOrder to be deleted; value cannot be null.
+	 */
+	void delete(PreOrder preOrder);
+
 	/**
 	 * Find all PreOrders matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

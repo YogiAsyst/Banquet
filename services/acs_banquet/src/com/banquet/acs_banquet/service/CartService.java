@@ -18,71 +18,71 @@ import com.wavemaker.runtime.data.expression.QueryFilter;
 import com.wavemaker.runtime.data.model.AggregationInfo;
 import com.wavemaker.runtime.file.model.Downloadable;
 
-import com.banquet.acs_banquet.OrderItem;
+import com.banquet.acs_banquet.Cart;
 
 /**
- * Service object for domain model class {@link OrderItem}.
+ * Service object for domain model class {@link Cart}.
  */
-public interface OrderItemService {
+public interface CartService {
 
     /**
-     * Creates a new OrderItem. It does cascade insert for all the children in a single transaction.
+     * Creates a new Cart. It does cascade insert for all the children in a single transaction.
      *
-     * This method overrides the input field values using Server side or database managed properties defined on OrderItem if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Cart if any.
      *
-     * @param orderItem Details of the OrderItem to be created; value cannot be null.
-     * @return The newly created OrderItem.
+     * @param cart Details of the Cart to be created; value cannot be null.
+     * @return The newly created Cart.
      */
-	OrderItem create(@Valid OrderItem orderItem);
+	Cart create(@Valid Cart cart);
 
 
 	/**
-	 * Returns OrderItem by given id if exists.
+	 * Returns Cart by given id if exists.
 	 *
-	 * @param orderitemId The id of the OrderItem to get; value cannot be null.
-	 * @return OrderItem associated with the given orderitemId.
-     * @throws EntityNotFoundException If no OrderItem is found.
+	 * @param cartId The id of the Cart to get; value cannot be null.
+	 * @return Cart associated with the given cartId.
+     * @throws EntityNotFoundException If no Cart is found.
 	 */
-	OrderItem getById(Integer orderitemId) throws EntityNotFoundException;
+	Cart getById(Integer cartId) throws EntityNotFoundException;
 
     /**
-	 * Find and return the OrderItem by given id if exists, returns null otherwise.
+	 * Find and return the Cart by given id if exists, returns null otherwise.
 	 *
-	 * @param orderitemId The id of the OrderItem to get; value cannot be null.
-	 * @return OrderItem associated with the given orderitemId.
+	 * @param cartId The id of the Cart to get; value cannot be null.
+	 * @return Cart associated with the given cartId.
 	 */
-	OrderItem findById(Integer orderitemId);
+	Cart findById(Integer cartId);
 
 
 	/**
-	 * Updates the details of an existing OrderItem. It replaces all fields of the existing OrderItem with the given orderItem.
+	 * Updates the details of an existing Cart. It replaces all fields of the existing Cart with the given cart.
 	 *
-     * This method overrides the input field values using Server side or database managed properties defined on OrderItem if any.
+     * This method overrides the input field values using Server side or database managed properties defined on Cart if any.
      *
-	 * @param orderItem The details of the OrderItem to be updated; value cannot be null.
-	 * @return The updated OrderItem.
-	 * @throws EntityNotFoundException if no OrderItem is found with given input.
+	 * @param cart The details of the Cart to be updated; value cannot be null.
+	 * @return The updated Cart.
+	 * @throws EntityNotFoundException if no Cart is found with given input.
 	 */
-	OrderItem update(@Valid OrderItem orderItem) throws EntityNotFoundException;
+	Cart update(@Valid Cart cart) throws EntityNotFoundException;
 
     /**
-	 * Deletes an existing OrderItem with the given id.
+	 * Deletes an existing Cart with the given id.
 	 *
-	 * @param orderitemId The id of the OrderItem to be deleted; value cannot be null.
-	 * @return The deleted OrderItem.
-	 * @throws EntityNotFoundException if no OrderItem found with the given id.
+	 * @param cartId The id of the Cart to be deleted; value cannot be null.
+	 * @return The deleted Cart.
+	 * @throws EntityNotFoundException if no Cart found with the given id.
 	 */
-	OrderItem delete(Integer orderitemId) throws EntityNotFoundException;
+	Cart delete(Integer cartId) throws EntityNotFoundException;
 
     /**
-	 * Deletes an existing OrderItem with the given object.
+	 * Deletes an existing Cart with the given object.
 	 *
-	 * @param orderItem The instance of the OrderItem to be deleted; value cannot be null.
+	 * @param cart The instance of the Cart to be deleted; value cannot be null.
 	 */
-	void delete(OrderItem orderItem);
+	void delete(Cart cart);
 
 	/**
-	 * Find all OrderItems matching the given QueryFilter(s).
+	 * Find all Carts matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
      * This method returns Paginated results.
 	 *
@@ -90,30 +90,30 @@ public interface OrderItemService {
 	 *
      * @param queryFilters Array of queryFilters to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching OrderItems.
+     * @return Paginated list of matching Carts.
      *
      * @see QueryFilter
      * @see Pageable
      * @see Page
 	 */
     @Deprecated
-	Page<OrderItem> findAll(QueryFilter[] queryFilters, Pageable pageable);
+	Page<Cart> findAll(QueryFilter[] queryFilters, Pageable pageable);
 
     /**
-	 * Find all OrderItems matching the given input query. This method returns Paginated results.
+	 * Find all Carts matching the given input query. This method returns Paginated results.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param query The query to filter the results; No filters applied if the input is null/empty.
      * @param pageable Details of the pagination information along with the sorting options. If null returns all matching records.
-     * @return Paginated list of matching OrderItems.
+     * @return Paginated list of matching Carts.
      *
      * @see Pageable
      * @see Page
 	 */
-    Page<OrderItem> findAll(String query, Pageable pageable);
+    Page<Cart> findAll(String query, Pageable pageable);
 
     /**
-	 * Exports all OrderItems matching the given input query to the given exportType format.
+	 * Exports all Carts matching the given input query to the given exportType format.
      * Note: Go through the documentation for <u>query</u> syntax.
 	 *
      * @param exportType The format in which to export the data; value cannot be null.
@@ -128,11 +128,11 @@ public interface OrderItemService {
     Downloadable export(ExportType exportType, String query, Pageable pageable);
 
 	/**
-	 * Retrieve the count of the OrderItems in the repository with matching query.
+	 * Retrieve the count of the Carts in the repository with matching query.
      * Note: Go through the documentation for <u>query</u> syntax.
      *
      * @param query query to filter results. No filters applied if the input is null/empty.
-	 * @return The count of the OrderItem.
+	 * @return The count of the Cart.
 	 */
 	long count(String query);
 

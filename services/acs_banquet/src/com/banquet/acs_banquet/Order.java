@@ -7,10 +7,10 @@ package com.banquet.acs_banquet;
 
 import java.io.Serializable;
 import java.sql.Date;
+import java.sql.Time;
 import java.util.List;
 import java.util.Objects;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -26,6 +26,9 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 import org.hibernate.annotations.Cascade;
+import org.hibernate.annotations.CascadeType;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
@@ -47,15 +50,16 @@ public class Order implements Serializable {
     private String orderNotes;
     private Boolean approval1;
     private Boolean approval2;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
     private Date orderCreateDate;
     private Date orderDueDate;
+    private Time orderTime;
     private Customer customer;
     private User user;
     private List<OrderItem> orderItems;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"order_ID_seq\"" , schema = "public", allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "\"order_ID_seq\"" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {
@@ -138,8 +142,18 @@ public class Order implements Serializable {
         this.orderDueDate = orderDueDate;
     }
 
+    @Column(name = "`order_time`", nullable = true)
+    public Time getOrderTime() {
+        return this.orderTime;
+    }
+
+    public void setOrderTime(Time orderTime) {
+        this.orderTime = orderTime;
+    }
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`customer_id`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_customer_TO_order_ID_0190k`"))
+    @Fetch(FetchMode.JOIN)
     public Customer getCustomer() {
         return this.customer;
     }
@@ -154,6 +168,7 @@ public class Order implements Serializable {
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "`sales_id`", referencedColumnName = "`ID`", insertable = false, updatable = false, foreignKey = @ForeignKey(name = "`FK_user_TO_order_ID_sales_id`"))
+    @Fetch(FetchMode.JOIN)
     public User getUser() {
         return this.user;
     }
@@ -167,8 +182,8 @@ public class Order implements Serializable {
     }
 
     @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST, CascadeType.MERGE}, mappedBy = "_order")
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "_order")
+    @Cascade({CascadeType.SAVE_UPDATE})
     public List<OrderItem> getOrderItems() {
         return this.orderItems;
     }

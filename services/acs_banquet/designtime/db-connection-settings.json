@@ -12,28 +12,31 @@
   "port" : "5432",
   "schemaName" : "public",
   "tableFilter" : [ {
+    "table" : "package",
+    "schema" : "public"
+  }, {
+    "table" : "pre-order",
+    "schema" : "public"
+  }, {
+    "table" : "products",
+    "schema" : "public"
+  }, {
+    "table" : "category",
+    "schema" : "public"
+  }, {
     "table" : "customer",
     "schema" : "public"
   }, {
     "table" : "order_item",
     "schema" : "public"
   }, {
-    "table" : "package",
-    "schema" : "public"
-  }, {
     "table" : "user",
-    "schema" : "public"
-  }, {
-    "table" : "category",
-    "schema" : "public"
-  }, {
-    "table" : "products",
     "schema" : "public"
   }, {
     "table" : "order",
     "schema" : "public"
   }, {
-    "table" : "pre-order",
+    "table" : "cart",
     "schema" : "public"
   } ],
   "schemaFilter" : [ ],

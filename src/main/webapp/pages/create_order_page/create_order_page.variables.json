@@ -478,6 +478,19 @@
         "isRelated" : false,
         "defaultValue" : "",
         "scale" : 0
+      }, {
+        "fieldName" : "orderTime",
+        "type" : "time",
+        "fullyQualifiedType" : "time",
+        "columnName" : "order_time",
+        "isPrimaryKey" : false,
+        "notNull" : false,
+        "length" : 0,
+        "precision" : 0,
+        "generator" : "assigned",
+        "isRelated" : false,
+        "defaultValue" : "",
+        "scale" : 0
       } ],
       "entityName" : "Order",
       "fullyQualifiedName" : "com.banquet.acs_banquet.Order",
@@ -848,6 +861,19 @@
           "isRelated" : false,
           "defaultValue" : "",
           "scale" : 0
+        }, {
+          "fieldName" : "orderTime",
+          "type" : "time",
+          "fullyQualifiedType" : "time",
+          "columnName" : "order_time",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
         } ]
       }, {
         "fieldName" : "id",
@@ -895,7 +921,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 1,
+    "bindCount" : 10,
     "tableName" : "order_item",
     "tableType" : "TABLE",
     "properties" : [ "packageEntity", "_order" ],
@@ -920,7 +946,11 @@
     "name" : "Acs_banquetOrderItemData1",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "orderId",
+      "value" : "bind:Widgets.OrderTable1.selecteditem.id",
+      "type" : "number"
+    } ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "OrderItem",
@@ -1254,6 +1284,19 @@
           "isRelated" : false,
           "defaultValue" : "",
           "scale" : 0
+        }, {
+          "fieldName" : "orderTime",
+          "type" : "time",
+          "fullyQualifiedType" : "time",
+          "columnName" : "order_time",
+          "isPrimaryKey" : false,
+          "notNull" : false,
+          "length" : 0,
+          "precision" : 0,
+          "generator" : "assigned",
+          "isRelated" : false,
+          "defaultValue" : "",
+          "scale" : 0
         } ]
       }, {
         "fieldName" : "id",
@@ -1318,6 +1361,7 @@
       "watchOn" : "Acs_banquetOrderData",
       "package" : "com.banquet.acs_banquet.OrderItem"
     } ],
+    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.OrderItem"
   }
 }

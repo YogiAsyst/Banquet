@@ -51,26 +51,29 @@ public class OrderItemServiceImpl implements OrderItemService {
     @Override
 	public OrderItem create(OrderItem orderItem) {
         LOGGER.debug("Creating a new OrderItem with information: {}", orderItem);
-        return this.wmGenericDao.create(orderItem);
+
+        OrderItem orderItemCreated = this.wmGenericDao.create(orderItem);
+        // reloading object from database to get database defined & server defined values.
+        return this.wmGenericDao.refresh(orderItemCreated);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
 	public OrderItem getById(Integer orderitemId) throws EntityNotFoundException {
         LOGGER.debug("Finding OrderItem by id: {}", orderitemId);
-        OrderItem orderItem = this.wmGenericDao.findById(orderitemId);
-        if (orderItem == null){
-            LOGGER.debug("No OrderItem found with id: {}", orderitemId);
-            throw new EntityNotFoundException(String.valueOf(orderitemId));
-        }
-        return orderItem;
+        return this.wmGenericDao.findById(orderitemId);
     }
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
 	@Override
 	public OrderItem findById(Integer orderitemId) {
         LOGGER.debug("Finding OrderItem by id: {}", orderitemId);
-        return this.wmGenericDao.findById(orderitemId);
+        try {
+            return this.wmGenericDao.findById(orderitemId);
+        } catch(EntityNotFoundException ex) {
+            LOGGER.debug("No OrderItem found with id: {}", orderitemId, ex);
+            return null;
+        }
     }
 
 
@@ -79,12 +82,10 @@ public class OrderItemServiceImpl implements OrderItemService {
 	public OrderItem update(OrderItem orderItem) throws EntityNotFoundException {
         LOGGER.debug("Updating OrderItem with information: {}", orderItem);
 
-
         this.wmGenericDao.update(orderItem);
+        this.wmGenericDao.refresh(orderItem);
 
-        Integer orderitemId = orderItem.getId();
-
-        return this.wmGenericDao.findById(orderitemId);
+        return orderItem;
     }
 
     @Transactional(value = "acs_banquetTransactionManager")
@@ -98,6 +99,13 @@ public class OrderItemServiceImpl implements OrderItemService {
         }
         this.wmGenericDao.delete(deleted);
         return deleted;
+    }
+
+    @Transactional(value = "acs_banquetTransactionManager")
+	@Override
+	public void delete(OrderItem orderItem) {
+        LOGGER.debug("Deleting OrderItem with {}", orderItem);
+        this.wmGenericDao.delete(orderItem);
     }
 
 	@Transactional(readOnly = true, value = "acs_banquetTransactionManager")

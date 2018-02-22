@@ -75,6 +75,13 @@ public interface CustomerService {
 	 */
 	Customer delete(Integer customerId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Customer with the given object.
+	 *
+	 * @param customer The instance of the Customer to be deleted; value cannot be null.
+	 */
+	void delete(Customer customer);
+
 	/**
 	 * Find all Customers matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.

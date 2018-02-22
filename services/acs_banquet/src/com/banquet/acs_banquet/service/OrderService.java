@@ -75,6 +75,13 @@ public interface OrderService {
 	 */
 	Order delete(Integer orderId) throws EntityNotFoundException;
 
+    /**
+	 * Deletes an existing Order with the given object.
+	 *
+	 * @param _order The instance of the Order to be deleted; value cannot be null.
+	 */
+	void delete(Order _order);
+
 	/**
 	 * Find all Orders matching the given QueryFilter(s).
      * All the QueryFilter(s) are ANDed to filter the results.
