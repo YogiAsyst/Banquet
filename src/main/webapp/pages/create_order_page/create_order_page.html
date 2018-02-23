@@ -100,16 +100,13 @@
                     </wm-livetable>
                 </wm-wizardstep>
                 <wm-wizardstep name="wizardstep3" title="#3 - Order Item">
-                    <wm-table editmode="inline" name="OrderItemTable1" title="" dataset="bind:Variables.Acs_banquetOrderItemData1.dataSet" navigation="Basic">
-                        <wm-table-column binding="_order.orderNumber" caption="Order Number" edit-widget-type="text" related-entity-name="Order" type="string" generator="assigned" defaultvalue="bind:Widgets.OrderTable1.selecteditem.orderNumber" show="true"
-                            readonly="false"></wm-table-column>
-                        <wm-table-column binding="packageEntity.packCode" caption="Pack Code" edit-widget-type="text" related-entity-name="PackageEntity" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="quantity" caption="Quantity" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="itemNotes" caption="Item Notes" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
-                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
-                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
-                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                    <wm-table editmode="inline" name="OrderItemTable1" title="" dataset="bind:Variables.Acs_banquetOrderItemData.dataSet" navigation="Basic">
+                        <wm-table-column binding="packageEntity.packCode" caption="Pack Code" primary-key="false" edit-widget-type="text" related-entity-name="PackageEntity" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="quantity" caption="Quantity" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="itemNotes" caption="Item Notes" primary-key="false" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="_order.orderDueDate" caption="Event Date" primary-key="false" edit-widget-type="date" related-entity-name="Order" type="date" generator="assigned" readonly="true" datepattern="yyyy-MM-dd"
+                            formatpattern="toDate" show="true"></wm-table-column>
+                        <wm-table-column binding="_order.orderTime" caption="Event Time" primary-key="false" edit-widget-type="time" related-entity-name="Order" type="time" generator="assigned" readonly="true" show="true"></wm-table-column>
                     </wm-table>
                 </wm-wizardstep>
                 <wm-wizardstep name="wizardstep4" title="#4 - Check Out">
