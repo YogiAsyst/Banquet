@@ -39,7 +39,7 @@ public class OrderItem implements Serializable {
     private Order _order;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"order_item_ID_seq\"" , allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "`order_item_ID_seq`" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {

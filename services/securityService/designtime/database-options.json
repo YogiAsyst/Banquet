@@ -2,8 +2,8 @@
   "modelName" : "acs_banquet",
   "entityName" : "User",
   "tableName" : "user",
-  "unamePropertyName" : "uname",
-  "unameColumnName" : "u_name",
+  "unamePropertyName" : "uemail",
+  "unameColumnName" : "u_email",
   "uidPropertyName" : "id",
   "uidColumnName" : "ID",
   "pwPropertyName" : "upassword",
@@ -15,5 +15,5 @@
   "tenantIdField" : null,
   "defTenantId" : 0,
   "tenantIdPropertyName" : null,
-  "queryType" : "HQL"
+  "queryType" : "NATIVE_SQL"
 }

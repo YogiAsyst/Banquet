@@ -56,7 +56,7 @@ public class Products implements Serializable {
     private List<PackageEntity> packageEntitiesForProduct5;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"products_ID_seq\"" , allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "`products_ID_seq`" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {

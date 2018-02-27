@@ -17,6 +17,16 @@ Application.$controller("user_management_pagePageController", ["$scope", functio
 }]);
 
 
+
+
+
+Application.$controller("dialog1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
 Application.$controller("UserTable1Controller", ["$scope",
 	function($scope) {
 		"use strict";

@@ -44,7 +44,7 @@ public class PackageEntity implements Serializable {
 
     private Integer id;
     private Integer staffId;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
     private Date createdDate;
     private Integer product1;
     private Integer product2;
@@ -64,7 +64,7 @@ public class PackageEntity implements Serializable {
     private List<PreOrder> preOrders;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"package_ID_seq\"" , allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "`package_ID_seq`" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {

@@ -8,7 +8,7 @@
   "name" : "user",
   "description" : null,
   "roleConfig" : {
-    "landingPage" : "dashboard_page"
+    "landingPage" : "Main"
   }
 }, {
   "name" : "staff",

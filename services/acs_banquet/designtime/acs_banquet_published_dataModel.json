@@ -15,8 +15,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"category_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "category_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -31,7 +31,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -104,9 +104,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"category_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "category_ID_seq",
+        "schemaName" : null
       },
       "name" : "category_pkey",
       "virtual" : false
@@ -127,8 +127,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"user_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "user_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -143,7 +143,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -191,7 +191,7 @@
       "javaType" : "string",
       "length" : 255,
       "name" : "u_password",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "u_password",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -220,7 +220,7 @@
       "javaType" : "string",
       "length" : 255,
       "name" : "u_first_name",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "u_first_name",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -307,7 +307,7 @@
       "javaType" : "string",
       "length" : 255,
       "name" : "u_phone",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "u_phone",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -336,7 +336,7 @@
       "javaType" : "string",
       "length" : 255,
       "name" : "u_email",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "u_email",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -423,7 +423,7 @@
       "javaType" : "string",
       "length" : 255,
       "name" : "u_role",
-      "nullable" : true,
+      "nullable" : false,
       "oldName" : "u_role",
       "partOfAnyRelation" : false,
       "partOfForeignKey" : false,
@@ -477,7 +477,7 @@
       "foreignKey" : false,
       "generatorType" : "assigned",
       "generatorValue" : null,
-      "hidden" : true,
+      "hidden" : false,
       "javaType" : "datetime",
       "length" : 0,
       "name" : "u_last_login",
@@ -506,9 +506,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"user_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "user_ID_seq",
+        "schemaName" : null
       },
       "name" : "user_pkey",
       "virtual" : false
@@ -529,8 +529,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"order_item_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "order_item_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -545,7 +545,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -676,9 +676,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"order_item_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "order_item_ID_seq",
+        "schemaName" : null
       },
       "name" : "order_item_pkey",
       "virtual" : false
@@ -757,8 +757,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"products_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "products_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -773,7 +773,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -962,9 +962,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"products_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "products_ID_seq",
+        "schemaName" : null
       },
       "name" : "products_pkey",
       "virtual" : false
@@ -1014,8 +1014,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"customer_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "customer_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -1030,7 +1030,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -1161,9 +1161,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"customer_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "customer_ID_seq",
+        "schemaName" : null
       },
       "name" : "customer_pkey",
       "virtual" : false
@@ -1184,8 +1184,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"order_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "order_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -1200,7 +1200,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -1476,9 +1476,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"order_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "order_ID_seq",
+        "schemaName" : null
       },
       "name" : "order_pkey",
       "virtual" : false
@@ -1557,8 +1557,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"package_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "package_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -1573,7 +1573,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -1878,9 +1878,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"package_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "package_ID_seq",
+        "schemaName" : null
       },
       "name" : "package_pkey",
       "virtual" : false
@@ -2075,8 +2075,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"pre-order_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "pre-order_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -2091,7 +2091,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -2222,9 +2222,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"pre-order_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "pre-order_ID_seq",
+        "schemaName" : null
       },
       "name" : "pre-order_pkey",
       "virtual" : false
@@ -2274,8 +2274,8 @@
       "constraintList" : [ ],
       "fieldName" : "id",
       "foreignKey" : false,
-      "generatorType" : "identity",
-      "generatorValue" : "\"cart_ID_seq\"",
+      "generatorType" : "sequence",
+      "generatorValue" : "cart_ID_seq",
       "hidden" : false,
       "javaType" : "integer",
       "length" : 0,
@@ -2290,7 +2290,7 @@
       "precision" : 10,
       "primaryKey" : true,
       "scale" : 0,
-      "sequenceSchema" : "public",
+      "sequenceSchema" : null,
       "sqlType" : "number",
       "unique" : true
     }, {
@@ -2450,9 +2450,9 @@
       "columns" : [ "ID" ],
       "composite" : false,
       "generator" : {
-        "generatorType" : "identity",
-        "generatorValue" : "\"cart_ID_seq\"",
-        "schemaName" : "public"
+        "generatorType" : "sequence",
+        "generatorValue" : "cart_ID_seq",
+        "schemaName" : null
       },
       "name" : "cart_pkey",
       "virtual" : false

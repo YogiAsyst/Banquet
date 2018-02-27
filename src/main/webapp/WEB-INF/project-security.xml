@@ -203,7 +203,7 @@
                 </entry>
                 <entry key="user">
                     <bean class="com.wavemaker.commons.model.security.RoleConfig">
-                        <property name="landingPage" value="dashboard_page"/>
+                        <property name="landingPage" value="Main"/>
                     </bean>
                 </entry>
                 <entry key="staff">
@@ -244,7 +244,7 @@
     </bean>
     <bean class="com.wavemaker.runtime.security.provider.database.users.DefaultUserProviderImpl" id="defaultUserProvider">
         <property name="usersByUsernameQuery">
-            <value>SELECT id, upassword, 1, uname FROM User WHERE uname = ?</value>
+            <value>SELECT id, upassword, 1, uemail FROM User WHERE uemail = ?</value>
         </property>
         <property name="hql" value="true"/>
         <property name="hibernateTemplate">
@@ -260,7 +260,7 @@
             <value>ROLE_</value>
         </property>
         <property name="authoritiesByUsernameQuery">
-            <value>SELECT id, urole FROM User WHERE uname = ?</value>
+            <value>SELECT id, urole FROM User WHERE uemail = ?</value>
         </property>
         <property name="rolesByQuery" value="true"/>
         <property name="hibernateTemplate">

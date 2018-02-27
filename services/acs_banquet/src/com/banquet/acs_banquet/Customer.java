@@ -41,7 +41,7 @@ public class Customer implements Serializable {
     private List<Order> _orders;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"customer_ID_seq\"" , allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "`customer_ID_seq`" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {

@@ -50,7 +50,7 @@ public class Order implements Serializable {
     private String orderNotes;
     private Boolean approval1;
     private Boolean approval2;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
     private Date orderCreateDate;
     private Date orderDueDate;
     private Time orderTime;
@@ -59,7 +59,7 @@ public class Order implements Serializable {
     private List<OrderItem> orderItems;
 
     @Id
-    @SequenceGenerator(name = "generator", sequenceName = "\"order_ID_seq\"" , allocationSize = 1)
+    @SequenceGenerator(name = "generator", sequenceName = "`order_ID_seq`" , allocationSize = 1)
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "generator")
     @Column(name = "`ID`", nullable = false, scale = 0, precision = 10)
     public Integer getId() {
