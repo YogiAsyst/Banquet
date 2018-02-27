@@ -121,7 +121,7 @@
                                         <wm-gridrow name="gridrow16">
                                             <wm-gridcolumn columnwidth="12" name="gridcolumn26">
                                                 <wm-composite name="composite4">
-                                                    <wm-label class="col-md-3 control-label" caption="Date" padding="8px unset unset unset" name="label8"></wm-label>
+                                                    <wm-label class="col-md-3 control-label" caption="Event Date" padding="8px unset unset unset" name="label8"></wm-label>
                                                     <wm-container class="col-md-9" name="container4">
                                                         <wm-text name="text4" readonly="true" placeholder="bind:Widgets.OrderTable1.selecteditem.orderDueDate"></wm-text>
                                                     </wm-container>
@@ -174,34 +174,24 @@
                                                         </wm-gridcolumn>
                                                     </wm-gridrow>
                                                     <wm-gridrow name="gridrow16_1">
-                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn26_1">
-                                                            <wm-label caption="Quantity" padding="8px unset unset unset" name="label9_1"></wm-label>
-                                                        </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn27_1">
-                                                            <wm-text placeholder="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].quantity" readonly="true" name="text6"></wm-text>
-                                                        </wm-gridcolumn>
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn26_1"></wm-gridcolumn>
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn27_1"></wm-gridcolumn>
                                                     </wm-gridrow>
                                                 </wm-layoutgrid>
                                             </wm-container>
                                             <wm-container padding="unset unset unset 1.25em" name="container7">
-                                                <wm-layoutgrid name="layoutgrid5">
+                                                <wm-layoutgrid name="layoutgrid7">
                                                     <wm-gridrow name="gridrow17">
-                                                        <wm-gridcolumn columnwidth="2" name="gridcolumn27">
-                                                            <wm-picture width="32pt" height="32pt" name="Picture" picturesource="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].packageEntity.productsByProduct1.ppicture" class="media-object"></wm-picture>
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn28">
+                                                            <wm-label caption="Quantity" padding="8px unset unset unset" name="label9_1"></wm-label>
                                                         </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="2" name="gridcolumn28">
-                                                            <wm-picture width="32pt" height="32pt" picturesource="bind:Variables.Acs_banquetOrderItemData.dataSet.packageEntity.productsByProduct2.ppicture" class="media-object" name="picture2"></wm-picture>
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn29">
+                                                            <wm-text placeholder="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].quantity" readonly="true" name="text6"></wm-text>
                                                         </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="2" name="gridcolumn31">
-                                                            <wm-picture width="32pt" height="32pt" picturesource="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].packageEntity.productsByProduct3.ppicture" class="media-object" name="picture3"></wm-picture>
-                                                        </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="2" name="gridcolumn32">
-                                                            <wm-picture width="32pt" height="32pt" picturesource="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].packageEntity.productsByProduct4.ppicture" class="media-object" name="picture4"></wm-picture>
-                                                        </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="3" name="gridcolumn34">
-                                                            <wm-picture width="32pt" height="32pt" picturesource="bind:Variables.Acs_banquetOrderItemData.dataSet.data[$i].packageEntity.productsByProduct5.ppicture" class="media-object" name="picture5"></wm-picture>
-                                                        </wm-gridcolumn>
-                                                        <wm-gridcolumn columnwidth="1" name="gridcolumn35"></wm-gridcolumn>
+                                                    </wm-gridrow>
+                                                    <wm-gridrow name="gridrow18">
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn30"></wm-gridcolumn>
+                                                        <wm-gridcolumn columnwidth="6" name="gridcolumn31"></wm-gridcolumn>
                                                     </wm-gridrow>
                                                 </wm-layoutgrid>
                                             </wm-container>

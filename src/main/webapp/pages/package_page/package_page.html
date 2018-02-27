@@ -20,8 +20,8 @@
                         <wm-table-column binding="productsByProduct3.pname" caption="Product 3" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
                         <wm-table-column binding="productsByProduct4.pname" caption="Product 4" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
                         <wm-table-column binding="productsByProduct5.pname" caption="Product 5" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
-                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
-                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false"></wm-table-action>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button"></wm-table-action>
                         <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
                         <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
                     </wm-table>
