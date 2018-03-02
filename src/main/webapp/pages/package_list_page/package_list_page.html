@@ -1,0 +1,157 @@
+<wm-page data-ng-controller="package_list_pagePageController" pagetitle="Package" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-panel iconclass="" autoclose="outsideClick" title="Package" name="panel1" class="panel-success">
+                <wm-panel-footer name="panel_footer1">
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label>
+                </wm-panel-footer>
+                <wm-livetable formlayout="dialog" name="PackageEntityLiveTable1">
+                    <wm-table gridfirstrowselect="false" editmode="dialog" name="PackageEntityTable1" title="" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" navigation="Basic" filtermode="multicolumn" enablecolumnselection="false" exportformat="EXCEL,CSV"
+                        showrecordcount="true" on-select="Widgets.dialog1.open()">
+                        <wm-table-column binding="packCode" caption="Code" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="packName" caption="Name" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="packDescription" caption="Description" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="rating" caption="Rating" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="price" caption="Price" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="productsByProduct1.pcode" caption="Product 1" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct2.pcode" caption="Product 2" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct3.pcode" caption="Product 3" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="productsByProduct4.pcode" caption="Product 4" edit-widget-type="text" related-entity-name="Products" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                    <wm-liveform errormessage="" title="Create Package" formlayout="dialog" iconclass="wi wi-edit" name="PackageEntityLiveForm1" dataset="bind:Variables.Acs_banquetPackageEntityData.dataSet" captionalign="left" captionposition="top">
+                        <wm-layoutgrid columns="2" name="layoutgrid1">
+                            <wm-gridrow name="gridrow1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn1">
+                                    <wm-form-field name="packCode" displayname="Code" show="true" primary-key="false" generator="assigned" key="packCode" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn2">
+                                    <wm-form-field name="productsByProduct1" displayname="Product 1" show="true" primary-key="false" generator="assigned" key="productsByProduct1" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" displayexpression="pcode + ' -  ' + pname" orderby="id:asc"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow2">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn3">
+                                    <wm-form-field name="packName" displayname="Name" show="true" primary-key="false" generator="assigned" key="packName" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn4">
+                                    <wm-form-field name="productsByProduct2" displayname="Product 2" show="true" primary-key="false" generator="assigned" key="productsByProduct2" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" orderby="id:asc" displayexpression="pcode + ' - ' + pname"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow3">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn5">
+                                    <wm-form-field name="packDescription" displayname="Description" show="true" primary-key="false" generator="assigned" key="packDescription" type="string" readonly="false" required="false" widget="textarea" maxchars="255"
+                                        placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn6">
+                                    <wm-form-field name="productsByProduct3" displayname="Product 3" show="true" primary-key="false" generator="assigned" key="productsByProduct3" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" orderby="id:asc" displayexpression="pcode + ' - ' + pname"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow4">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn7">
+                                    <wm-form-field name="rating" displayname="Rating" show="true" primary-key="false" generator="assigned" key="rating" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn8">
+                                    <wm-form-field name="productsByProduct4" displayname="Product 4" show="true" primary-key="false" generator="assigned" key="productsByProduct4" type="list" is-related="true" readonly="false" required="false" widget="select"
+                                        placeholder="Select value" orderby="id:asc" displayexpression="pcode + ' - ' + pname"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow5">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn9">
+                                    <wm-form-field name="price" displayname="Price" show="true" primary-key="false" generator="assigned" key="price" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="sequence" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-livetable>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Package Detail" iconclass="wi wi-file-text" name="dialog1">
+            <wm-layoutgrid name="layoutgrid2">
+                <wm-gridrow name="gridrow6">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn11">
+                        <wm-composite name="composite1">
+                            <wm-label class="col-md-3 control-label" name="label6" padding="9px unset unset unset" caption="Code"></wm-label>
+                            <wm-container class="col-md-9" name="container1">
+                                <wm-text name="text1" readonly="true" placeholder="" datavalue="bind:Widgets.PackageEntityTable1.selecteditem.packCode"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn12" padding="unset unset unset 5px">
+                        <wm-composite name="composite3">
+                            <wm-label class="col-md-3 control-label" padding="9px unset unset unset" caption="Rating" name="label8"></wm-label>
+                            <wm-container class="col-md-9" name="container3">
+                                <wm-rating name="rating1" margin="8px unset unset unset" datavalue="bind:Widgets.PackageEntityTable1.selecteditem.rating"></wm-rating>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn17" padding="unset unset unset 5px">
+                        <wm-composite name="composite5">
+                            <wm-label class="col-md-3 control-label" padding="9px unset unset unset" caption="Price" name="label10"></wm-label>
+                            <wm-container class="col-md-9" name="container5">
+                                <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.PackageEntityTable1.selecteditem.price" name="text5"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow7">
+                    <wm-gridcolumn columnwidth="4" name="gridcolumn13">
+                        <wm-composite name="composite2">
+                            <wm-label class="col-md-3 control-label" padding="9px unset unset unset" caption="Name" name="label7"></wm-label>
+                            <wm-container class="col-md-9" name="container2">
+                                <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.PackageEntityTable1.selecteditem.packName" name="text2"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="8" name="gridcolumn14" padding="unset unset unset 5px">
+                        <wm-composite name="composite4">
+                            <wm-label class="col-md-3 control-label" padding="9px unset unset unset" caption="Description" name="label9"></wm-label>
+                            <wm-container class="col-md-9" name="container4">
+                                <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.PackageEntityTable1.selecteditem.packDescription" name="text4"></wm-text>
+                            </wm-container>
+                        </wm-composite>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+                <wm-gridrow name="gridrow8">
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn16" horizontalalign="center">
+                        <wm-container content="product_package_partial_page" name="container9">
+                            <wm-param name="prod_id" value="bind:Widgets.PackageEntityTable1.selecteditem.product1" type="integer"></wm-param>
+                        </wm-container>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn18" horizontalalign="center">
+                        <wm-container content="product_package_partial_page" name="container8">
+                            <wm-param name="prod_id" value="bind:Widgets.PackageEntityTable1.selecteditem.product2" type="integer"></wm-param>
+                        </wm-container>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn19" horizontalalign="center">
+                        <wm-container content="product_package_partial_page" name="container7">
+                            <wm-param name="prod_id" value="bind:Widgets.PackageEntityTable1.selecteditem.product3" type="integer"></wm-param>
+                        </wm-container>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="3" name="gridcolumn20" horizontalalign="center">
+                        <wm-container name="container6" content="product_package_partial_page">
+                            <wm-param name="prod_id" value="bind:Widgets.PackageEntityTable1.selecteditem.product4" type="integer"></wm-param>
+                        </wm-container>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button1"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

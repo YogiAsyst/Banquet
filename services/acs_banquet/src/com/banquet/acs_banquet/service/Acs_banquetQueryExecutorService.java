@@ -50,6 +50,12 @@ public interface Acs_banquetQueryExecutorService {
 
     Downloadable exportGet_cat_2_product(ExportType exportType, Pageable pageable);
 
+    Page<GetProductPictureResponse> executeGet_product_picture(Integer prodId, Pageable pageable);
+
+    InputStream getPpictureContentForGet_product_picture(String pname, Integer prodId) throws EntityNotFoundException;
+
+    Downloadable exportGet_product_picture(ExportType exportType, Integer prodId, Pageable pageable);
+
 }
 
 

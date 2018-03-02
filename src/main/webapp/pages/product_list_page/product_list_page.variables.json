@@ -1,14 +1,10 @@
 {
   "Acs_banquetProductsData" : {
-    "_id" : "wm-Acs_banquetProductsData-wm.LiveVariable-1517385118059",
+    "_id" : "wm-Acs_banquetProductsData-wm.LiveVariable-1519789200877",
     "name" : "Acs_banquetProductsData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ {
-      "target" : "pcode",
-      "value" : "bind:pageParams.prod_id",
-      "type" : "number"
-    } ],
+    "dataBinding" : [ ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "Products",
@@ -22,7 +18,7 @@
     "transformationRequired" : false,
     "liveSource" : "acs_banquet",
     "ignoreCase" : true,
-    "matchMode" : "exact",
+    "matchMode" : "start",
     "orderBy" : "id asc",
     "propertiesMap" : {
       "columns" : [ {
@@ -181,7 +177,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 1,
+    "bindCount" : 3,
     "tableName" : "products",
     "tableType" : "TABLE",
     "properties" : [ "category" ],
@@ -192,7 +188,6 @@
       "watchOn" : "Acs_banquetCategoryData",
       "package" : "com.banquet.acs_banquet.Products"
     } ],
-    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.Products"
   }
 }

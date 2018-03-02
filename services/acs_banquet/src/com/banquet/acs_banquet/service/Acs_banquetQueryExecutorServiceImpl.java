@@ -223,6 +223,42 @@ public class Acs_banquetQueryExecutorServiceImpl implements Acs_banquetQueryExec
         return queryExecutor.exportNamedQueryData("get_cat_2_product", params, exportType, GetCat2ProductResponse.class, pageable);
     }
 
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<GetProductPictureResponse> executeGet_product_picture(Integer prodId, Pageable pageable) {
+        Map params = new HashMap(1);
+
+        params.put("prod_id", prodId);
+
+        return queryExecutor.executeNamedQuery("get_product_picture", params, GetProductPictureResponse.class, pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public InputStream getPpictureContentForGet_product_picture(String pname, Integer prodId) throws EntityNotFoundException {
+        Map params = new HashMap(1);
+
+        params.put("pname", pname);
+        params.put("prod_id", prodId);
+
+        GetProductPictureResponse _result =  queryExecutor.executeNamedQuery("get_product_picture__identifier", params, GetProductPictureResponse.class);
+        if(_result.getPpicture() == null) {
+            LOGGER.debug("Blob content not exists for ppicture in query get_product_picture");
+            throw new BlobContentNotFoundException("Blob content not found for ppicture in query get_product_picture");
+        }
+        return new ByteArrayInputStream(_result.getPpicture());
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Downloadable exportGet_product_picture(ExportType exportType, Integer prodId, Pageable pageable) {
+        Map params = new HashMap(1);
+
+        params.put("prod_id", prodId);
+
+        return queryExecutor.exportNamedQueryData("get_product_picture", params, exportType, GetProductPictureResponse.class, pageable);
+    }
+
 }
 
 

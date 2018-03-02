@@ -134,4 +134,26 @@ select p5.p_picture as pict, p5.p_name, p5.p_rating from products p5, package pc
     <query-param name="prating" type="java.lang.Integer"/>
     <query-param name="catName" type="java.lang.String"/>
     </sql-query>
+
+    <sql-query name="get_product_picture">
+        <![CDATA[
+        select p_picture, p_name from products where products."ID"=:prod_id
+        ]]>
+    <query-param name="prod_id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="get_product_picture__count">
+        <![CDATA[
+        select count(*) from (select p_picture, p_name from products where products."ID"=:prod_id) wmTempTable
+        ]]>
+    <query-param name="prod_id" type="java.lang.Integer"/>
+    </sql-query>
+
+    <sql-query name="get_product_picture__identifier">
+        <![CDATA[
+        select * from (select p_picture, p_name from products where products."ID"=:prod_id) wmTempTable where "p_name"=:pname
+        ]]>
+    <query-param name="prod_id" type="java.lang.Integer"/>
+    <query-param name="pname" type="java.lang.String"/>
+    </sql-query>
 </hibernate-mapping>

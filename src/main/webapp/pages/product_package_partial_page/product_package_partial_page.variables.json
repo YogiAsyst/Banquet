@@ -1,0 +1,54 @@
+{
+  "get_product_picture" : {
+    "_id" : "wm-get_product_picture-wm.ServiceVariable-1519958082660",
+    "name" : "get_product_picture",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "prod_id",
+      "value" : "bind:pageParams.prod_id",
+      "type" : "integer"
+    } ],
+    "type" : "com.banquet.acs_banquet.models.query.GetProductPictureResponse",
+    "service" : "acs_banquet",
+    "operation" : "executeGet_product_picture",
+    "operationId" : "QueryExecutionController_executeGet_product_picture",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : true,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "QueryExecution"
+  },
+  "get_products" : {
+    "_id" : "wm-get_products-wm.ServiceVariable-1519873013342",
+    "name" : "get_products",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "id",
+      "value" : "bind:pageParams.prod_id",
+      "type" : "integer"
+    } ],
+    "type" : "com.banquet.acs_banquet.Products",
+    "service" : "acs_banquet",
+    "operation" : "getProducts",
+    "operationId" : "ProductsController_getProducts",
+    "operationType" : "get",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Products"
+  }
+}

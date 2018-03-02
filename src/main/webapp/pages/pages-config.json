@@ -35,6 +35,10 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "new_order_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "order_item_detail",
   "type" : "PARTIAL",
   "params" : [ {
@@ -46,11 +50,26 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "package_list_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
   "name" : "package_page",
   "type" : "PAGE",
   "params" : [ ]
 }, {
   "name" : "product_detail_part",
+  "type" : "PARTIAL",
+  "params" : [ {
+    "name" : "prod_id",
+    "type" : "integer"
+  } ]
+}, {
+  "name" : "product_list_page",
+  "type" : "PAGE",
+  "params" : [ ]
+}, {
+  "name" : "product_package_partial_page",
   "type" : "PARTIAL",
   "params" : [ {
     "name" : "prod_id",

@@ -1,0 +1,143 @@
+<wm-page data-ng-controller="product_list_pagePageController" pagetitle="Product" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-panel iconclass="" autoclose="outsideClick" title="Product" name="panel1" class="panel-success">
+                <wm-panel-footer name="panel_footer1">
+                    <wm-label padding="unset 0.5em" class="text-muted" caption="Addition Info" name="label1"></wm-label>
+                </wm-panel-footer>
+                <wm-livetable formlayout="dialog" name="ProductsLiveTable1">
+                    <wm-table gridfirstrowselect="false" editmode="dialog" name="ProductsTable1" title="" dataset="bind:Variables.Acs_banquetProductsData.dataSet" navigation="Basic" filtermode="multicolumn" enablecolumnselection="true" showrecordcount="true"
+                        exportformat="EXCEL,CSV" on-select="Widgets.dialog1.open()">
+                        <wm-table-column binding="pcode" caption="Code" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="pname" caption="Name" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="pdescription" caption="Description" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="category.catName" caption="Category" edit-widget-type="text" related-entity-name="Category" type="string" generator="assigned" readonly="true" show="true"></wm-table-column>
+                        <wm-table-column binding="prating" caption="Rating" edit-widget-type="number" type="integer" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="pprice" caption="Price" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                    <wm-liveform errormessage="" title="Add Product" formlayout="dialog" iconclass="wi wi-edit" name="ProductsLiveForm1" dataset="bind:Variables.Acs_banquetProductsData.dataSet" captionalign="left" captionposition="top">
+                        <wm-layoutgrid columns="3" name="layoutgrid4_1">
+                            <wm-gridrow name="gridrow10_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn14">
+                                    <wm-form-field name="pcode" displayname="Code" show="true" primary-key="false" generator="assigned" key="pcode" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn15">
+                                    <wm-form-field name="category" displayname="Category" show="true" primary-key="false" generator="assigned" key="category" type="list" is-related="true" readonly="false" required="true" widget="select" placeholder="Select value"
+                                        displayexpression="catName" orderby="id:asc"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn16">
+                                    <wm-form-field name="ppicture" displayname="Picture" show="true" primary-key="false" generator="assigned" key="ppicture" type="blob" readonly="false" required="false" widget="upload" maxchars="0"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow11_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn17">
+                                    <wm-form-field name="pname" displayname="Name" show="true" primary-key="false" generator="assigned" key="pname" type="string" readonly="false" required="true" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn18">
+                                    <wm-form-field name="pdescription" displayname="Description" show="true" primary-key="false" generator="assigned" key="pdescription" type="string" readonly="false" required="false" widget="textarea" maxchars="255" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow12_1">
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn20">
+                                    <wm-form-field name="prating" displayname="Rating" show="true" primary-key="false" generator="assigned" key="prating" type="integer" readonly="false" required="false" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="4" name="gridcolumn21_1">
+                                    <wm-form-field name="pprice" displayname="Price" show="true" primary-key="false" generator="assigned" key="pprice" type="string" readonly="false" required="false" widget="text" maxchars="255" inputtype="text" placeholder="Enter value"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-form-field name="id" displayname="Id" show="false" primary-key="true" generator="sequence" key="id" type="integer" readonly="true" required="true" step="0" widget="number" inputtype="number" placeholder="Enter value"></wm-form-field>
+                        <wm-form-action key="cancel" display-name="Cancel" show="true" class="form-cancel btn-secondary" iconclass="wi wi-cancel" title="Cancel" action="cancel()" disabled="false" type="button" update-mode="true"></wm-form-action>
+                        <wm-form-action key="save" display-name="Save" show="true" class="form-save btn-success" iconclass="wi wi-save" title="Save" disabled="false" type="submit" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-livetable>
+            </wm-panel>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Product Detail" iconclass="wi wi-file-text" name="dialog1">
+            <wm-layoutgrid name="layoutgrid4">
+                <wm-gridrow name="gridrow13">
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn27">
+                        <wm-layoutgrid name="layoutgrid3">
+                            <wm-gridrow name="gridrow15">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn31">
+                                    <wm-composite name="composite5">
+                                        <wm-label class="col-md-3 control-label" caption="Code" padding="9px unset unset unset" name="label10"></wm-label>
+                                        <wm-container class="col-md-9" name="container5">
+                                            <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.ProductsTable1.selecteditem.pcode" name="text5"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow9">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn19">
+                                    <wm-composite name="composite1">
+                                        <wm-label class="col-md-3 control-label" name="label6" caption="Name" padding="9px unset unset unset"></wm-label>
+                                        <wm-container class="col-md-9" name="container1">
+                                            <wm-text name="text1" readonly="true" placeholder="" datavalue="bind:Widgets.ProductsTable1.selecteditem.pname"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow10">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn21">
+                                    <wm-composite name="composite2">
+                                        <wm-label class="col-md-3 control-label" caption="Description" padding="9px unset unset unset" name="label7"></wm-label>
+                                        <wm-container class="col-md-9" name="container2">
+                                            <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.ProductsTable1.selecteditem.pdescription" name="text2"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow11">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn23">
+                                    <wm-composite name="composite3">
+                                        <wm-label class="col-md-3 control-label" caption="Category" padding="9px unset unset unset" name="label8"></wm-label>
+                                        <wm-container class="col-md-9" name="container3">
+                                            <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.ProductsTable1.selecteditem.category.catName" name="text3"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow12">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn25">
+                                    <wm-composite name="composite4">
+                                        <wm-label class="col-md-3 control-label" caption="Rating" padding="4px unset unset unset" name="label9"></wm-label>
+                                        <wm-container class="col-md-9" name="container4">
+                                            <wm-rating name="rating1" datavalue="bind:Widgets.ProductsTable1.selecteditem.prating"></wm-rating>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow13_1">
+                                <wm-gridcolumn columnwidth="12" name="gridcolumn23_1">
+                                    <wm-composite name="composite6">
+                                        <wm-label class="col-md-3 control-label" caption="Price" padding="9px unset unset unset" name="label7_1"></wm-label>
+                                        <wm-container class="col-md-9" name="container6">
+                                            <wm-text readonly="true" placeholder="" datavalue="bind:Widgets.ProductsTable1.selecteditem.pprice" name="text5_1"></wm-text>
+                                        </wm-container>
+                                    </wm-composite>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                    </wm-gridcolumn>
+                    <wm-gridcolumn columnwidth="6" name="gridcolumn28" padding="unset unset unset 10px">
+                        <wm-picture name="picture1" picturesource="bind:Widgets.ProductsTable1.selecteditem.ppicture" pictureaspect="Both" bordercolor="#000000" borderwidth="1px"></wm-picture>
+                    </wm-gridcolumn>
+                </wm-gridrow>
+            </wm-layoutgrid>
+            <wm-dialogactions name="dialogactions1">
+                <wm-button class="btn-primary" caption="Close" on-click="closeDialog()" name="button1"></wm-button>
+            </wm-dialogactions>
+        </wm-dialog>
+    </wm-view>
+</wm-page>

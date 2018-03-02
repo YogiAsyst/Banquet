@@ -54,14 +54,16 @@ public class PackageEntity implements Serializable {
     private Integer rating;
     private String price;
     private String packCode;
+    private String packName;
+    private String packDescription;
     private User user;
     private Products productsByProduct1;
     private Products productsByProduct2;
     private Products productsByProduct3;
     private Products productsByProduct4;
     private Products productsByProduct5;
-    private List<OrderItem> orderItems;
     private List<PreOrder> preOrders;
+    private List<OrderItem> orderItems;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "`package_ID_seq`" , allocationSize = 1)
@@ -156,13 +158,31 @@ public class PackageEntity implements Serializable {
         this.price = price;
     }
 
-    @Column(name = "`pack_code`", nullable = true, length = 255)
+    @Column(name = "`pack_code`", nullable = false, length = 255)
     public String getPackCode() {
         return this.packCode;
     }
 
     public void setPackCode(String packCode) {
         this.packCode = packCode;
+    }
+
+    @Column(name = "`pack_name`", nullable = false, length = 255)
+    public String getPackName() {
+        return this.packName;
+    }
+
+    public void setPackName(String packName) {
+        this.packName = packName;
+    }
+
+    @Column(name = "`pack_description`", nullable = true, length = 255)
+    public String getPackDescription() {
+        return this.packDescription;
+    }
+
+    public void setPackDescription(String packDescription) {
+        this.packDescription = packDescription;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)
@@ -258,17 +278,6 @@ public class PackageEntity implements Serializable {
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
     @Cascade({CascadeType.SAVE_UPDATE})
-    public List<OrderItem> getOrderItems() {
-        return this.orderItems;
-    }
-
-    public void setOrderItems(List<OrderItem> orderItems) {
-        this.orderItems = orderItems;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
-    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PreOrder> getPreOrders() {
         return this.preOrders;
     }
@@ -277,16 +286,27 @@ public class PackageEntity implements Serializable {
         this.preOrders = preOrders;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    public List<OrderItem> getOrderItems() {
+        return this.orderItems;
+    }
+
+    public void setOrderItems(List<OrderItem> orderItems) {
+        this.orderItems = orderItems;
+    }
+
     @PostPersist
     public void onPostPersist() {
-        if(orderItems != null) {
-            for(OrderItem orderItem : orderItems) {
-                orderItem.setPackageEntity(this);
-            }
-        }
         if(preOrders != null) {
             for(PreOrder preOrder : preOrders) {
                 preOrder.setPackageEntity(this);
+            }
+        }
+        if(orderItems != null) {
+            for(OrderItem orderItem : orderItems) {
+                orderItem.setPackageEntity(this);
             }
         }
     }

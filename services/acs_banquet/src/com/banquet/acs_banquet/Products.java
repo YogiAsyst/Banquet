@@ -46,8 +46,9 @@ public class Products implements Serializable {
     @JsonProperty(access = Access.READ_ONLY)
     private byte[] ppicture;
     private Integer prating;
-    private Integer pcatagory;
-    private Integer pcode;
+    private int pcatagory;
+    private String pcode;
+    private String pprice;
     private Category category;
     private List<PackageEntity> packageEntitiesForProduct1;
     private List<PackageEntity> packageEntitiesForProduct2;
@@ -67,7 +68,7 @@ public class Products implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "`p_name`", nullable = true, length = 255)
+    @Column(name = "`p_name`", nullable = false, length = 255)
     public String getPname() {
         return this.pname;
     }
@@ -103,22 +104,31 @@ public class Products implements Serializable {
         this.prating = prating;
     }
 
-    @Column(name = "`p_catagory`", nullable = true, scale = 0, precision = 10)
-    public Integer getPcatagory() {
+    @Column(name = "`p_catagory`", nullable = false, scale = 0, precision = 10)
+    public int getPcatagory() {
         return this.pcatagory;
     }
 
-    public void setPcatagory(Integer pcatagory) {
+    public void setPcatagory(int pcatagory) {
         this.pcatagory = pcatagory;
     }
 
-    @Column(name = "`p_code`", nullable = true, scale = 0, precision = 10)
-    public Integer getPcode() {
+    @Column(name = "`p_code`", nullable = false, length = 255)
+    public String getPcode() {
         return this.pcode;
     }
 
-    public void setPcode(Integer pcode) {
+    public void setPcode(String pcode) {
         this.pcode = pcode;
+    }
+
+    @Column(name = "`p_price`", nullable = true, length = 255)
+    public String getPprice() {
+        return this.pprice;
+    }
+
+    public void setPprice(String pprice) {
+        this.pprice = pprice;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

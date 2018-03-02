@@ -67,6 +67,17 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_package_list_page" : {
+    "_id" : "wm-goToPage_package_list_page-wm.NavigationVariable-1519799352632",
+    "name" : "goToPage_package_list_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "package_list_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_package_page" : {
     "_id" : "wm-goToPage_package_page-wm.NavigationVariable-1517457751650",
     "name" : "goToPage_package_page",
@@ -75,6 +86,17 @@
     "dataBinding" : [ ],
     "operation" : "gotoPage",
     "pageName" : "package_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
+  "goToPage_product_list_page" : {
+    "_id" : "wm-goToPage_product_list_page-wm.NavigationVariable-1519788454780",
+    "name" : "goToPage_product_list_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "product_list_page",
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },

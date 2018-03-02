@@ -305,6 +305,48 @@ public class QueryExecutionController {
         return queryService.exportGet_cat_2_product(exportType, pageable);
     }
 
+    @JsonView(BlobAsUrlView.class)
+    @RequestMapping(value = "/queries/get_product_picture", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "get_product_picture")
+    public Page<GetProductPictureResponse> executeGet_product_picture(@RequestParam(value = "prod_id") Integer prodId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: get_product_picture");
+        Page<GetProductPictureResponse> _result = queryService.executeGet_product_picture(prodId, pageable);
+        LOGGER.debug("got the result for named query: get_product_picture, result:{}", _result);
+        UriComponentsBuilder _uriBuilder = ServletUriComponentsBuilder.fromRequest(_request);
+        _uriBuilder.path("/{pname}/content/{_fieldName_}");
+        for(GetProductPictureResponse _content : _result.getContent()) {
+            Map<String, Object> _properties = new HashMap(2);
+            _properties.put("pname", _content.getPname());
+            _properties.put("_fieldName_", "ppicture");
+            if(_content.getPpicture() != null) {
+                _content.setPpicture(_uriBuilder.buildAndExpand(_properties).toUriString().getBytes());
+            } else {
+                _content.setPpicture(null);
+            }
+        }
+        return _result;
+    }
+
+    @ApiOperation(value = "Retrives the BLOB content for property ppicture in query get_product_picture")
+    @RequestMapping(value = "/queries/get_product_picture/{pname}/content/ppicture", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable getPpictureContentForGet_product_picture(@PathVariable("pname") String pname, @RequestParam(value = "prod_id") Integer prodId, @RequestParam(value="downloadAsAttachment", defaultValue = "false") boolean downloadAsAttachment, HttpServletRequest _request) {
+        LOGGER.debug("Executing named query: get_product_picture");
+
+        InputStream _result = queryService.getPpictureContentForGet_product_picture(pname, prodId);
+        return WMMultipartUtils.buildDownloadResponse(_request, _result, downloadAsAttachment);
+    }
+
+    @ApiOperation(value = "Returns downloadable file for query get_product_picture")
+    @RequestMapping(value = "/queries/get_product_picture/export/{exportType}", method = RequestMethod.GET, produces = "application/octet-stream")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Downloadable exportGet_product_picture(@PathVariable("exportType") ExportType exportType, @RequestParam(value = "prod_id") Integer prodId, Pageable pageable, HttpServletRequest _request) {
+        LOGGER.debug("Exporting named query: get_product_picture");
+
+        return queryService.exportGet_product_picture(exportType, prodId, pageable);
+    }
+
 }
 
 

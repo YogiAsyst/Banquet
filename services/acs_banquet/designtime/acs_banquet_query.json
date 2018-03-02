@@ -364,5 +364,54 @@
         }
       } ]
     }
+  },
+  "get_product_picture" : {
+    "name" : "get_product_picture",
+    "description" : "get_product_picture",
+    "version" : "V2",
+    "queryString" : "select p_picture, p_name from products where products.\"ID\"=:prod_id",
+    "countQueryString" : "select count(*) from (select p_picture, p_name from products where products.\"ID\"=:prod_id) wmTempTable",
+    "nativeSql" : true,
+    "fetchCount" : true,
+    "type" : "SELECT",
+    "parameters" : [ {
+      "name" : "prod_id",
+      "type" : "integer",
+      "list" : false,
+      "variableType" : "PROMPT",
+      "variableName" : "",
+      "testValue" : "2",
+      "required" : true
+    } ],
+    "request" : {
+      "wrapped" : false,
+      "typeRef" : null,
+      "method" : "GET"
+    },
+    "identifiers" : [ "p_name" ],
+    "response" : {
+      "typeRef" : "com.banquet.acs_banquet.models.query.GetProductPictureResponse",
+      "returns" : "CUSTOM",
+      "responseType" : "PAGINATED",
+      "properties" : [ {
+        "name" : "p_picture",
+        "fieldName" : "ppicture",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "byte[]",
+          "list" : false
+        }
+      }, {
+        "name" : "p_name",
+        "fieldName" : "pname",
+        "optional" : false,
+        "fieldType" : {
+          "type" : "PRIMITIVE",
+          "typeRef" : "java.lang.String",
+          "list" : false
+        }
+      } ]
+    }
   }
 }

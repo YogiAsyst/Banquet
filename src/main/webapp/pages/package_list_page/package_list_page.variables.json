@@ -1,6 +1,6 @@
 {
   "Acs_banquetPackageEntityData" : {
-    "_id" : "wm-Acs_banquetPackageEntityData-wm.LiveVariable-1517458092854",
+    "_id" : "wm-Acs_banquetPackageEntityData-wm.LiveVariable-1519809582670",
     "name" : "Acs_banquetPackageEntityData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
@@ -975,7 +975,6 @@
       "watchOn" : "Acs_banquetProductsData",
       "package" : "com.banquet.acs_banquet.PackageEntity"
     } ],
-    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.PackageEntity"
   }
 }
