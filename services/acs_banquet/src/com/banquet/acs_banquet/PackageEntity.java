@@ -44,7 +44,7 @@ public class PackageEntity implements Serializable {
 
     private Integer id;
     private Integer staffId;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
     private Date createdDate;
     private Integer product1;
     private Integer product2;

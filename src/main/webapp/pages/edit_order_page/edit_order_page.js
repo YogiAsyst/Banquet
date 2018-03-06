@@ -1,4 +1,4 @@
-Application.$controller("new_order_pagePageController", ["$scope", function ($scope) {
+Application.$controller("edit_order_pagePageController", ["$scope", function ($scope) {
     "use strict";
 
     /* perform any action on widgets/variables within this block */
@@ -17,13 +17,33 @@ Application.$controller("new_order_pagePageController", ["$scope", function ($sc
 }]);
 
 
+Application.$controller("CustomerTable1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
 
+Application.$controller("CustomerLiveForm1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
 
+Application.$controller("OrderTable1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
 
-
-
-
-
+Application.$controller("OrderLiveForm1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
 
 Application.$controller("dialog1Controller", ["$scope",
 	function($scope) {
@@ -47,20 +67,6 @@ Application.$controller("CartTable1Controller", ["$scope",
 ]);
 
 Application.$controller("CartTable2Controller", ["$scope",
-	function($scope) {
-		"use strict";
-		$scope.ctrlScope = $scope;
-	}
-]);
-
-Application.$controller("CustomerLiveForm1Controller", ["$scope",
-	function($scope) {
-		"use strict";
-		$scope.ctrlScope = $scope;
-	}
-]);
-
-Application.$controller("OrderLiveForm1Controller", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

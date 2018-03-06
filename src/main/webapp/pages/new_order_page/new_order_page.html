@@ -1,10 +1,197 @@
-<wm-page data-ng-controller="new_order_pagePageController" pagetitle="New Order Page"> 
-    <wm-header content="header"></wm-header> 
-    <wm-top-nav content="topnav"></wm-top-nav> 
-    <wm-content> 
-        <wm-left-panel columnwidth="2" content="leftnav"></wm-left-panel> 
-        <wm-page-content columnwidth="10"> 
-        </wm-page-content> 
-    </wm-content> 
-    <wm-footer content="footer"></wm-footer> 
+<wm-page data-ng-controller="new_order_pagePageController" pagetitle="New Order Page" name="page1">
+    <wm-header content="header" name="header1"></wm-header>
+    <wm-top-nav content="topnav" name="top_nav1"></wm-top-nav>
+    <wm-content name="content1">
+        <wm-left-panel columnwidth="2" content="leftnav" name="left_panel1"></wm-left-panel>
+        <wm-page-content columnwidth="10" name="page_content1">
+            <wm-wizard stepstyle="justified" name="wizard1">
+                <wm-wizardstep name="wizardstep1" title="#1 - Create Customer">
+                    <wm-liveform errormessage="" title="Customer Info" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.Acs_banquetCustomerData.dataSet" captionalign="left" captionposition="top" name="CustomerLiveForm1">
+                        <wm-layoutgrid columns="2" name="layoutgrid6">
+                            <wm-gridrow name="gridrow15_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn23">
+                                    <wm-form-field name="cname" displayname="Name" required="true" show="true" generator="assigned" primary-key="false" key="cname" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn24">
+                                    <wm-form-field name="cphone" displayname="Phone" required="true" show="true" generator="assigned" primary-key="false" key="cphone" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                        widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow16_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn25">
+                                    <wm-form-field name="caddress" displayname="Address" required="true" show="true" generator="assigned" primary-key="false" key="caddress" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                        widget="textarea"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn26">
+                                    <wm-form-field name="cmail" displayname="Email" required="true" show="true" generator="assigned" primary-key="false" key="cmail" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true" widget="text"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                        <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                        <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep2" title="#2 - Create Order">
+                    <wm-liveform errormessage="" title="Order Info" iconclass="wi wi-edit" defaultmode="Edit" dataset="bind:Variables.Acs_banquetOrderData.dataSet" captionalign="left" captionposition="top" name="OrderLiveForm1">
+                        <wm-layoutgrid columns="2" name="layoutgrid7">
+                            <wm-gridrow name="gridrow17_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn27">
+                                    <wm-form-field name="orderNumber" displayname="Order Number" required="true" show="true" generator="assigned" primary-key="false" key="orderNumber" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                        widget="text" defaultvalue="bind:Variables.loggedInUser.dataSet.id + &quot;-&quot; + Variables.count_order.dataSet.value" placeholder="" readonly="true"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn28_1">
+                                    <wm-form-field name="customer" displayname="Customer" required="false" show="true" generator="assigned" primary-key="false" key="customer" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select"
+                                        defaultvalue="bind:Widgets.CustomerLiveForm1.dataoutput" readonly="true" placeholder="bind:Widgets.CustomerLiveForm1.dataoutput.cname"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow18_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn29">
+                                    <wm-form-field name="orderDueDate" displayname="Event Date" required="true" show="true" generator="assigned" primary-key="false" key="orderDueDate" type="date" is-related="false" pc-display="true" mobile-display="true"
+                                        widget="date"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn30_1">
+                                    <wm-form-field name="user" displayname="Sales" required="false" show="true" generator="assigned" primary-key="false" key="user" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select" defaultvalue="bind:Variables.loggedInUser.dataSet"
+                                        readonly="true" placeholder="bind:Variables.loggedInUser.dataSet.name"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                            <wm-gridrow name="gridrow19_1">
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn31">
+                                    <wm-form-field name="orderTime" displayname="Event Time" required="false" show="true" generator="assigned" primary-key="false" key="orderTime" type="time" is-related="false" pc-display="true" mobile-display="true" widget="time"></wm-form-field>
+                                </wm-gridcolumn>
+                                <wm-gridcolumn columnwidth="6" name="gridcolumn32_1">
+                                    <wm-form-field name="orderNotes" displayname="Notes" required="false" show="true" generator="assigned" primary-key="false" key="orderNotes" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                        widget="textarea"></wm-form-field>
+                                </wm-gridcolumn>
+                            </wm-gridrow>
+                        </wm-layoutgrid>
+                        <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                        <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                        <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+                    </wm-liveform>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep3" title="#3 - Items">
+                    <wm-table editmode="inline" name="CartTable1" title="" dataset="bind:Variables.Acs_banquetCartData.dataSet" navigation="Basic" formposition="top" showrecordcount="true" exportformat="EXCEL,CSV">
+                        <wm-table-column binding="itemCode" caption="Item Code" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="itemName" caption="Item Name" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="quantity" caption="Quantity" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="itemNotes" caption="Notes" edit-widget-type="text" type="string" generator="assigned" show="true" readonly="false"></wm-table-column>
+                        <wm-table-column binding="session" caption="Order" primary-key="false" edit-widget-type="text" type="string" generator="assigned" defaultvalue="bind:Widgets.OrderTable1.selecteditem.orderNumber" show="false" readonly="false"></wm-table-column>
+                        <wm-table-column binding="rowOperations" caption="Actions" width="120px" edit-widget-type="text" type="custom" readonly="true" sortable="false" searchable="false" show="true"></wm-table-column>
+                        <wm-table-action key="addNewRow" display-name="New" show="true" class="btn-primary" iconclass="wi wi-plus" title="New" action="addNewRow()" shortcutkey="" disabled="false" widget-type="button" position="header"></wm-table-action>
+                        <wm-table-row-action key="updaterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-pencil" title="Edit" action="editRow()" disabled="false"></wm-table-row-action>
+                        <wm-table-row-action key="deleterow" display-name="" show="true" class="btn-transparent" iconclass="wi wi-trash" title="Delete" action="deleteRow()" disabled="false"></wm-table-row-action>
+                    </wm-table>
+                </wm-wizardstep>
+                <wm-wizardstep name="wizardstep4" title="#4 - Cart">
+                    <wm-layoutgrid name="layoutgrid4_1">
+                        <wm-gridrow name="gridrow11">
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn20_1">
+                                <wm-layoutgrid name="layoutgrid5">
+                                    <wm-gridrow name="gridrow15">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn28">
+                                            <wm-composite name="composite1">
+                                                <wm-label class="col-md-3 control-label" name="label1" caption="Order" padding="9px unset unset unset"></wm-label>
+                                                <wm-container class="col-md-9" name="container1">
+                                                    <wm-text name="text1" readonly="true" placeholder="" datavalue="bind:Widgets.OrderLiveForm2.dataoutput.orderNumber"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow16">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn30">
+                                            <wm-composite name="composite2">
+                                                <wm-label class="col-md-3 control-label" caption="Customer" padding="9px unset unset unset" name="label2"></wm-label>
+                                                <wm-container class="col-md-9" name="container2">
+                                                    <wm-text readonly="true" name="text2" placeholder="" datavalue="bind:Widgets.CustomerLiveForm1.dataoutput.cname"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow17">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn32">
+                                            <wm-composite name="composite3">
+                                                <wm-label class="col-md-3 control-label" caption="Event Date" padding="9px unset unset unset" name="label3"></wm-label>
+                                                <wm-container class="col-md-9" name="container3">
+                                                    <wm-text readonly="true" name="text3" datavalue="bind:Widgets.OrderLiveForm2.dataoutput.orderDueDate" placeholder=""></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow18">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn33">
+                                            <wm-composite name="composite4">
+                                                <wm-label class="col-md-3 control-label" caption="Event Time" padding="9px unset unset unset" name="label4"></wm-label>
+                                                <wm-container class="col-md-9" name="container4">
+                                                    <wm-text readonly="true" name="text4" datavalue="bind:Widgets.OrderLiveForm2.dataoutput.orderTime" placeholder=""></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                    <wm-gridrow name="gridrow19">
+                                        <wm-gridcolumn columnwidth="12" name="gridcolumn34">
+                                            <wm-composite name="composite5">
+                                                <wm-label class="col-md-3 control-label" caption="Sales" padding="9px unset unset unset" name="label5"></wm-label>
+                                                <wm-container class="col-md-9" name="container5">
+                                                    <wm-text readonly="true" name="text5" placeholder="" datavalue="bind:Variables.loggedInUser.dataSet.name"></wm-text>
+                                                </wm-container>
+                                            </wm-composite>
+                                        </wm-gridcolumn>
+                                    </wm-gridrow>
+                                </wm-layoutgrid>
+                            </wm-gridcolumn>
+                            <wm-gridcolumn columnwidth="6" name="gridcolumn21">
+                                <wm-table name="CartTable2" title="Item" dataset="bind:Variables.Acs_banquetCartData.dataSet" navigation="Basic">
+                                    <wm-table-column binding="itemCode" caption="Code" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                                    <wm-table-column binding="itemName" caption="Name" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                                    <wm-table-column binding="quantity" caption="Quantity" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                                    <wm-table-column binding="itemNotes" caption="Notes" generator="assigned" pcdisplay="true" mobiledisplay="true" type="string"></wm-table-column>
+                                </wm-table>
+                            </wm-gridcolumn>
+                        </wm-gridrow>
+                    </wm-layoutgrid>
+                </wm-wizardstep>
+            </wm-wizard>
+        </wm-page-content>
+    </wm-content>
+    <wm-footer content="footer" name="footer1"></wm-footer>
+    <wm-view class="dialog-view" name="view1">
+        <wm-dialog dialogtype="design-dialog" modal="true" title="Add Order" iconclass="wi wi-file-text" name="dialog1">
+            <wm-liveform errormessage="" title="" iconclass="" defaultmode="Edit" dataset="bind:Variables.Acs_banquetOrderData.dataSet" captionalign="left" captionposition="top" name="OrderLiveForm2" on-success="Widgets.dialog1.close()">
+                <wm-layoutgrid columns="2" name="layoutgrid4">
+                    <wm-gridrow name="gridrow8">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn15">
+                            <wm-form-field name="orderNumber" displayname="Order Number" required="false" show="true" generator="assigned" primary-key="false" key="orderNumber" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                widget="text" readonly="true" defaultvalue="bind:Variables.loggedInUser.dataSet.id + &quot;-&quot; + Variables.count_order.dataSet.value"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn16">
+                            <wm-form-field name="customer" displayname="Customer" required="false" show="true" generator="assigned" primary-key="false" key="customer" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select" defaultvalue="bind:Widgets.CustomerTable1.selecteditem"
+                                readonly="true" placeholder="bind:Widgets.CustomerTable1.selecteditem.cname" orderby="id:asc"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow9">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn17">
+                            <wm-form-field name="orderDueDate" displayname="Event Date" required="false" show="true" generator="assigned" primary-key="false" key="orderDueDate" type="date" is-related="false" pc-display="true" mobile-display="true" widget="date"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn18">
+                            <wm-form-field name="orderTime" displayname="EventTime" required="false" show="true" generator="assigned" primary-key="false" key="orderTime" type="time" is-related="false" pc-display="true" mobile-display="true" widget="time"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                    <wm-gridrow name="gridrow10">
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn19">
+                            <wm-form-field name="user" displayname="Sales" required="false" show="true" generator="assigned" primary-key="false" key="user" type="list" is-related="true" pc-display="true" mobile-display="true" widget="select" defaultvalue="bind:Variables.loggedInUser.dataSet"
+                                readonly="true" placeholder="bind:Variables.loggedInUser.dataSet.name" orderby="id:desc"></wm-form-field>
+                        </wm-gridcolumn>
+                        <wm-gridcolumn columnwidth="6" name="gridcolumn20">
+                            <wm-form-field name="orderNotes" displayname="Notes" required="false" show="true" generator="assigned" primary-key="false" key="orderNotes" type="string" is-related="false" maxchars="255" pc-display="true" mobile-display="true"
+                                widget="textarea"></wm-form-field>
+                        </wm-gridcolumn>
+                    </wm-gridrow>
+                </wm-layoutgrid>
+                <wm-form-field name="id" displayname="Id" required="true" show="false" generator="sequence" primary-key="true" key="id" type="integer" is-related="false" step="0" pc-display="true" mobile-display="true" widget="number"></wm-form-field>
+                <wm-form-action key="reset" class="form-reset btn-secondary" iconclass="wi wi-refresh" action="reset()" display-name="Reset" show="true" type="button" update-mode="true"></wm-form-action>
+                <wm-form-action key="save" class="form-save btn-success" iconclass="wi wi-save" display-name="Save" show="true" type="submit" update-mode="true"></wm-form-action>
+            </wm-liveform>
+        </wm-dialog>
+    </wm-view>
 </wm-page>

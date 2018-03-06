@@ -52,7 +52,7 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    @Column(name = "`c_name`", nullable = true, length = 255)
+    @Column(name = "`c_name`", nullable = false, length = 255)
     public String getCname() {
         return this.cname;
     }
@@ -61,7 +61,7 @@ public class Customer implements Serializable {
         this.cname = cname;
     }
 
-    @Column(name = "`c_address`", nullable = true, length = 255)
+    @Column(name = "`c_address`", nullable = false, length = 255)
     public String getCaddress() {
         return this.caddress;
     }
@@ -70,7 +70,7 @@ public class Customer implements Serializable {
         this.caddress = caddress;
     }
 
-    @Column(name = "`c_phone`", nullable = true, length = 255)
+    @Column(name = "`c_phone`", nullable = false, length = 255)
     public String getCphone() {
         return this.cphone;
     }
@@ -79,7 +79,7 @@ public class Customer implements Serializable {
         this.cphone = cphone;
     }
 
-    @Column(name = "`c_mail`", nullable = true, length = 255)
+    @Column(name = "`c_mail`", nullable = false, length = 255)
     public String getCmail() {
         return this.cmail;
     }

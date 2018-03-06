@@ -50,7 +50,7 @@ public class Order implements Serializable {
     private String orderNotes;
     private Boolean approval1;
     private Boolean approval2;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.UPDATE, Scope.INSERT })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE", scopes = { Scope.INSERT, Scope.UPDATE })
     private Date orderCreateDate;
     private Date orderDueDate;
     private Time orderTime;

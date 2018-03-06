@@ -9,11 +9,15 @@
         <wm-nav-item name="nav_item5">
             <wm-anchor name="anchor5" iconclass="wi wi-storage" caption="Package" on-click="Actions.goToPage_package_list_page.invoke()"></wm-anchor>
         </wm-nav-item>
-        <wm-nav-item name="list_order">
-            <wm-anchor caption="Orders" name="orderLink" iconclass="fa fa-briefcase" on-click="Actions.goToPage_create_order_page.invoke()"></wm-anchor>
+        <wm-nav-item name="nav_item6">
+            <wm-menu caption="Order" autoclose="outsideClick" name="menu1" iconclass="fa fa-briefcase" type="anchor" dataset="bind:Variables.order_menu.dataSet" itemlabel="label" itemlink="link" itemicon="icon" orderby="label:desc" padding="10px unset unset 18px"
+                height="40"></wm-menu>
         </wm-nav-item>
         <wm-nav-item name="list_support">
             <wm-anchor caption="History" name="supportLink" iconclass="fa fa-file-archive-o" on-click="Actions.goToPage_order_list_page.invoke()"></wm-anchor>
+        </wm-nav-item>
+        <wm-nav-item name="list_order" show="false">
+            <wm-anchor caption="Orders" name="orderLink" iconclass="fa fa-briefcase" on-click="Actions.goToPage_new_order_page.invoke()"></wm-anchor>
         </wm-nav-item>
     </wm-nav>
 </wm-partial>

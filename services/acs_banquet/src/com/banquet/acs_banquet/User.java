@@ -53,7 +53,7 @@ public class User implements Serializable {
     private byte[] upicture;
     private String urole;
     private String uloginStatus;
-    @WMValueInject( type = VariableType.SERVER, name = "DATE_TIME", scopes = { Scope.UPDATE, Scope.INSERT })
+    @WMValueInject( type = VariableType.SERVER, name = "DATE_TIME", scopes = { Scope.INSERT, Scope.UPDATE })
     private LocalDateTime ulastLogin;
     private List<Order> _orders;
     private List<PackageEntity> packageEntities;

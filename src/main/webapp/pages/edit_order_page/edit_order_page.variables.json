@@ -6,7 +6,7 @@
     "category" : "wm.LiveVariable",
     "dataBinding" : [ {
       "target" : "session",
-      "value" : "bind:Widgets.OrderLiveForm2.dataoutput.orderNumber",
+      "value" : "bind:Widgets.OrderTable1.selecteditem.orderNumber",
       "type" : "string"
     } ],
     "operation" : "read",
@@ -225,7 +225,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 3,
+    "bindCount" : 1,
     "tableName" : "customer",
     "tableType" : "TABLE",
     "properties" : [ ],
@@ -237,7 +237,11 @@
     "name" : "Acs_banquetOrderData",
     "owner" : "Page",
     "category" : "wm.LiveVariable",
-    "dataBinding" : [ ],
+    "dataBinding" : [ {
+      "target" : "customerId",
+      "value" : "bind:Widgets.CustomerTable1.selecteditem.id",
+      "type" : "number"
+    } ],
     "operation" : "read",
     "dataSet" : [ ],
     "type" : "Order",
@@ -640,7 +644,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 3,
+    "bindCount" : 2,
     "tableName" : "order",
     "tableType" : "TABLE",
     "properties" : [ "customer", "user" ],
@@ -657,6 +661,7 @@
       "watchOn" : "Acs_banquetUserData",
       "package" : "com.banquet.acs_banquet.Order"
     } ],
+    "filterFields" : { },
     "package" : "com.banquet.acs_banquet.Order"
   },
   "count_order" : {

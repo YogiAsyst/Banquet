@@ -37,6 +37,17 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_edit_order_page" : {
+    "_id" : "wm-goToPage_edit_order_page-wm.NavigationVariable-1520243565444",
+    "name" : "goToPage_edit_order_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "edit_order_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
+  },
   "goToPage_login_page" : {
     "_id" : "wm-goToPage_login_page-wm.NavigationVariable-1517196005014",
     "name" : "goToPage_login_page",
@@ -55,6 +66,17 @@
     "category" : "wm.NavigationVariable",
     "operation" : "gotoPage",
     "pageName" : "Main"
+  },
+  "goToPage_new_order_page" : {
+    "_id" : "wm-goToPage_new_order_page-wm.NavigationVariable-1519976007117",
+    "name" : "goToPage_new_order_page",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ ],
+    "operation" : "gotoPage",
+    "pageName" : "new_order_page",
+    "dataSet" : [ ],
+    "pageTransitions" : "none"
   },
   "goToPage_order_list_page" : {
     "_id" : "wm-goToPage_order_list_page-wm.NavigationVariable-1517541556455",
@@ -182,6 +204,25 @@
     "transformationRequired" : false,
     "redirectTo" : "login_page",
     "useDefaultSuccessHandler" : true
+  },
+  "order_menu" : {
+    "_id" : "wm-order_menu-wm.Variable-1520243267747",
+    "name" : "order_menu",
+    "owner" : "App",
+    "category" : "wm.Variable",
+    "dataBinding" : [ ],
+    "dataSet" : [ {
+      "label" : "New",
+      "icon" : "",
+      "link" : "#/new_order_page"
+    }, {
+      "label" : "Edit",
+      "icon" : "",
+      "link" : "#/edit_order_page"
+    } ],
+    "type" : "string",
+    "isList" : true,
+    "saveInPhonegap" : false
   },
   "supportedLocale" : {
     "_id" : "wm-wm.Variable1402640443182",
