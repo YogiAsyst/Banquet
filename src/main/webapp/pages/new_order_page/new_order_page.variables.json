@@ -710,7 +710,7 @@
     "category" : "wm.ServiceVariable",
     "dataBinding" : [ {
       "target" : "toEmailAddress",
-      "value" : "bind:Widgets.CustomerLiveForm1_1.dataoutput.cmail",
+      "value" : "bind:Widgets.OrderLiveForm1.dataoutput.customer.cmail",
       "type" : "string"
     }, {
       "target" : "emailSubject",
@@ -731,7 +731,7 @@
     "isList" : false,
     "maxResults" : 20,
     "startUpdate" : false,
-    "autoUpdate" : true,
+    "autoUpdate" : false,
     "inFlightBehavior" : "executeLast",
     "transformationRequired" : false,
     "saveInPhonegap" : false,
