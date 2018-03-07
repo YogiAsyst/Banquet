@@ -4,9 +4,9 @@
     <wm-content name="content">
         <wm-left-panel columnwidth="2" name="leftpanel" content="leftnav"></wm-left-panel>
         <wm-page-content columnwidth="10" name="mainContent" padding="unset 15px">
-            <wm-carousel height="480" type="dynamic" name="carousel1" dataset="bind:Variables.product_db.dataSet">
+            <wm-carousel height="480" type="dynamic" name="carousel1" dataset="bind:Variables.get_product.dataSet.ppicture">
                 <wm-carousel-template horizontalalign="center" name="carousel_template1">
-                    <wm-picture name="picture1" picturesource="bind:Variables.product_db.dataSet.data[$i].ppicture" pictureaspect="V"></wm-picture>
+                    <wm-picture name="picture1" pictureaspect="V"></wm-picture>
                 </wm-carousel-template>
             </wm-carousel>
             <wm-layoutgrid name="layoutgrid1">

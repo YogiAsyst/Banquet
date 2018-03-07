@@ -32,12 +32,7 @@ Application.$controller("dialog1Controller", ["$scope",
 	}
 ]);
 
-Application.$controller("OrderLiveForm2Controller", ["$scope",
-	function($scope) {
-		"use strict";
-		$scope.ctrlScope = $scope;
-	}
-]);
+
 
 Application.$controller("CartTable1Controller", ["$scope",
 	function($scope) {
@@ -61,6 +56,13 @@ Application.$controller("CustomerLiveForm1Controller", ["$scope",
 ]);
 
 Application.$controller("OrderLiveForm1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("CustomerLiveForm1_1Controller", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

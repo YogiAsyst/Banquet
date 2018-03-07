@@ -4,13 +4,20 @@
 package com.banquet.emailclient;
 
 import javax.servlet.http.HttpServletRequest;
-
+import javax.annotation.PostConstruct;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
 import org.springframework.beans.factory.annotation.Autowired;
-
-
+import org.springframework.beans.factory.annotation.Value;
+import java.util.Properties;
+import javax.mail.Message;
+import javax.mail.Authenticator;
+import javax.mail.MessagingException;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeMessage;
+import javax.mail.PasswordAuthentication;
 import com.wavemaker.runtime.security.SecurityService;
 import com.wavemaker.runtime.service.annotations.ExposeToClient;
 import com.wavemaker.runtime.service.annotations.HideFromClient;
@@ -31,30 +38,50 @@ import com.wavemaker.runtime.service.annotations.HideFromClient;
 public class EmailClient {
 
     private static final Logger logger = LoggerFactory.getLogger(EmailClient.class);
+    private Session session;
 
-    @Autowired
-    private SecurityService securityService;
+    private boolean authentication=true;
+    private boolean smtpServerTTLSEnabled = true;
+    private String host = "smtp.gmail.com";
+    private String port = "587";
+    private String username="yogi.25.yp@gmail.com";
+    private String password="ras16242729";
 
-    /**
-     * This is sample java operation that accepts an input from the caller and responds with "Hello".
-     *
-     * SecurityService that is Autowired will provide access to the security context of the caller. It has methods like isAuthenticated(),
-     * getUserName() and getUserId() etc which returns the information based on the caller context.
-     *
-     * Methods in this class can declare HttpServletRequest, HttpServletResponse as input parameters to access the
-     * caller's request/response objects respectively. These parameters will be injected when request is made (during API invocation).
-     */
-    public String sampleJavaOperation(String name, HttpServletRequest request) {
-        logger.debug("Starting sample operation with request url " + request.getRequestURL().toString());
-        
-        String result = null;
-        if (securityService.isAuthenticated()) {
-            result = "Hello " + name + ", You are logged in as "+  securityService.getLoggedInUser().getUserName();
-        } else {
-            result = "Hello " + name + ", You are not authenticated yet!";
-        }
-        logger.debug("Returning {}", result);
-        return result;
+    @PostConstruct
+    public void init() throws Exception {
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", String.valueOf(authentication));
+        props.put("mail.smtp.starttls.enable",smtpServerTTLSEnabled);
+        props.put("mail.smtp.host", host);
+        props.put("mail.smtp.port", port);
+        session = Session.getInstance(props, new Authenticator() {
+            @Override
+            protected PasswordAuthentication getPasswordAuthentication() {
+            return new PasswordAuthentication(username, password);
+            }
+        });
     }
 
+    public void sendEmail(String toEmailAddress, String emailSubject, String emailMessage) {
+        logger.info("toEmailAddress {}, emailSubject {}, emailMessage {} ",
+        toEmailAddress,emailSubject,emailMessage);
+        try {
+            Message message = new MimeMessage(session);
+            message.setFrom(new InternetAddress(username));
+            String[] recipientList = toEmailAddress.split(",");
+            InternetAddress[] recipientAddresses = new InternetAddress[recipientList.length];
+            int counter = 0;
+            for (String recipient: recipientList) {
+                recipientAddresses[counter] = new InternetAddress(recipient.trim());
+                counter++;
+                }
+            message.setRecipients(Message.RecipientType.TO, recipientAddresses);
+            message.setSubject(emailSubject);
+            message.setText(emailMessage);
+            Transport.send(message);
+            logger.info("Sent message successfully....");
+             } catch (MessagingException e) {
+                throw new RuntimeException(e);
+            }
+        }
 }

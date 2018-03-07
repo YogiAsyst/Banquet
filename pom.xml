@@ -285,6 +285,55 @@
             <artifactId>postgresql</artifactId>
             <version>9.4.1208.jre7</version>
         </dependency>
+        <dependency>
+            <groupId>dsn</groupId>
+            <artifactId>dsn</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/dsn.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>gimap</groupId>
+            <artifactId>gimap</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/gimap.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>imap</groupId>
+            <artifactId>imap</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/imap.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>mail</groupId>
+            <artifactId>mail</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/mail.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>mailapi</groupId>
+            <artifactId>mailapi</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/mailapi.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>pop3</groupId>
+            <artifactId>pop3</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/pop3.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>smtp</groupId>
+            <artifactId>smtp</artifactId>
+            <version>1.0</version>
+            <scope>system</scope>
+            <systemPath>${project.lib.directory}/smtp.jar</systemPath>
+        </dependency>
     </dependencies>
     <dependencyManagement>
         <dependencies>
@@ -312,7 +361,7 @@
             <dependency>
                 <groupId>com.sun.mail</groupId>
                 <artifactId>javax.mail</artifactId>
-                <version>1.5.6</version>
+                <version>1.4.7</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

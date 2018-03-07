@@ -225,7 +225,7 @@
       "primaryFields" : [ "id" ]
     },
     "isDefault" : true,
-    "bindCount" : 3,
+    "bindCount" : 5,
     "tableName" : "customer",
     "tableType" : "TABLE",
     "properties" : [ ],
@@ -680,5 +680,61 @@
     "transformationRequired" : false,
     "saveInPhonegap" : false,
     "controller" : "Order"
+  },
+  "create_customer" : {
+    "_id" : "wm-create_customer-wm.ServiceVariable-1520337683422",
+    "name" : "create_customer",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ ],
+    "type" : "com.banquet.acs_banquet.Customer",
+    "service" : "acs_banquet",
+    "operation" : "createCustomer",
+    "operationId" : "CustomerController_createCustomer",
+    "operationType" : "post",
+    "serviceType" : "DataService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : true,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "Customer"
+  },
+  "send_email" : {
+    "_id" : "wm-send_email-wm.ServiceVariable-1520389500616",
+    "name" : "send_email",
+    "owner" : "Page",
+    "category" : "wm.ServiceVariable",
+    "dataBinding" : [ {
+      "target" : "toEmailAddress",
+      "value" : "bind:Widgets.CustomerLiveForm1_1.dataoutput.cmail",
+      "type" : "string"
+    }, {
+      "target" : "emailSubject",
+      "value" : "bind:Widgets.OrderLiveForm1.dataoutput.orderDueDate + Widgets.OrderLiveForm1.dataoutput.orderNumber",
+      "type" : "string"
+    }, {
+      "target" : "emailMessage",
+      "value" : "bind:Variables.Acs_banquetCartData.dataSet",
+      "type" : "string"
+    } ],
+    "type" : "object",
+    "service" : "EmailClient",
+    "operation" : "sendEmail",
+    "operationId" : "EmailClientController_sendEmail",
+    "operationType" : "get",
+    "serviceType" : "JavaService",
+    "dataSet" : [ ],
+    "isList" : false,
+    "maxResults" : 20,
+    "startUpdate" : false,
+    "autoUpdate" : true,
+    "inFlightBehavior" : "executeLast",
+    "transformationRequired" : false,
+    "saveInPhonegap" : false,
+    "controller" : "EmailClient"
   }
 }

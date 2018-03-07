@@ -4,8 +4,8 @@
 package com.banquet.emailclient.controller;
 
 import com.banquet.emailclient.EmailClient;
+import java.lang.Exception;
 import java.lang.String;
-import javax.servlet.http.HttpServletRequest;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,10 +22,17 @@ public class EmailClientController {
     @Autowired
     private EmailClient emailClient;
 
-    @RequestMapping(value = "/sampleJavaOperation", produces = "application/json", method = RequestMethod.GET)
+    @RequestMapping(value = "/init", method = RequestMethod.GET)
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
     @ApiOperation(value = "")
-    public String sampleJavaOperation(@RequestParam(value = "name", required = false) String name, HttpServletRequest request) {
-        return emailClient.sampleJavaOperation(name, request);
+    public void init() throws Exception {
+        emailClient.init();
+    }
+
+    @RequestMapping(value = "/sendEmail", method = RequestMethod.GET)
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    @ApiOperation(value = "")
+    public void sendEmail(@RequestParam(value = "toEmailAddress", required = false) String toEmailAddress, @RequestParam(value = "emailSubject", required = false) String emailSubject, @RequestParam(value = "emailMessage", required = false) String emailMessage) {
+        emailClient.sendEmail(toEmailAddress, emailSubject, emailMessage);
     }
 }
