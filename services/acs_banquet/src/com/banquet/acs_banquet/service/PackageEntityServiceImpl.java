@@ -96,21 +96,21 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 	public PackageEntity update(PackageEntity packageEntity) throws EntityNotFoundException {
         LOGGER.debug("Updating PackageEntity with information: {}", packageEntity);
 
-        List<PreOrder> preOrders = packageEntity.getPreOrders();
         List<OrderItem> orderItems = packageEntity.getOrderItems();
-
-        if(preOrders != null && Hibernate.isInitialized(preOrders)) {
-            if(!preOrders.isEmpty()) {
-                for(PreOrder _preOrder : preOrders) {
-                    _preOrder.setPackageEntity(packageEntity);
-                }
-            }
-        }
+        List<PreOrder> preOrders = packageEntity.getPreOrders();
 
         if(orderItems != null && Hibernate.isInitialized(orderItems)) {
             if(!orderItems.isEmpty()) {
                 for(OrderItem _orderItem : orderItems) {
                     _orderItem.setPackageEntity(packageEntity);
+                }
+            }
+        }
+
+        if(preOrders != null && Hibernate.isInitialized(preOrders)) {
+            if(!preOrders.isEmpty()) {
+                for(PreOrder _preOrder : preOrders) {
+                    _preOrder.setPackageEntity(packageEntity);
                 }
             }
         }
@@ -176,17 +176,6 @@ public class PackageEntityServiceImpl implements PackageEntityService {
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<PreOrder> findAssociatedPreOrders(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated preOrders");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("packageEntity.id = '" + id + "'");
-
-        return preOrderService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
-    @Override
     public Page<OrderItem> findAssociatedOrderItems(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated orderItems");
 
@@ -194,6 +183,17 @@ public class PackageEntityServiceImpl implements PackageEntityService {
         queryBuilder.append("packageEntity.id = '" + id + "'");
 
         return orderItemService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<PreOrder> findAssociatedPreOrders(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated preOrders");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("packageEntity.id = '" + id + "'");
+
+        return preOrderService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**

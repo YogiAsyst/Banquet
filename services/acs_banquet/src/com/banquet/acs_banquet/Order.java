@@ -54,6 +54,8 @@ public class Order implements Serializable {
     private Date orderCreateDate;
     private Date orderDueDate;
     private Time orderTime;
+    private Integer status;
+    private String orderAddress;
     private Customer customer;
     private User user;
     private List<OrderItem> orderItems;
@@ -149,6 +151,24 @@ public class Order implements Serializable {
 
     public void setOrderTime(Time orderTime) {
         this.orderTime = orderTime;
+    }
+
+    @Column(name = "`status`", nullable = true, scale = 0, precision = 10)
+    public Integer getStatus() {
+        return this.status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
+    @Column(name = "`order_address`", nullable = true, length = 255)
+    public String getOrderAddress() {
+        return this.orderAddress;
+    }
+
+    public void setOrderAddress(String orderAddress) {
+        this.orderAddress = orderAddress;
     }
 
     @ManyToOne(fetch = FetchType.EAGER)

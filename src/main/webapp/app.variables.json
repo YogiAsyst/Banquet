@@ -89,6 +89,25 @@
     "dataSet" : [ ],
     "pageTransitions" : "none"
   },
+  "goToPage_order_summary" : {
+    "_id" : "wm-goToPage_order_summary-wm.NavigationVariable-1520564294450",
+    "name" : "goToPage_order_summary",
+    "owner" : "App",
+    "category" : "wm.NavigationVariable",
+    "dataBinding" : [ {
+      "target" : "pageName",
+      "value" : "order_summary",
+      "type" : "string"
+    } ],
+    "operation" : "gotoPage",
+    "pageName" : "order_summary",
+    "dataSet" : [ {
+      "type" : "string",
+      "target" : "order_id",
+      "value" : "bind:Widgets.OrderLiveForm1.dataoutput.orderNumber"
+    } ],
+    "pageTransitions" : "none"
+  },
   "goToPage_package_list_page" : {
     "_id" : "wm-goToPage_package_list_page-wm.NavigationVariable-1519799352632",
     "name" : "goToPage_package_list_page",

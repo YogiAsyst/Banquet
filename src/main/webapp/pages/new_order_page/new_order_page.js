@@ -34,12 +34,7 @@ Application.$controller("dialog1Controller", ["$scope",
 
 
 
-Application.$controller("CartTable1Controller", ["$scope",
-	function($scope) {
-		"use strict";
-		$scope.ctrlScope = $scope;
-	}
-]);
+
 
 Application.$controller("CartTable2Controller", ["$scope",
 	function($scope) {
@@ -63,6 +58,20 @@ Application.$controller("OrderLiveForm1Controller", ["$scope",
 ]);
 
 Application.$controller("CustomerLiveForm1_1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("CartTable1Controller", ["$scope",
+	function($scope) {
+		"use strict";
+		$scope.ctrlScope = $scope;
+	}
+]);
+
+Application.$controller("CatalogController", ["$scope",
 	function($scope) {
 		"use strict";
 		$scope.ctrlScope = $scope;

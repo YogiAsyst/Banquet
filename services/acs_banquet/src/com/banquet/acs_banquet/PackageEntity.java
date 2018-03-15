@@ -62,8 +62,8 @@ public class PackageEntity implements Serializable {
     private Products productsByProduct3;
     private Products productsByProduct4;
     private Products productsByProduct5;
-    private List<PreOrder> preOrders;
     private List<OrderItem> orderItems;
+    private List<PreOrder> preOrders;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "`package_ID_seq`" , allocationSize = 1)
@@ -278,17 +278,6 @@ public class PackageEntity implements Serializable {
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
     @Cascade({CascadeType.SAVE_UPDATE})
-    public List<PreOrder> getPreOrders() {
-        return this.preOrders;
-    }
-
-    public void setPreOrders(List<PreOrder> preOrders) {
-        this.preOrders = preOrders;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
-    @Cascade({CascadeType.SAVE_UPDATE})
     public List<OrderItem> getOrderItems() {
         return this.orderItems;
     }
@@ -297,16 +286,27 @@ public class PackageEntity implements Serializable {
         this.orderItems = orderItems;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "packageEntity")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    public List<PreOrder> getPreOrders() {
+        return this.preOrders;
+    }
+
+    public void setPreOrders(List<PreOrder> preOrders) {
+        this.preOrders = preOrders;
+    }
+
     @PostPersist
     public void onPostPersist() {
-        if(preOrders != null) {
-            for(PreOrder preOrder : preOrders) {
-                preOrder.setPackageEntity(this);
-            }
-        }
         if(orderItems != null) {
             for(OrderItem orderItem : orderItems) {
                 orderItem.setPackageEntity(this);
+            }
+        }
+        if(preOrders != null) {
+            for(PreOrder preOrder : preOrders) {
+                preOrder.setPackageEntity(this);
             }
         }
     }

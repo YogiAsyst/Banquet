@@ -96,21 +96,21 @@ public class UserServiceImpl implements UserService {
 	public User update(User user) throws EntityNotFoundException {
         LOGGER.debug("Updating User with information: {}", user);
 
-        List<Order> _orders = user.get_orders();
         List<PackageEntity> packageEntities = user.getPackageEntities();
-
-        if(_orders != null && Hibernate.isInitialized(_orders)) {
-            if(!_orders.isEmpty()) {
-                for(Order _order : _orders) {
-                    _order.setUser(user);
-                }
-            }
-        }
+        List<Order> _orders = user.get_orders();
 
         if(packageEntities != null && Hibernate.isInitialized(packageEntities)) {
             if(!packageEntities.isEmpty()) {
                 for(PackageEntity _packageEntity : packageEntities) {
                     _packageEntity.setUser(user);
+                }
+            }
+        }
+
+        if(_orders != null && Hibernate.isInitialized(_orders)) {
+            if(!_orders.isEmpty()) {
+                for(Order _order : _orders) {
+                    _order.setUser(user);
                 }
             }
         }
@@ -176,17 +176,6 @@ public class UserServiceImpl implements UserService {
 
     @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
     @Override
-    public Page<Order> findAssociated_orders(Integer id, Pageable pageable) {
-        LOGGER.debug("Fetching all associated _orders");
-
-        StringBuilder queryBuilder = new StringBuilder();
-        queryBuilder.append("user.id = '" + id + "'");
-
-        return orderService.findAll(queryBuilder.toString(), pageable);
-    }
-
-    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
-    @Override
     public Page<PackageEntity> findAssociatedPackageEntities(Integer id, Pageable pageable) {
         LOGGER.debug("Fetching all associated packageEntities");
 
@@ -194,6 +183,17 @@ public class UserServiceImpl implements UserService {
         queryBuilder.append("user.id = '" + id + "'");
 
         return packageEntityService.findAll(queryBuilder.toString(), pageable);
+    }
+
+    @Transactional(readOnly = true, value = "acs_banquetTransactionManager")
+    @Override
+    public Page<Order> findAssociated_orders(Integer id, Pageable pageable) {
+        LOGGER.debug("Fetching all associated _orders");
+
+        StringBuilder queryBuilder = new StringBuilder();
+        queryBuilder.append("user.id = '" + id + "'");
+
+        return orderService.findAll(queryBuilder.toString(), pageable);
     }
 
     /**

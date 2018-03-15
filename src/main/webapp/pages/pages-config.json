@@ -54,6 +54,13 @@
   "type" : "PAGE",
   "params" : [ ]
 }, {
+  "name" : "order_summary",
+  "type" : "PAGE",
+  "params" : [ {
+    "name" : "order_id",
+    "type" : "string"
+  } ]
+}, {
   "name" : "package_list_page",
   "type" : "PAGE",
   "params" : [ ]

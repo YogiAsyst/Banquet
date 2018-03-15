@@ -192,15 +192,6 @@ public class UserController {
         return userService.getAggregatedValues(aggregationInfo, pageable);
     }
 
-    @RequestMapping(value="/{id:.+}/_orders", method=RequestMethod.GET)
-    @ApiOperation(value = "Gets the _orders instance associated with the given id.")
-    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
-    public Page<Order> findAssociated_orders(@PathVariable("id") Integer id, Pageable pageable) {
-
-        LOGGER.debug("Fetching all associated _orders");
-        return userService.findAssociated_orders(id, pageable);
-    }
-
     @RequestMapping(value="/{id:.+}/packageEntities", method=RequestMethod.GET)
     @ApiOperation(value = "Gets the packageEntities instance associated with the given id.")
     @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
@@ -208,6 +199,15 @@ public class UserController {
 
         LOGGER.debug("Fetching all associated packageEntities");
         return userService.findAssociatedPackageEntities(id, pageable);
+    }
+
+    @RequestMapping(value="/{id:.+}/_orders", method=RequestMethod.GET)
+    @ApiOperation(value = "Gets the _orders instance associated with the given id.")
+    @WMAccessVisibility(value = AccessSpecifier.APP_ONLY)
+    public Page<Order> findAssociated_orders(@PathVariable("id") Integer id, Pageable pageable) {
+
+        LOGGER.debug("Fetching all associated _orders");
+        return userService.findAssociated_orders(id, pageable);
     }
 
     /**

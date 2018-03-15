@@ -30,6 +30,8 @@ public class Cart implements Serializable {
     private String session;
     private String itemNotes;
     private String itemName;
+    private String price;
+    private String totalPrice;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "`cart_ID_seq`" , allocationSize = 1)
@@ -95,6 +97,24 @@ public class Cart implements Serializable {
 
     public void setItemName(String itemName) {
         this.itemName = itemName;
+    }
+
+    @Column(name = "`price`", nullable = true, length = 255)
+    public String getPrice() {
+        return this.price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    @Column(name = "`total_price`", nullable = true, length = 255)
+    public String getTotalPrice() {
+        return this.totalPrice;
+    }
+
+    public void setTotalPrice(String totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
 

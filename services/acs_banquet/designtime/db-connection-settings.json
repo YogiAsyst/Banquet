@@ -15,28 +15,31 @@
     "table" : "pre-order",
     "schema" : "public"
   }, {
-    "table" : "order",
+    "table" : "products",
     "schema" : "public"
   }, {
-    "table" : "category",
+    "table" : "package",
     "schema" : "public"
   }, {
     "table" : "customer",
     "schema" : "public"
   }, {
-    "table" : "user",
-    "schema" : "public"
-  }, {
     "table" : "cart",
     "schema" : "public"
   }, {
+    "table" : "category",
+    "schema" : "public"
+  }, {
+    "table" : "user",
+    "schema" : "public"
+  }, {
+    "table" : "order_status",
+    "schema" : "public"
+  }, {
+    "table" : "order",
+    "schema" : "public"
+  }, {
     "table" : "order_item",
-    "schema" : "public"
-  }, {
-    "table" : "products",
-    "schema" : "public"
-  }, {
-    "table" : "package",
     "schema" : "public"
   } ],
   "schemaFilter" : [ ],

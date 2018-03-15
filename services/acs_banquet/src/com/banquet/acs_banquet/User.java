@@ -55,8 +55,8 @@ public class User implements Serializable {
     private String uloginStatus;
     @WMValueInject( type = VariableType.SERVER, name = "DATE_TIME", scopes = { Scope.INSERT, Scope.UPDATE })
     private LocalDateTime ulastLogin;
-    private List<Order> _orders;
     private List<PackageEntity> packageEntities;
+    private List<Order> _orders;
 
     @Id
     @SequenceGenerator(name = "generator", sequenceName = "`user_ID_seq`" , allocationSize = 1)
@@ -181,17 +181,6 @@ public class User implements Serializable {
     @JsonInclude(Include.NON_EMPTY)
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     @Cascade({CascadeType.SAVE_UPDATE})
-    public List<Order> get_orders() {
-        return this._orders;
-    }
-
-    public void set_orders(List<Order> _orders) {
-        this._orders = _orders;
-    }
-
-    @JsonInclude(Include.NON_EMPTY)
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    @Cascade({CascadeType.SAVE_UPDATE})
     public List<PackageEntity> getPackageEntities() {
         return this.packageEntities;
     }
@@ -200,16 +189,27 @@ public class User implements Serializable {
         this.packageEntities = packageEntities;
     }
 
+    @JsonInclude(Include.NON_EMPTY)
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    @Cascade({CascadeType.SAVE_UPDATE})
+    public List<Order> get_orders() {
+        return this._orders;
+    }
+
+    public void set_orders(List<Order> _orders) {
+        this._orders = _orders;
+    }
+
     @PostPersist
     public void onPostPersist() {
-        if(_orders != null) {
-            for(Order order : _orders) {
-                order.setUser(this);
-            }
-        }
         if(packageEntities != null) {
             for(PackageEntity packageEntity : packageEntities) {
                 packageEntity.setUser(this);
+            }
+        }
+        if(_orders != null) {
+            for(Order order : _orders) {
+                order.setUser(this);
             }
         }
     }
